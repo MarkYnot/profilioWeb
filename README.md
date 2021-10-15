@@ -1,4 +1,4 @@
-# 5619 Together Project
+# 5620 Banvas System
 
 
 # 💻 Framework
@@ -9,8 +9,8 @@
 
 # 📦 Install
 ```bash
-git clone https://github.sydney.edu.au/ELEC5619-Group-26/ELEC5619-2021S2-G26.git
-cd ELEC5619-2021S2-G26-master
+git 
+
 ```
 ### Project setup(Front-end)
 
@@ -18,7 +18,7 @@ cd ELEC5619-2021S2-G26-master
 ```
 cd client 
 npm install
-npm run dev
+npm run serve
 ```
 **2. Open browser and type http://localhost:8080/**
   
