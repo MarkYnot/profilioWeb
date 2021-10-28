@@ -9,12 +9,12 @@
 
 # 📦 Install
 ```bash
-git 
-
+git clone 
+cd  5620-Banvas-master
 ```
 ### Project setup(Front-end)
 
-**1. Use terminal "cd" into 5619Project file, then:**
+**1. Use terminal "cd" into 5620-Banvas-master file, then:**
 ```
 cd client 
 npm install
@@ -24,23 +24,88 @@ npm run serve
   
   ![test](https://github.sydney.edu.au/ELEC5619-Group-26/ELEC5619-2021S2-G26/blob/master/README%20image/test.png)
 
-### Set up back-end
-> Run the ServerApplication main() method
+### Initialise the Back-end
+```
+Run the ServerApplication main() method
+```
 
 ### Set up database
-> 1. Create database "test" 
-> 2. Create table "book"
-> 3. Add following data:
-  
-  ![dbStrucuture](https://github.sydney.edu.au/ELEC5619-Group-26/ELEC5619-2021S2-G26/blob/master/README%20image/database-structure.png)
+> - Modify the username and password in application.yml in resource
+> folder. 
+> 
+> - Choose any GUI tools to create database.
+>
+> - Please make sure your schema name, table name and attributes 
+> name are same with the following guide
 
-### Test database
+  ***Schema Name***: 5620Banvas
 
-1. Open browser and type http://localhost:8080/ , 
-2. select "Book_Table_Test"
-3. Successful:
+> - ***User:***
+>   - user_id INT (AUTO INCREMENT, PK, NOT NULL, UQ)
+>   - email CHAR(100) NOT NULL
+>   - password CHAR(100) NOT NULL
+>   - firstname CHAR(50) NOT NULL
+>   - lastname CHAR(50) NOT NULL
+>   - photo LONGTEXT
+>   - balance DOUBLE
+>   - age INT
+>   - gender CHAR(45)
+>   - region VARCHAR(100)
+>   - phone INT(11)
+>   - personal_note CHAR(255)
+
+> - ***Video:***
+>   - video_id INT(11) (AUTO INCREMENT, PK, NOT NULL, UQ)
+>   - category CHAR(100) NOT NULL UQ
+>   - src CHAR(255)
+>   - length DOUBLE
+>   - upload_date DATE
+>   - Difficulty INT(11)
+>   - like INT(11)
+>   - cover_photo  LONGTEXT
+>   - description CHAR(255)
+>   - title CHAR(100)
+>   - view_time INT(11)
+
+
+> - ***Comment:***
+>   - comment_id  INT(11) (AUTO INCREMENT, PK, NOT NULL, UQ)
+>   - video_id  INT(11)
+>   - user_id  INT(11)
+>   - comment CHAR(255) 
+>   - game_id INT(11)
+
+> - ***User_Collect_Video***
+>   - User_Collect_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
+>   - user_id  INT(11)
+>   - video_id  INT(11)
+
+> - ***User_Like_Video***
+>   - User_Like_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
+>   - user_id  INT(11)
+>   - video_id  INT(11)
+
+> - ***User_Unlock_Video***
+>   - User_Unlock_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
+>   - user_id  INT(11)
+>   - video_id  INT(11)
+
+> - ***User_Upload_Video***
+>   - User_Unload_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
+>   - user_id  INT(11)
+>   - video_id  INT(11)
+
+- ***ERD of the database:***
+
+ ![dbERD](https://github.sydney.edu.au/ELEC5619-Group-26/ELEC5619-2021S2-G26/blob/master/README%20image/erd.png)
+
+
+### Insert corresponding data for each column and Test database
+
+1. Open browser and type http://localhost:3001/get_info/1
+2. Successful:
    
-   ![successful](https://github.sydney.edu.au/ELEC5619-Group-26/ELEC5619-2021S2-G26/blob/master/README%20image/successful.png)
+   ![successful](https://github.sydney.edu.au/ELEC5619-Group-26/ELEC5619-2021S2-G26/blob/master/README%20image/successful1.png)
 
-   
+   ![successful](https://github.sydney.edu.au/ELEC5619-Group-26/ELEC5619-2021S2-G26/blob/master/README%20image/successful2.png)
 
