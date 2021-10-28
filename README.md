@@ -22,7 +22,7 @@ npm run serve
 ```
 **2. Open browser and type http://localhost:8080/**
   
-  ![test](https://github.sydney.edu.au/jlin2133/5620-Banvas/tree/master/README%20image/test.png)
+  ![test](https://github.sydney.edu.au/jlin2133/5620-Banvas/blob/master/README%20image/test.png)
 
 ### Initialise the Back-end
 ```
@@ -97,7 +97,7 @@ Run the ServerApplication main() method
 
 - ***ERD of the database:***
 
- ![dbERD](https://github.sydney.edu.au/jlin2133/5620-Banvas/tree/master/README%20image/erd.png)
+ ![dbERD](https://github.sydney.edu.au/jlin2133/5620-Banvas/blob/master/README%20image/erd.png)
 
 
 ### Insert corresponding data for each column and Test database
@@ -105,7 +105,7 @@ Run the ServerApplication main() method
 1. Open browser and type http://localhost:3001/get_info/1
 2. Successful:
    
-   ![successful](https://github.sydney.edu.au/jlin2133/5620-Banvas/tree/master/README%20image/successful1.png)
+   ![successful](https://github.sydney.edu.au/jlin2133/5620-Banvas/blob/master/README%20image/successful1.png)
 
-   ![successful](https://github.sydney.edu.au/jlin2133/5620-Banvas/tree/master/README%20image/successful2.png)
+   ![successful](https://github.sydney.edu.au/jlin2133/5620-Banvas/blob/master/README%20image/successful2.png)
 
