@@ -9,7 +9,7 @@
 
 # 📦 Install
 ```bash
-git clone 
+git clone https://github.sydney.edu.au/jlin2133/5620-Banvas.git
 cd  5620-Banvas-master
 ```
 ### Project setup(Front-end)
