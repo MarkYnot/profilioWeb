@@ -40,7 +40,7 @@ Run the ServerApplication main() method
 
   ***Schema Name***: 5620Banvas
 
-> - ***User:***
+- ***User:***
 >   - user_id INT (AUTO INCREMENT, PK, NOT NULL, UQ)
 >   - email CHAR(100) NOT NULL
 >   - password CHAR(100) NOT NULL
@@ -54,7 +54,7 @@ Run the ServerApplication main() method
 >   - phone INT(11)
 >   - personal_note CHAR(255)
 
-> - ***Video:***
+- ***Video:***
 >   - video_id INT(11) (AUTO INCREMENT, PK, NOT NULL, UQ)
 >   - category CHAR(100) NOT NULL UQ
 >   - src CHAR(255)
@@ -68,29 +68,29 @@ Run the ServerApplication main() method
 >   - view_time INT(11)
 
 
-> - ***Comment:***
+- ***Comment:***
 >   - comment_id  INT(11) (AUTO INCREMENT, PK, NOT NULL, UQ)
 >   - video_id  INT(11)
 >   - user_id  INT(11)
 >   - comment CHAR(255) 
 >   - game_id INT(11)
 
-> - ***User_Collect_Video***
+ - ***User_Collect_Video***
 >   - User_Collect_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
 >   - user_id  INT(11)
 >   - video_id  INT(11)
 
-> - ***User_Like_Video***
+ - ***User_Like_Video***
 >   - User_Like_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
 >   - user_id  INT(11)
 >   - video_id  INT(11)
 
-> - ***User_Unlock_Video***
+ - ***User_Unlock_Video***
 >   - User_Unlock_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
 >   - user_id  INT(11)
 >   - video_id  INT(11)
 
-> - ***User_Upload_Video***
+ - ***User_Upload_Video***
 >   - User_Unload_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
 >   - user_id  INT(11)
 >   - video_id  INT(11)
