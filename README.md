@@ -70,30 +70,30 @@ Run the ServerApplication main() method
 
 - ***Comment:***
 >   - comment_id  INT(11) (AUTO INCREMENT, PK, NOT NULL, UQ)
->   - video_id  INT(11)
->   - user_id  INT(11)
+>   - video_id  INT(11)  NOT NULL FK reference to Video(video_id)
+>   - user_id  INT(11)  NOT NULL FK reference to User(user_id)
 >   - comment CHAR(255) 
 >   - game_id INT(11)
 
  - ***User_Collect_Video***
 >   - User_Collect_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
->   - user_id  INT(11)
->   - video_id  INT(11)
+>   - user_id  INT(11)    NOT NULL FK reference to User(user_id)
+>   - video_id  INT(11)   NOT NULL FK reference to Video(video_id)
 
  - ***User_Like_Video***
 >   - User_Like_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
->   - user_id  INT(11)
->   - video_id  INT(11)
+>   - user_id  INT(11)     NOT NULL FK reference to User(user_id)
+>   - video_id  INT(11)    NOT NULL FK reference to Video(video_id)
 
  - ***User_Unlock_Video***
 >   - User_Unlock_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
->   - user_id  INT(11)
->   - video_id  INT(11)
+>   - user_id  INT(11)      NOT NULL FK reference to User(user_id)
+>   - video_id  INT(11)     NOT NULL FK reference to Video(video_id)
 
  - ***User_Upload_Video***
 >   - User_Unload_Video_id INT(11)  (AUTO INCREMENT, PK, NOT NULL, UQ)
->   - user_id  INT(11)
->   - video_id  INT(11)
+>   - user_id  INT(11)      NOT NULL FK reference to User(user_id)
+>   - video_id  INT(11)     NOT NULL FK reference to Video(video_id)
 
 - ***ERD of the database:***
 
