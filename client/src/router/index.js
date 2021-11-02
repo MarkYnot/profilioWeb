@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Book from '../views/Book.vue'
 import Test from '../views/test'
+import modeSelection from '../views/modeSelection'
+import videoCentre from '../views/videoCentre'
 
 Vue.use(VueRouter)
 
@@ -30,6 +32,18 @@ const routes = [
     path: '/test',
     name: 'Book',
     component: Test
+  },
+
+  {
+    path: '/modeSelection',
+    name: 'modeSelection',
+    component: modeSelection
+  },
+
+  {
+    path: '/videoCentre',
+    name: 'videoCentre',
+    component: videoCentre
   }
 ]
 

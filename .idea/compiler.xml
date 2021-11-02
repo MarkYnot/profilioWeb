@@ -16,7 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="未命名檔案夾" options="-parameters --add-modules java.base" />
+      <module name="未命名檔案夾" options="-parameters" />
     </option>
   </component>
 </project>
