@@ -1,0 +1,35 @@
+.headerTilte{
+
+  float: right;
+  margin-right: 0.5vw;
+  height: 2vw;
+  width: auto;
+  margin-top:0.5vh;
+  grid-row:1 ;
+  grid-column: 2;
+  animation: logo-icon-spin infinite 20s linear;
+}
+
+@keyframes logo-icon-spin{
+  from{
+      transform: rotate(0deg);
+
+  } to {
+    transform: rotate(360deg);
+
+  }
+
+}
+
+.avantar{
+
+  float: right;
+  margin-left: 6vw;
+  margin-top:9vh;
+  background-color: aliceblue;
+  border-radius: 50%;
+  height: 3vw;
+  width: auto;
+  grid-row:1 ;
+  grid-column: 1;
+}
