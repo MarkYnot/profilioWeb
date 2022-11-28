@@ -2,7 +2,6 @@
 
 
 ## 1. 💻 Framework
-
 - SprintBoot
 - Vue
 - MySQL
@@ -91,7 +90,6 @@ npm run serve
 
 
 ## 7. Advance technologies
-
 - SprintBoot   -> Version: 2.5.4
 - Hibernate  -> Version: 2.10.1
 - JPA  -> Version: 2.5.6

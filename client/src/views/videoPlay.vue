@@ -48,9 +48,9 @@
                       <router-link :to="`/video&${item.video_id}`"/>
                    <img alt="" :src="item.cover_photo">
                    <div class="itemText">
-                    <p>{{item.title}}</p><br/>
-                    <span>{{item.category}}</span>
-                    <span>{{item.view_times}} views &nbsp;&nbsp; ●{{item.upload_date}}</span>
+                    <p>test</p><br/>
+                    <span>physics</span>
+                    <span>5000 views &nbsp;&nbsp; ● 11/11/2011</span>
                    </div>
                   </a-menu-item>
 

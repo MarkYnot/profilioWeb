@@ -4,59 +4,41 @@
       :default-selected-keys="['1']"
       :default-open-keys="['sub1']"
       mode="inline"
-      theme="light"
-      :inline-collapsed="collapsed"
-    >
+      theme="light">
+
+        <!-- :inline-collapsed="collapsed" -->
       <a-menu-item key="1">
             <router-link to="/modeSelection"/>
-            <a-icon type="home" />
+            <!-- <a-icon type="home" /> -->
             <span>Home</span>
       </a-menu-item>
 
 
       <a-menu-item key="2">
           <router-link to="/video/collection"/>
-          <a-icon type="save" theme="filled"/>
-          <span>Save List</span>
+          <!-- <a-icon type="save" theme="filled"/> -->
+          <span>Projects</span>
       </a-menu-item>
 
 
       <a-menu-item key="3">
             <router-link to="/video/likes"/>
-          <a-icon type="like" theme="filled"/>
-          <span>Like videos</span>
+          <!-- <a-icon type="like" theme="filled"/> -->
+          <span>Resume</span>
       </a-menu-item>
 
         <a-menu-item key="4">
             <router-link to="/videoCentre"/>
-          <a-icon type="video-camera" />
-          <span>Video Centre</span>
+          <!-- <a-icon type="video-camera" /> -->
+          <span>Contact me</span>
         </a-menu-item>
 
         
-        <a-menu-item key="5">
+        <!-- <a-menu-item key="5">
             <router-link to="/profile"/>
           <a-icon type="setting" theme="filled"/>
           <span>Profile</span>
-        </a-menu-item>
-
-         <a-menu-item key="6">
-            <router-link to="/changePassword"/>
-          <a-icon type="inbox" />
-          <span>Change Password</span>
-        </a-menu-item>
-      
-             <a-menu-item key="7">
-            <router-link to="/video&1"/>
-          <a-icon type="video-camera" />
-          <span>Recommanded Video</span>
-        </a-menu-item>
-
-            <a-menu-item key="8">
-            <router-link to="/game1"/>
-          <a-icon type="play-circle" />
-          <span>Recommanded Game</span>
-        </a-menu-item>
+        </a-menu-item> -->
     
    </a-menu>
 
@@ -105,9 +87,11 @@
      background:linear-gradient(to right, black, black);
 }
 
-/deep/ .ant-menu-item span {
-      font-size: 1.1vw;
-      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+/deep/ .ant-menu-item span{
+      font-size: 5vw;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      margin-top: 2vh;
+      
 }
 
 /deep/ .ant-menu-submenu-title span{
@@ -115,7 +99,7 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
-/deep/ .ant-menu-inline .ant-menu-item {
+/deep/ .ant-menu-inline .ant-menu-item{
         font-size: 0.8vw;
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -143,6 +127,31 @@
 }
 
 /deep/ .ant-menu-submenu-selected {
-  color: black;
+   color: black;
 }
+
+/deep/ .ant-menu-inline .ant-menu-item{
+    height: 9vh;
+    margin-top: 3vh;
+}
+
+/deep/ .ant-menu{
+    height: 100vh;
+}
+
+/deep/ .ant-menu-item{
+    top: 15vh;
+
+}
+
+
+// /deep/ .ant-menu-item .anticon{
+//     font-size: 2vw;
+// }
+
+
+// /deep/ .ant-menu-item i{
+//     margin-top: 2vh;
+// }
+
 </style>

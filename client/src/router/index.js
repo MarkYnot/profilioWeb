@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Book from '../views/Book.vue'
-import Test from '../views/test'
+// import Test from '../views/test'
 import modeSelection from '../views/modeSelection'
 import videoCentre from '../views/videoCentre'
 import videoRouter from './video' 
-import gameRouter from './game'
+// import gameRouter from './game'
 
 Vue.use(VueRouter)
 
@@ -30,11 +30,11 @@ const routes = [
     component: Book
   },
 
-  {
-    path: '/test',
-    name: 'Book',
-    component: Test
-  },
+  // {
+  //   path: '/test',
+  //   name: 'Book',
+  //   component: Test
+  // },
 
   {
     path: '/modeSelection',
@@ -48,21 +48,21 @@ const routes = [
     component: videoCentre
   },
   
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/login.vue')
-  },
-  {
-    path: '/Registration',
-    name: 'Registration',
-    component: () => import('../views/Registration.vue')
-  },
-  {
-    path: '/Facetest',
-    name: 'Facetest',
-    component: () => import('../views/Facetest.vue')
-  },
+  // {
+  //   path: '/login',
+  //   name: 'login',
+  //   component: () => import('../views/login.vue')
+  // },
+  // {
+  //   path: '/Registration',
+  //   name: 'Registration',
+  //   component: () => import('../views/Registration.vue')
+  // },
+  // {
+  //   path: '/Facetest',
+  //   name: 'Facetest',
+  //   component: () => import('../views/Facetest.vue')
+  // },
   {
     path: '/search&:text',
     name: 'Search',
@@ -71,7 +71,7 @@ const routes = [
 
     ...videoRouter,
 
-    ...gameRouter,
+  
 
     {
       path: '/profile',
@@ -79,17 +79,17 @@ const routes = [
       component: () => import('../views/profile.vue')
     },
 
-    {
-      path: '/changePassword',
-      name: 'changePassword',
-      component: () => import('../views/changePassword.vue')
-    },
+    // {
+    //   path: '/changePassword',
+    //   name: 'changePassword',
+    //   component: () => import('../views/changePassword.vue')
+    // },
 
-    {
-      path: '/forgetPassword',
-      name: 'forgetPassword',
-      component: () => import('../views/forgetPassword.vue')
-    }
+    // {
+    //   path: '/forgetPassword',
+    //   name: 'forgetPassword',
+    //   component: () => import('../views/forgetPassword.vue')
+    // }
 ]
 
 const router = new VueRouter({
