@@ -194,6 +194,7 @@ body{
    height: 3.6vh;
    border: 0px;
    transition: all 0.2s;
+  //  ff
 }
 
 .searchBar button:hover{
