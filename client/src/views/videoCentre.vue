@@ -1,5 +1,6 @@
 !<template>
-  <div class="videoCentreContainer">
+  <div class="videoCentreContainer" :style="{'background':'url('+backImg+')'}"> 
+
 
     <div class="hpHeader">
     <Header/>
@@ -9,10 +10,7 @@
               <a-icon :style="{fontSize:'3vw'}" :type="collapsed ? 'close' : 'menu-fold'" />  
             
    </button>
-
-        
-
-              
+      
 <!-- 
     <div class="centreBody"> -->
 
@@ -27,10 +25,20 @@
       
  
        </div>
-      
+
+
+      <div class="bottomMenu">
+          <span class="MenuItem" id="MenuItem0" @click="videoGif(0)">Me</span>
+          <span class="MenuItem" id="MenuItem1" @click="videoGif(1)">Ecommerce</span>  
+          <span class="MenuItem" id="MenuItem2"  @click="videoGif(2)">Talk together</span>       
+          <span class="MenuItem" id="MenuItem3" @click="videoGif(3)">Banvas</span>
+          <span class="MenuItem" id="MenuItem4" @click="videoGif(4)">Study Banana</span>
+
+      </div>      
 <!-- </div> -->
 
-  </div>
+</div>
+
 </template>
 
 <script>
@@ -38,11 +46,30 @@ import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
 import '../assets/css/video.css'
+import videoImg1 from '../assets/VideoSelection1.jpeg'
+import videoImg2 from '../assets/videogif1.gif'
+import videoImg3 from '../assets/videogif2.gif'
+import videoImg4 from '../assets/videoSelection2.png'
+import videoImg5 from '../assets/videoSelection3.jpg'
   export default {
     data(){
        return {
           collapsed: false,
-          allVideo:[]
+          allVideo:[],
+          videoImgList: [
+            {icon: videoImg1},
+            {icon: videoImg2},
+            {icon: videoImg3},
+            {icon: videoImg4},
+            {icon: videoImg5},
+           ],
+           backImg: "",
+           MenuItem:"MenuItem1",
+           fontWeight0: true,
+           fontWeight1: true,
+           fontWeight2: true,
+           fontWeight3: true,
+           fontWeight4: true
        }
     },
 
@@ -52,10 +79,9 @@ import '../assets/css/video.css'
      VideoService
    },
 
-    async created(){
-      //  const videoResult = await VideoService.getAllVideo()
-      //  this.allVideo = videoResult.data
-      //  console.log(this.allVideo)
+    mounted(){
+     this.backImg = this. videoImgList[0].icon
+    //  console.log(this.backImg)
    },
 
    methods:{
@@ -72,11 +98,24 @@ import '../assets/css/video.css'
     //     }
      
     // }
+
+     videoGif(number){
+
+        let  MenuItemList = document.getElementsByClassName("MenuItem")
+        MenuItemList.forEach(element => {
+           element.style.fontWeight = ""
+        });
+
+         this.backImg = this.videoImgList[number].icon
+         this.MenuItem = "MenuItem" + number
+         let selectedMenuItem = document.getElementById(this.MenuItem);
+         selectedMenuItem.style.fontWeight = "bolder"
+     } 
   }
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 
 body{
   line-height:0;
@@ -88,14 +127,14 @@ body{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-  background: url("../assets/VideoSelection1.jpeg") no-repeat;
   background-size:cover;
   overflow:hidden;
 	transform: translate(-50%,-50%);
   display: grid;
   grid-template-columns: 5% 30% 65%;
-  grid-template-rows: 10% 5% 85%;
+  grid-template-rows: 10% 5% 70% 10% 5%;
 }
+
 .pic{
     background-size: cover;
     background-position: center;
@@ -144,7 +183,7 @@ body{
    width:15vw;
    height:4vh;
    margin-top: 0.4vh;
-   border: solid 2px;
+  //  border: solid 2px;
 }
 
 .searchBar button{
@@ -195,6 +234,7 @@ body{
   
 // }
 
+
 .SideBar{
   grid-row: 1/4;
   grid-column: 1/4;
@@ -214,5 +254,21 @@ body{
   z-index: 1;
 }
 
-       
+.bottomMenu{
+  grid-row:4;
+  grid-column:2/4;
+  margin-left: 7.5vw;
+  height:100%;
+  margin-top:3vh;
+  width: 85%;
+}
+
+.MenuItem{
+  font-size: 1.5vw;
+  // font-weight: bold;
+  color:white;
+  float: left;
+  margin-left:7vw;
+  margin-top:2.5vh;
+}
 </style>
