@@ -177,11 +177,11 @@
 .searchBar{
   grid-column: 4;
   grid-row: 1;
-  margin-top: 1.6vh;
+  margin-top: 1.4vh;
 }
 
 .searchBar span{
-  font-size: 1.8vw;
+  font-size: 1.5vw;
   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif !important;
   color: white;
 }

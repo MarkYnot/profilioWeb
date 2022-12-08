@@ -90,7 +90,7 @@
 /deep/ .ant-menu-item span{
       font-size: 5vw;
       font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      margin-top: 2vh;
+      margin-top: 1vh;
       
 }
 

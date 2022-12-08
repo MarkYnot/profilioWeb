@@ -1,6 +1,14 @@
 !<template>
-  <div class="videoCentreContainer" :style="{'background':'url('+backImg+')'}"> 
+  <div class="videoCentreContainer" :style="{'background':'url('+backImg+') 50% 50% / cover' }" @mousewheel=" mouseWheel"> 
 
+    <!-- <ul class="list">
+        <li><img class="slide" src="../assets/VideoSelection.jpg"  /></li>
+        <li><img class="slide" src="../assets/videogif2.gif"  /></li>
+        <li><img class="slide" src="../assets/videoSelection2.png"  /></li>
+        <li><img class="slide" src="../assets/videoSelection3.jpg"/></li>
+    </ul> -->
+      
+      <div class="containerShadow"/>
 
     <div class="hpHeader">
     <Header/>
@@ -22,18 +30,19 @@
         </div>
 
         <div class="videoContent">
-      
- 
+           <span v-if="this.text">Full Stack Developer  <br/>
+           Have a look at my Work<br/>
+           and get in touch 
+           </span>
        </div>
 
 
       <div class="bottomMenu">
           <span class="MenuItem" id="MenuItem0" @click="videoGif(0)">Me</span>
-          <span class="MenuItem" id="MenuItem1" @click="videoGif(1)">Ecommerce</span>  
-          <span class="MenuItem" id="MenuItem2"  @click="videoGif(2)">Talk together</span>       
-          <span class="MenuItem" id="MenuItem3" @click="videoGif(3)">Banvas</span>
-          <span class="MenuItem" id="MenuItem4" @click="videoGif(4)">Study Banana</span>
-
+          <span class="MenuItem" id="MenuItem1" @click="videoGif(1)">Project1</span>  
+          <span class="MenuItem" id="MenuItem2" @click="videoGif(2)">Project2</span>       
+          <span class="MenuItem" id="MenuItem3" @click="videoGif(3)">Project3</span>
+          <span class="MenuItem" id="MenuItem4" @click="videoGif(4)">Project4</span>
       </div>      
 <!-- </div> -->
 
@@ -46,7 +55,7 @@ import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
 import '../assets/css/video.css'
-import videoImg1 from '../assets/VideoSelection1.jpeg'
+import videoImg1 from '../assets/VideoSelection.jpg'
 import videoImg2 from '../assets/videogif1.gif'
 import videoImg3 from '../assets/videogif2.gif'
 import videoImg4 from '../assets/videoSelection2.png'
@@ -55,7 +64,9 @@ import videoImg5 from '../assets/videoSelection3.jpg'
     data(){
        return {
           collapsed: false,
+          text: true,
           allVideo:[],
+          pageNumber:0,
           videoImgList: [
             {icon: videoImg1},
             {icon: videoImg2},
@@ -64,7 +75,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
             {icon: videoImg5},
            ],
            backImg: "",
-           MenuItem:"MenuItem1",
+           MenuItem:"MenuItem0",
            fontWeight0: true,
            fontWeight1: true,
            fontWeight2: true,
@@ -81,12 +92,46 @@ import videoImg5 from '../assets/videoSelection3.jpg'
 
     mounted(){
      this.backImg = this. videoImgList[0].icon
-    //  console.log(this.backImg)
+     let selectedMenuItem = document.getElementById(this.MenuItem);
+     selectedMenuItem.style.fontWeight = "900"
    },
 
    methods:{
       toggleCollapsed() {
       this.collapsed = !this.collapsed;
+    },
+
+    handleScroll(){
+        var e = document.body.scrollTop||document.documentElement.scrollTop
+        if(!e) return
+        console.log(11)
+    },
+
+    mouseWheel(e){
+        if (e.wheelDelta || e.detail) {
+            if (e.wheelDelta > 0 || e.detail < 0) {     
+                  console.log("down")
+                      if(this.pageNumber !=4){
+                        this.pageNumber = this.pageNumber +1 
+                        this.videoGif(this.pageNumber)
+                      }else{
+                        this.pageNumber = 0
+                        this.videoGif(this.pageNumber)
+                      }
+                    
+            }
+            
+            if (e.wheelDelta < 0 || e.detail > 0) {  
+                console.log("up")
+                  if(this.pageNumber !=0){
+                        this.pageNumber = this.pageNumber -1 
+                        this.videoGif(this.pageNumber)
+                      }else{
+                        this.pageNumber = 4
+                        this.videoGif(this.pageNumber)
+                      }
+            }
+      }
     },
 
     // startSearch(){
@@ -99,17 +144,20 @@ import videoImg5 from '../assets/videoSelection3.jpg'
      
     // }
 
+
      videoGif(number){
 
+        if(number != 0) this.text = false
+        else this.text = true
+        this.pageNumber = number
         let  MenuItemList = document.getElementsByClassName("MenuItem")
         MenuItemList.forEach(element => {
            element.style.fontWeight = ""
         });
-
          this.backImg = this.videoImgList[number].icon
          this.MenuItem = "MenuItem" + number
          let selectedMenuItem = document.getElementById(this.MenuItem);
-         selectedMenuItem.style.fontWeight = "bolder"
+         selectedMenuItem.style.fontWeight = "900"
      } 
   }
 }
@@ -127,13 +175,66 @@ body{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-  background-size:cover;
+  // background-size:cover;
   overflow:hidden;
 	transform: translate(-50%,-50%);
   display: grid;
   grid-template-columns: 5% 30% 65%;
   grid-template-rows: 10% 5% 70% 10% 5%;
+  transition: all 1s;
 }
+
+// .list{
+//     width: 100%;
+// 	  height: 100%;
+//     grid-row: 1/6;
+//     grid-column: 1/6;
+//     list-style-type: none;
+//     padding-left:0;
+//     -moz-animation: slide 2s infinite;
+//     -webkit-animation: slide 2s infinite;
+// }
+
+// .slide{
+//   vertical-align:bottom;
+//   width: 100%;
+// 	height: 100%;
+// }
+
+// @-moz-keyframes slide {
+//     from, to { top: 0; }
+//     12.5% { top: 0; }
+//     25% { top: -375px; }
+//     37.5% { top: -375px; }
+//     50% { top: -750px; }
+//     62.5% { top: -750px; }
+//     75% { top: -1125px; }
+//     87.5% { top: -1125px; }
+// }
+
+// @-webkit-keyframes slide {
+//     from, to { top: 0; }
+//     12.5% { top: 0; }
+//     25% { top: -375px; }
+//     37.5% { top: -375px; }
+//     50% { top: -750px; }
+//     62.5% { top: -750px; }
+//     75% { top: -1125px; }
+//     87.5% { top: -1125px; }
+// }
+
+.containerShadow{
+  background-color:black;
+  -webkit-filter:brightness(1);
+  -o-filter:brightness(1);
+  -moz-filter:brightness(1);
+  filter:brightness(0.1);
+  opacity: 0.4;
+  grid-row: 1/6;
+  grid-column: 1/6;
+  z-index:1;
+}
+
 
 .pic{
     background-size: cover;
@@ -162,6 +263,7 @@ body{
     width:100%;
     grid-row: 1;
     grid-column: 3/4;
+    z-index: 20;
     // border-bottom: 2px solid #dbdbdb;  
 }
 
@@ -248,20 +350,32 @@ body{
 }
 
 .videoContent{
-  grid-row: 1;
-  grid-column: 2;
+  grid-row: 3;
+  grid-column: 3;
   width:100%;
-  height: auto;
+  height: 100%;
   z-index: 1;
+}
+
+.videoContent span{
+  color:white;
+  margin-left: 23vw;
+  margin-top:40vh;
+  float: left;
+  font-size: 3vw;
+  font-weight: bolder;
+  text-align: left;
+  transition: all 1s;
 }
 
 .bottomMenu{
   grid-row:4;
   grid-column:2/4;
-  margin-left: 7.5vw;
+  margin-left: 11vw;
   height:100%;
   margin-top:3vh;
   width: 85%;
+  z-index: 20;
 }
 
 .MenuItem{
