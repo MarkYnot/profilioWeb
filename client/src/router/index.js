@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Book from '../views/Book.vue'
 // import Test from '../views/test'
+import Ecommerce from '../views/Ecommerce'
 import modeSelection from '../views/modeSelection'
 import videoCentre from '../views/videoCentre'
 import videoRouter from './video' 
@@ -30,16 +31,16 @@ const routes = [
     component: Book
   },
 
-  // {
-  //   path: '/test',
-  //   name: 'Book',
-  //   component: Test
-  // },
 
   {
     path: '/modeSelection',
     name: 'modeSelection',
     component: modeSelection
+  },
+  {
+    path: '/Ecommerce',
+    name: 'Ecommerce',
+    component: Ecommerce
   },
 
   {
@@ -48,21 +49,6 @@ const routes = [
     component: videoCentre
   },
   
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: () => import('../views/login.vue')
-  // },
-  // {
-  //   path: '/Registration',
-  //   name: 'Registration',
-  //   component: () => import('../views/Registration.vue')
-  // },
-  // {
-  //   path: '/Facetest',
-  //   name: 'Facetest',
-  //   component: () => import('../views/Facetest.vue')
-  // },
   {
     path: '/search&:text',
     name: 'Search',

@@ -42,6 +42,7 @@ export default {
     test(){
        console.log(this.playURL)
        this.video.url = `http://localhost:8080/video/${this.playURL}`
+      // this.video.url = this.playURL
        console.log(this.video.url)
     }
   },
@@ -50,6 +51,7 @@ export default {
        const videoDom = document.getElementsByClassName('_video-ref')
 	      videoDom.muted = false;
 }, false);
+    console.log(this.playURL)
           
 },
 
