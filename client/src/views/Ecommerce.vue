@@ -18,7 +18,7 @@
 <!-- <div class="centreBody"> -->
 
 
-      <span class="name" :style="collapsed?'color: black' :'color: white'">JUNJIE LIN</span>
+      <span @click="redirecting()" class="name" :style="collapsed?'color: black' :'color: white'">JUNJIE LIN</span>
 
         <div class="SideBar" v-if="this.collapsed">
               <SideBar :collapsed="collapsed"/>
@@ -27,9 +27,29 @@
         <div class="projectIntroduction" :style="{'background':'url('+backImg+') 50% 50% / cover' }">
         <div class="containerShadow"/>
         <span class="introText">Ecommerce Website<br/></span>
+
+        <ul role="list" class="introContent">
+                <li> 
+                  <div class="greenTitle">WEBSITE</div>
+                  <span class="information">The website could be taken a while to be loaded since the project is on a free Heroku machine</span>
+                </li>
+
+
+                <li> 
+                  <div class="greenTitle">GITHUB</div>
+                  <span class="information"><a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce">https://github.com/MarkYnot/ECommerce</a>(Click here to check out the further description about the project)</span>
+              
+                </li>
+                
+                  <li> 
+                  <div class="greenTitle">STACK</div>
+                  <span class="information">NodeJS, ReactJS, MongoDB, ExpressJS, EslintJS,MD5, Base64</span>
+                </li>
+        </ul>
+       
        </div>
 
-       <div class="projectContent">
+       <div class="projectContent" @scroll="handleScroll">
             <div class="darkMode">
                   <a-icon type="search" theme="outlined" :style="{fontSize:'1.4vw', color:'black'}" />
                   <span>DarkMode</span>
@@ -133,16 +153,7 @@
                 </span>
              </div> 
              
-            <span class="textBeforeCode" :style="{marginTop:'2vh !important'}">In this part, we will focus on the front-end JS and Backend JS code, Lets have a look at the html <br/>and JS code for this function:</span>
-
- 
-              
-            
-
-
-
-
-            
+            <span class="textBeforeCode" :style="{marginTop:'2vh !important'}">In this part, we will focus on the front-end JS and Backend JS code, Lets have a look at the html <br/>and JS code for this function:</span> 
       
            </div>
 
@@ -196,11 +207,20 @@ import Video from '../components/mini-player.vue'
     mounted(){
       this.backImg = this. videoImgList[0].icon
 
+
    },
 
    methods:{
       toggleCollapsed() {
       this.collapsed = !this.collapsed;
+    },
+
+    handleScroll(event){
+        // console.log(event.target.scrollTop)
+        if(event.target.scrollTop >= 1678)
+           this.backImg = this.videoImgList[1].icon
+        else if(event.target.scrollTop < 1678)
+           this.backImg = this.videoImgList[0].icon
     },
 
     // startSearch(){
@@ -212,6 +232,10 @@ import Video from '../components/mini-player.vue'
     //     }
      
     // }
+
+      redirecting() {
+        this.$router.push('/')
+    },
 
 
   }
@@ -243,7 +267,7 @@ body{
 .containerShadow{
   background-color:black;
   grid-column: 1/3;
-  grid-row: 1/3;
+  grid-row: 1/4;
   -webkit-filter:brightness(1);
   -o-filter:brightness(1);
   position: inherit;
@@ -368,11 +392,12 @@ body{
 .projectIntroduction{
   grid-row: 1/3;
   grid-column: 1/4;
-  width:100%;
+  transition: all 1s;
+  width:100%; 
   height: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 20% 50% 30%;
   z-index: -1;
 }
 
@@ -390,9 +415,9 @@ body{
 }
 
 .introText{
-  color:white;
   grid-row: 2;
   grid-column: 1/3;
+  color:white;
   margin-left: 3vw;
   margin-top:45vh;
   float: left;
@@ -401,6 +426,58 @@ body{
   text-align: left;
   transition: all 1s;
   z-index: 1;
+}
+
+.greenTitle{
+  background: rgb(157, 192, 157);
+  width: 5em;
+  height: 2.2vh;
+  // margin-left: 2vw;
+  // margin-top:3.5vh;
+  font-size: 1vw;
+  color: rgb(14, 71, 26);
+  font-weight: bold;
+  text-align: center;
+  display: inline;
+  float: left;
+}
+
+.githubLink{
+  text-decoration: none;
+  color:white;
+  font-weight: bolder;
+  
+}
+
+.githubLink:hover{
+  border-bottom: solid 1px white;
+}
+
+.introContent{
+  grid-row: 3;
+  grid-column: 1/3;
+  margin-top:2vh;
+  margin-left: 2vw;
+  height: 100%;
+  width: 100%;
+  list-style-type: none;
+  z-index: 1;
+}
+
+.introContent li{
+      float: left;
+      list-style: none;
+      margin-top: 3vh;
+}
+
+.information{
+  font-size: 1vw;
+  width: 77% !important;
+  float: left;
+  color: white;
+  text-align: left;
+  font-size: 1.2vw;
+  margin-left: 0.5vw;
 }
 
 .darkMode{

@@ -8,7 +8,7 @@
 
         <!-- :inline-collapsed="collapsed" -->
       <a-menu-item key="1">
-            <router-link to="/modeSelection"/>
+            <router-link to="/"/>
             <!-- <a-icon type="home" /> -->
             <span>Home</span>
       </a-menu-item>

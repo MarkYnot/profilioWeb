@@ -1,4 +1,5 @@
 !<template>
+
   <div class="videoCentreContainer" :style="{'background':'url('+backImg+') 50% 50% / cover' }" @mousewheel=" mouseWheel"> 
 
     <!-- <ul class="list">
@@ -22,8 +23,8 @@
 <!-- 
     <div class="centreBody"> -->
 
+      <span  class="name" :style="collapsed?'color: black' :'color: white'">  JUNJIE LIN</span>
 
-      <span class="name" :style="collapsed?'color: black' :'color: white'">JUNJIE LIN</span>
 
         <div class="SideBar" v-if="this.collapsed">
               <SideBar :collapsed="collapsed"/>
@@ -34,7 +35,13 @@
            Have a look at my Work<br/>
            and get in touch 
            </span>
+
+            <!-- <router-link :to="{path}"/> -->
+             <button @click="redirecting()" v-if="!this.text" class="contentButton" :style="collapsed?'color: black' :'color: white'">Views the project</button>
+    
        </div>
+
+       
 
 
       <div class="bottomMenu">
@@ -47,6 +54,7 @@
 <!-- </div> -->
 
 </div>
+
 
 </template>
 
@@ -65,6 +73,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
        return {
           collapsed: false,
           text: true,
+          path:'',
           allVideo:[],
           pageNumber:0,
           videoImgList: [
@@ -99,6 +108,10 @@ import videoImg5 from '../assets/videoSelection3.jpg'
    methods:{
       toggleCollapsed() {
       this.collapsed = !this.collapsed;
+    },
+
+      redirecting() {
+        this.$router.push(this.path)
     },
 
     handleScroll(){
@@ -158,6 +171,16 @@ import videoImg5 from '../assets/videoSelection3.jpg'
          this.MenuItem = "MenuItem" + number
          let selectedMenuItem = document.getElementById(this.MenuItem);
          selectedMenuItem.style.fontWeight = "900"
+         switch(number){
+            case 1:
+            this.path = '/Ecommerce'
+            break;
+
+            case 2:
+            
+           
+         }
+          
      } 
   }
 }
@@ -184,45 +207,6 @@ body{
   transition: all 1s;
 }
 
-// .list{
-//     width: 100%;
-// 	  height: 100%;
-//     grid-row: 1/6;
-//     grid-column: 1/6;
-//     list-style-type: none;
-//     padding-left:0;
-//     -moz-animation: slide 2s infinite;
-//     -webkit-animation: slide 2s infinite;
-// }
-
-// .slide{
-//   vertical-align:bottom;
-//   width: 100%;
-// 	height: 100%;
-// }
-
-// @-moz-keyframes slide {
-//     from, to { top: 0; }
-//     12.5% { top: 0; }
-//     25% { top: -375px; }
-//     37.5% { top: -375px; }
-//     50% { top: -750px; }
-//     62.5% { top: -750px; }
-//     75% { top: -1125px; }
-//     87.5% { top: -1125px; }
-// }
-
-// @-webkit-keyframes slide {
-//     from, to { top: 0; }
-//     12.5% { top: 0; }
-//     25% { top: -375px; }
-//     37.5% { top: -375px; }
-//     50% { top: -750px; }
-//     62.5% { top: -750px; }
-//     75% { top: -1125px; }
-//     87.5% { top: -1125px; }
-// }
-
 .containerShadow{
   background-color:black;
   -webkit-filter:brightness(1);
@@ -235,14 +219,12 @@ body{
   z-index:1;
 }
 
-
 .pic{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-image: url("../assets/videoCover1.png");
-
 }
 
 .name{
@@ -319,6 +301,8 @@ body{
   z-index: 20;
 }
 
+
+
 .sideBarButton:active{
   background-color: rgba(196, 195, 195, 0.514);
   border: solid 2px rgba(196, 195, 195, 0.514);
@@ -355,6 +339,9 @@ body{
   width:100%;
   height: 100%;
   z-index: 1;
+  display: grid;
+
+  grid-template-rows: 90% 10%;
 }
 
 .videoContent span{
@@ -366,6 +353,20 @@ body{
   font-weight: bolder;
   text-align: left;
   transition: all 1s;
+  grid-row: 1;
+}
+
+
+.contentButton{
+  float: left;
+  margin-left: 6vw;
+  margin-top: 1vh;
+  width: 20vw;
+  height: 4vh;
+  background: transparent;
+  border-color: whitesmoke;
+  grid-row: 2;
+  
 }
 
 .bottomMenu{

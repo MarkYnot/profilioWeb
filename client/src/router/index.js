@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: videoCentre
   },
   {
     path: '/about',
@@ -43,11 +43,11 @@ const routes = [
     component: Ecommerce
   },
 
-  {
-    path: '/videoCentre',
-    name: 'videoCentre',
-    component: videoCentre
-  },
+  // {
+  //   path: '/videoCentre',
+  //   name: 'videoCentre',
+  //   component: videoCentre
+  // },
   
   {
     path: '/search&:text',
