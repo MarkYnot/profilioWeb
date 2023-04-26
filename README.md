@@ -2,9 +2,10 @@
 
 
 ## 1. 💻 Framework
-- SprintBoot
+- NodeJS
 - Vue
-- MySQL
+- ExpressJS
+- MongoDB
 
 ## 2. 📦 Introduction
 

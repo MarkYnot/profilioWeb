@@ -7,55 +7,26 @@
 
    </slot> -->
 
-      <!-- <router-link to="/modeSelection"> -->
-          <img class="headerTilte" v-lazy="'/static/github1.png'" alt="headerTitle">
-        
-      <!-- </router-link> -->
+      <a style='grid-column:2' href="https://github.com/MarkYnot" target="_blank"> 
+          <img class="headerTilte" v-lazy="'/static/github1.png'" alt="headerTitle">   
+      </a>
 
-          <!-- <router-link to="/modeSelection"> -->
+
+      <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank">
         <img class="headerText" v-lazy="'/static/linkedin1.png'" alt="headerTitle">
+      </a>
 
-          <!-- </router-link> -->
 
-      <div name="search" class="searchBar">
-          <a-icon type="search" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
-          <span>SEARCH</span>
-      </div>
+      <slot name="search" >
+         
+      </slot>
    
-        <!-- <a-menu
-              theme="light"
-              mode="horizontal"
-              style="{lineHeight: 64px}"
-              class="userInfoSlot">
-                <a-sub-menu >
-                    <span slot="title">
-
-                    <img alt="" v-lazy="'/static/endUser.png'" style="height: 2vw;  width: auto; borderRadius: 50%; marginRight: 0.5vw" v-if="!hasPhoto|| !photoCorrect"/>
-                      <img alt="" v-lazy="this.photo" style="height: 2vw;  width: auto; borderRadius: 50%; marginRight: 0.5vw" v-if="hasPhoto&photoCorrect"/>
-                    <span style="fontSize: 1.3vw; marginTop: 0.5vh">{{username}}</span>
-                    </span>
-
-                    <a-menu-item key="setting:1">
-                       <router-link to="/profile"/>
-                        Profile
-                    </a-menu-item>
-
-                    <a-menu-item key="setting:2" @click="logout">
-                        Login Out
-                    </a-menu-item>
-              
-                </a-sub-menu>
-            
-        </a-menu> -->
-
-
-        
+      
 </div>
 </template>
 
 <script>
  import userService from '../services/userService'
- import "../assets/css/header.css";
   export default {
 
     data(){
@@ -79,27 +50,6 @@
     
     mounted(){
       
-           
-        const userid = this.$cookies.get('userid')
-      //   if(userid){
-      //         userService.getUserInfo(userid).then(user=>{
-                   
-      //            if(user.data[0].photo || user.data[0].lastname){
-      //                console.log(user)
-      //               this.username = user.data[0].lastname
-      //               this.photo = user.data[0].photo
-      //               this.hasPhoto = true
-      //               this.checkPhoto()
-      //               this.$emit('currentUser',user.data[0])
-      //            }
-      //   });
-        
-      //   }else{
-      //       alert('please login first')
-      //       this.$router.push({path: "/login"})
-
-      // }
-
 
     },
 
@@ -107,30 +57,6 @@
         onChange(checked) {
       // console.log(`a-switch to ${checked}`);
     },
-
-    checkPhoto(){
-   
-      if(this.photo.includes('base64')){
-          
-          this.photoCorrect = true
-      }
-
-
-    },
-
-    async logout(){
-       const userid = this.$cookies.get('userid')
-      let confirmation = confirm('Are you sure log out?') 
-             if(confirmation){
-                this.$cookies.remove("firstname"); 
-                this.$cookies.remove("lastname");
-                this.$cookies.remove("state");
-                this.$cookies.remove("username");
-                this.$cookies.remove("userid");
-                this.$router.push({path:"/login"})
-            }
-       }
-
     }
   }
 </script>
@@ -174,17 +100,22 @@
   grid-row: 1;
 }
 
-.searchBar{
-  grid-column: 4;
-  grid-row: 1;
-  margin-top: 1.4vh;
-}
+// .searchBar{
+//   grid-column: 4;
+//   grid-row: 1;
+//   margin-top: 2.5vh;
+// }
 
-.searchBar span{
-  font-size: 1.5vw;
-  font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif !important;
-  color: white;
-}
+// .searchBar:hover{
+//   transition: 0.3s;
+//   opacity: 0.4;
+// }
+
+// .searchBar span{
+//   font-size: 1.8vw;
+//   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif !important;
+//   color: white;
+// }
 
 .headerTilte{
   grid-column: 2;
@@ -211,6 +142,32 @@
 /deep/ .ant-menu-horizontal{
     line-height: 4vh;
     border-bottom: none;
+}
+
+.headerTilte{
+  float: right;
+  height: 2.2vw;
+  width: auto;
+  margin-top:2vh;
+  margin-right: 0.5vw;
+  /* animation: logo-icon-spin infinite 20s linear; */
+}
+
+.headerTilte:hover{
+  transition: 0.3s;
+  opacity: 0.6;
+}
+
+
+.headerText{
+  float: right;
+  width: 3.2vw;
+  margin-top:1.5vh;
+}
+
+.headerText:hover{
+  transition: 0.3s;
+  opacity: 0.6;
 }
 
 </style>

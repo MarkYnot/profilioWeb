@@ -1,34 +1,4 @@
-.headerTilte{
 
-  float: right;
-  height: 2.2vw;
-  width: auto;
-  margin-top:2vh;
-  grid-row:1 ;
-  grid-column: 2;
-  /* animation: logo-icon-spin infinite 20s linear; */
-}
-
-.headerTilte:hover{
-
-  transition: 1s;
-  height: 2.5vw;
-  width: auto;
-}
-
-.headerText{
-  float: right;
-  width: 3.2vw;
-  margin-top:1.5vh;
-  grid-row:1 ;
-  grid-column: 3;
-}
-
-.headerText:hover{
-  transition: 1s;
-  height: 2.5vw;
-  width: auto;
-}
 
 @keyframes logo-icon-spin{
   from{

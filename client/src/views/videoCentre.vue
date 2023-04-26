@@ -1,5 +1,21 @@
 !<template>
 
+<!-- this class has not css attribute -->
+<div class="searchWindow">
+    
+<transition name="fade">
+  <div class="searchArea" v-if="this.search">
+      
+      <div class="searchInput">
+  
+        <input placeholder="Type to Search"/>
+        <a-icon type="close" theme="outlined" class="close" :style="{fontSize:'2.5vw', color:'black', marginTop:'2vh'}" @click="search = !search"/>
+      </div>
+  
+       
+  </div>
+</transition>
+
   <div class="videoCentreContainer" :style="{'background':'url('+backImg+') 50% 50% / cover' }" @mousewheel=" mouseWheel"> 
 
     <!-- <ul class="list">
@@ -9,11 +25,17 @@
         <li><img class="slide" src="../assets/videoSelection3.jpg"/></li>
     </ul> -->
       
-      <div class="containerShadow"/>
+        <div class="containerShadow"/>
 
-    <div class="hpHeader">
-    <Header/>
-  </div>
+        <div class="hpHeader">
+        <Header>
+          <div slot="search" class="searchBar"  @click="search = !search">
+                  <a-icon type="search" class="w" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
+              <span>SEARCH</span>
+            </div>
+            
+      </Header>
+      </div>
 
     <button class="sideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
               <a-icon :style="{fontSize:'3vw'}" :type="collapsed ? 'close' : 'menu-fold'" />  
@@ -31,18 +53,17 @@
         </div>
 
         <div class="videoContent">
-           <span v-if="this.text">Full Stack Developer  <br/>
-           Have a look at my Work<br/>
+           <span v-if="this.text">
+             Full Stack Developer  <br/>
+           Have a look at my work<br/>
            and get in touch 
            </span>
+          
+            <span v-if="this.Ecommerce">Ecommerce Website</span>
 
             <!-- <router-link :to="{path}"/> -->
-             <button @click="redirecting()" v-if="!this.text" class="contentButton" :style="collapsed?'color: black' :'color: white'">Views the project</button>
-    
+             <button @click="redirecting()" v-if="!this.text" class="contentButton" :style="collapsed?'color: black' :'color: white'">Views the project Blog</button>
        </div>
-
-       
-
 
       <div class="bottomMenu">
           <span class="MenuItem" id="MenuItem0" @click="videoGif(0)">Me</span>
@@ -53,6 +74,8 @@
       </div>      
 <!-- </div> -->
 
+    </div>
+
 </div>
 
 
@@ -62,9 +85,9 @@
 import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
-import '../assets/css/video.css'
+import '../assets/css/searchBar.css'
 import videoImg1 from '../assets/VideoSelection.jpg'
-import videoImg2 from '../assets/videogif1.gif'
+import videoImg2 from '../assets/Ecommerce.jpeg'
 import videoImg3 from '../assets/videogif2.gif'
 import videoImg4 from '../assets/videoSelection2.png'
 import videoImg5 from '../assets/videoSelection3.jpg'
@@ -72,6 +95,8 @@ import videoImg5 from '../assets/videoSelection3.jpg'
     data(){
        return {
           collapsed: false,
+          Ecommerce:false,
+          search:false,
           text: true,
           path:'',
           allVideo:[],
@@ -109,15 +134,14 @@ import videoImg5 from '../assets/videoSelection3.jpg'
       toggleCollapsed() {
       this.collapsed = !this.collapsed;
     },
-
-      redirecting() {
+    
+    redirecting() {
         this.$router.push(this.path)
     },
 
     handleScroll(){
         var e = document.body.scrollTop||document.documentElement.scrollTop
         if(!e) return
-        console.log(11)
     },
 
     mouseWheel(e){
@@ -172,8 +196,15 @@ import videoImg5 from '../assets/videoSelection3.jpg'
          let selectedMenuItem = document.getElementById(this.MenuItem);
          selectedMenuItem.style.fontWeight = "900"
          switch(number){
+            
+            case 0:
+            console.log(1)
+            this.Ecommerce = false;
+            break;
+
             case 1:
             this.path = '/Ecommerce'
+            this.Ecommerce = true;
             break;
 
             case 2:
@@ -218,6 +249,7 @@ body{
   grid-column: 1/6;
   z-index:1;
 }
+
 
 .pic{
     background-size: cover;
@@ -266,8 +298,8 @@ body{
 .searchBar{
    width:15vw;
    height:4vh;
-   margin-top: 0.4vh;
-  //  border: solid 2px;
+   margin-top: 2vh;
+   transition: all 1s ease-in;
 }
 
 .searchBar button{
@@ -341,7 +373,7 @@ body{
   z-index: 1;
   display: grid;
 
-  grid-template-rows: 90% 10%;
+  grid-template-rows: 65% 35%;
 }
 
 .videoContent span{
@@ -358,9 +390,8 @@ body{
 
 
 .contentButton{
-  float: left;
-  margin-left: 6vw;
-  margin-top: 1vh;
+  margin-left: 27vw;
+  margin-top: 3vh;
   width: 20vw;
   height: 4vh;
   background: transparent;
@@ -387,4 +418,57 @@ body{
   margin-left:7vw;
   margin-top:2.5vh;
 }
+
+//search status:
+.searchArea{
+  width:100%;
+  height: 100%;
+  background-color:white;
+  opacity: 0.85;
+	position: absolute;
+  display: grid;
+  grid-template-columns: 20% 65% 15%;
+  grid-template-rows: 17% 28% 5% 25% 25%;
+  z-index:1;
+}
+
+.searchInput{
+  grid-column: 2;
+  grid-row: 2/3;
+  width: 100%;
+  height: 100%;
+  border-width: 0 0 0 0;
+}
+
+
+.searchInput input{
+  float: left;
+  color:black;
+  width:96%;
+  font-size: 3vw;
+  border-width: 0 0 2px 0;
+  border-color: black;
+  border-style: solid;
+  transition: all 1s;
+  outline: none;
+}
+
+.close:hover{
+    transition: 0.3s;
+    opacity: 0.5;
+}
+
+.fade-enter-active, .fade-leave-active{
+   transition: opacity 5s;
+}
+
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+}
+
+
+
+
+
+
 </style>

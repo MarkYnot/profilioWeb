@@ -7,7 +7,12 @@
       
 
     <div class="hpHeader">
-      <Header/>
+      <Header>
+             <div slot="search" class="searchBar">
+                  <a-icon type="search" class="w" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
+              <span>SEARCH</span>
+            </div>
+     </Header>
   </div>
 
     <button class="sideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
@@ -26,9 +31,9 @@
 
         <div class="projectIntroduction" :style="{'background':'url('+backImg+') 50% 50% / cover' }">
         <div class="containerShadow"/>
-        <span class="introText">Ecommerce Website<br/></span>
+        <span v-if="this.page" class="introText">Ecommerce Website<br/></span>
 
-        <ul role="list" class="introContent">
+        <ul v-if="this.page" role="list" class="introContent">
                 <li> 
                   <div class="greenTitle">WEBSITE</div>
                   <span class="information">The website could be taken a while to be loaded since the project is on a free Heroku machine</span>
@@ -170,9 +175,9 @@
 import Header from '../components/projectHeader.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
-import '../assets/css/video.css'
+import '../assets/css/searchBar.css'
 import videoImg1 from '../assets/Ecommerce.jpeg'
-import videoImg2 from '../assets/videogif1.gif'
+import videoImg2 from '../assets/login.png'
 import videoImg3 from '../assets/videogif2.gif'
 import videoImg4 from '../assets/videoSelection2.png'
 import videoImg5 from '../assets/videoSelection3.jpg'
@@ -181,6 +186,7 @@ import Video from '../components/mini-player.vue'
     data(){
        return {
           collapsed: false,
+          page:true,
           text: true,
           allVideo:[],
           pageNumber:0,
@@ -217,10 +223,13 @@ import Video from '../components/mini-player.vue'
 
     handleScroll(event){
         // console.log(event.target.scrollTop)
-        if(event.target.scrollTop >= 1678)
-           this.backImg = this.videoImgList[1].icon
-        else if(event.target.scrollTop < 1678)
-           this.backImg = this.videoImgList[0].icon
+        if(event.target.scrollTop >= 1678){
+            this.backImg = this.videoImgList[1].icon
+            this.page = false;
+        } else if(event.target.scrollTop < 1678){
+            this.backImg = this.videoImgList[0].icon
+            this.page = true;
+        }
     },
 
     // startSearch(){
@@ -397,7 +406,7 @@ body{
   height: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 20% 50% 30%;
+  grid-template-rows: 20% 45% 35%;
   z-index: -1;
 }
 
@@ -419,7 +428,7 @@ body{
   grid-column: 1/3;
   color:white;
   margin-left: 3vw;
-  margin-top:45vh;
+  margin-top:40vh;
   float: left;
   font-size: 3vw;
   font-weight: bolder;
@@ -456,12 +465,12 @@ body{
 .introContent{
   grid-row: 3;
   grid-column: 1/3;
-  margin-top:2vh;
   margin-left: 2vw;
   height: 100%;
   width: 100%;
   list-style-type: none;
   z-index: 1;
+  margin-top: 1vh;
 }
 
 .introContent li{

@@ -1,0 +1,16 @@
+.searchBar{
+  grid-column: 4;
+  grid-row: 1;
+  margin-top: 2.5vh;
+}
+
+.searchBar:hover{
+  transition: 0.3s;
+  opacity: 0.4;
+}
+
+.searchBar span{
+  font-size: 1.8vw;
+  font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif !important;
+  color: white;
+}

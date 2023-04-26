@@ -6,21 +6,19 @@
 
 
    </slot> -->
-
-      <!-- <router-link to="/modeSelection"> -->
+       <a style='grid-column:2' href="https://github.com/MarkYnot" target="_blank"> 
           <img class="headerTilte" v-lazy="'/static/github1.png'" alt="headerTitle">
-        
-      <!-- </router-link> -->
+       </a>
 
-          <!-- <router-link to="/modeSelection"> -->
+
+        <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank">
         <img class="headerText" v-lazy="'/static/linkedin1.png'" alt="headerTitle">
+        </a>
+  
 
-          <!-- </router-link> -->
-
-      <div name="search" class="searchBar">
-          <a-icon type="search" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
-          <span>SEARCH</span>
-      </div>
+      <slot name="search" >
+         
+      </slot>
   
 
 
@@ -161,11 +159,7 @@
   color: white;
 }
 
-.headerTilte{
-  grid-column: 2;
-  grid-row: 1;
-  margin-left: 5vw;
-}
+
 
 /deep/ .ant-menu-submenu{
    border-bottom: 0 !important; 
@@ -181,35 +175,28 @@
 }
 
 .headerTilte{
-
+  margin-left: 5vw;
   float: right;
   height: 2.2vw;
   width: auto;
   margin-top:2vh;
-  grid-row:1 ;
-  grid-column: 2;
   /* animation: logo-icon-spin infinite 20s linear; */
 }
 
 .headerTilte:hover{
-
-  transition: 1s;
-  height: 2.5vw;
-  width: auto;
+  transition: 0.3s;
+  opacity: 0.6;
 }
 
 .headerText{
   float: right;
   width: 3.2vw;
   margin-top:1.5vh;
-  grid-row:1 ;
-  grid-column: 2;
 }
 
 .headerText:hover{
-  transition: 1s;
-  height: 2.5vw;
-  width: auto;
+  transition: 0.3s;
+  opacity: 0.6;
 }
 
 .avantar{
