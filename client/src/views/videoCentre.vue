@@ -397,7 +397,6 @@ body{
   background: transparent;
   border-color: whitesmoke;
   grid-row: 2;
-  
 }
 
 .bottomMenu{
