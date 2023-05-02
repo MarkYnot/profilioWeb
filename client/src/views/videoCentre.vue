@@ -3,18 +3,64 @@
 <!-- this class has not css attribute -->
 <div class="searchWindow">
     
-<transition name="fade">
-  <div class="searchArea" v-if="this.search">
-      
-      <div class="searchInput">
-  
-        <input placeholder="Type to Search"/>
-        <a-icon type="close" theme="outlined" class="close" :style="{fontSize:'2.5vw', color:'black', marginTop:'2vh'}" @click="search = !search"/>
-      </div>
-  
-       
-  </div>
-</transition>
+  <transition name="fade">
+  <div class="searchArea" v-show="this.search">
+
+      <transition name="searchTransition">
+        <div class="searchInput" v-show="this.search">
+    
+          <input placeholder="Type to Search"/>
+          <a-icon type="close" theme="outlined" class="close" :style="{fontSize:'2.5vw', color:'black', marginTop:'2vh'}" @click="closeSearch()"/>
+        </div>
+      </transition>
+
+      <transition name="searchTransition">
+      <span class="popular" v-show="this.search" >Latest result</span>
+       </transition>
+
+      <transition name="searchTransition">
+      <div class="searchResult" v-show="this.search">
+          <div class="resultIntro">
+              <img alt="" src="../assets/Ecommerce.jpeg">
+                   <div class="itemText">
+                    <p>Ecommerce Website</p><br/>
+                    <span>MEVN Stack</span>
+                 
+                   </div>
+           </div>
+
+            <div class="resultIntro">
+              <img alt="" src="../assets/videoSelection2.png">
+                   <div class="itemText">
+                    <p>Ecommerce Website</p><br/>
+                    <span>phs</span>
+                 
+                   </div>
+           </div>
+
+            <div class="resultIntro">
+              <img alt="" src="../assets/videoSelection3.jpg">
+                   <div class="itemText">
+                    <p>Ecommerce Website</p><br/>
+                    <span>phs</span>
+                 
+                   </div>
+           </div>
+
+
+            <div class="resultIntro">
+              <img alt="" src="../assets/videoSelection3.jpg">
+                   <div class="itemText">
+                    <p>Ecommerce Website</p><br/>
+                    <span>phs</span>
+                 
+                   </div>
+           </div>
+    </div>
+      </transition>
+
+</div>
+  </transition>
 
   <div class="videoCentreContainer" :style="{'background':'url('+backImg+') 50% 50% / cover' }" @mousewheel=" mouseWheel"> 
 
@@ -29,7 +75,7 @@
 
         <div class="hpHeader">
         <Header>
-          <div slot="search" class="searchBar"  @click="search = !search">
+          <div slot="search" class="searchBar"  @click="search = !search, text = false">
                   <a-icon type="search" class="w" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
               <span>SEARCH</span>
             </div>
@@ -53,7 +99,7 @@
         </div>
 
         <div class="videoContent">
-           <span v-if="this.text">
+           <span v-show="this.text">
              Full Stack Developer  <br/>
            Have a look at my work<br/>
            and get in touch 
@@ -62,7 +108,7 @@
             <span v-if="this.Ecommerce">Ecommerce Website</span>
 
             <!-- <router-link :to="{path}"/> -->
-             <button @click="redirecting()" v-if="!this.text" class="contentButton" :style="collapsed?'color: black' :'color: white'">Views the project Blog</button>
+             <button @click="redirecting()" v-if="this.Ecommerce" class="contentButton" :style="collapsed?'color: black' :'color: white'">Views the project Blog</button>
        </div>
 
       <div class="bottomMenu">
@@ -86,6 +132,7 @@ import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
 import '../assets/css/searchBar.css'
+import '../assets/css/animation.css'
 import videoImg1 from '../assets/VideoSelection.jpg'
 import videoImg2 from '../assets/Ecommerce.jpeg'
 import videoImg3 from '../assets/videogif2.gif'
@@ -137,6 +184,13 @@ import videoImg5 from '../assets/videoSelection3.jpg'
     
     redirecting() {
         this.$router.push(this.path)
+    },
+
+    closeSearch(){
+      this.search = !this.search
+      setTimeout(()=>{
+          this.text = true;
+      }, 500)
     },
 
     handleScroll(){
@@ -384,7 +438,7 @@ body{
   font-size: 3vw;
   font-weight: bolder;
   text-align: left;
-  transition: all 1s;
+  transition: all 4s;
   grid-row: 1;
 }
 
@@ -426,9 +480,10 @@ body{
   opacity: 0.85;
 	position: absolute;
   display: grid;
-  grid-template-columns: 20% 65% 15%;
+  grid-template-columns: 20% 70% 10%;
   grid-template-rows: 17% 28% 5% 25% 25%;
   z-index:1;
+  transition: all 2s;
 }
 
 .searchInput{
@@ -457,17 +512,81 @@ body{
     opacity: 0.5;
 }
 
-.fade-enter-active, .fade-leave-active{
-   transition: opacity 5s;
+/*search animation*/
+.fade-enter-active {
+  transition: 0.1s;
+   opacity: 0;
 }
 
-.fade-enter, .fade-leave-to{
+.fade-leave-active{
+   transition: 0.9s;
+   background: transparent;
+}
+
+.fade-enter{
   opacity: 0;
 }
 
+.popular{
+  grid-row: 3;
+  grid-column: 2;
+  margin-right: 54vw;
+  float: left;
+  font-size: 2.7vw;
+  font-weight: bold;
+}
 
+.searchResult{
+  grid-row:4/6;
+  grid-column:2/4;
+  overflow-y: scroll;
+  width:100%;
+  height: 100%;
+}
 
+.resultIntro{
+ float: left;
+ width: 40%;
+ height:20%;
+ margin-top:4vh;
+}
 
+.itemText{
+    height:100%;
+    
+}
 
+.itemText p{
+    float:left;
+    font-size: 1.3vw;
+    font-weight: bold;
+    margin-top: 0.5vh;
+    margin-left:2vw;
+    height: 0;
+}
+
+.itemText p:hover{
+  opacity: 0.3;
+  transition: all 0.8s;
+}
+
+.itemText span{
+    float:left;
+     margin-left:2vw;
+    font-size: 1.3vw;
+}
+
+.itemText span:hover{
+   transition: all 0.6s;
+   text-decoration: underline;
+}
+
+.resultIntro img{
+  float: left;
+  margin-left: 0.6vw;
+  height:9vh;
+  width:9vw;
+}
 
 </style>
+

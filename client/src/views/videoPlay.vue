@@ -45,7 +45,7 @@
                   </a-menu-item> -->
                   
                    <a-menu-item v-for="(item, index) of allVideo" :key="index" @click="refreshPage">
-                      <router-link :to="`/video&${item.video_id}`"/>
+                    <router-link :to="`/video&${item.video_id}`"/>
                    <img alt="" :src="item.cover_photo">
                    <div class="itemText">
                     <p>test</p><br/>
