@@ -1,11 +1,48 @@
 
 
 .searchTransition-enter-active {
-    animation: search_fade_in  0.6s linear;
+    animation: search_fade_in  2s linear;
 }
 
 .searchTransition-leave-to{
-  animation: search_fade_out  0.6s linear;
+  animation: search_fade_out  2s linear;
+}
+
+.pswp__preloader__icn {
+  opacity:0.75;
+  grid-column: 2;
+  grid-row: 2;
+  width: 24px;
+  margin-top:15vh;
+  margin-left: 30vw;
+  height: 24px;
+  animation: logo-icon-spin 600ms linear infinite;
+}
+ 
+.pswp__preloader__cut {
+  position: relative;
+  width: 12px;
+  height: 24px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+ 
+.pswp__preloader__donut {
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #000;
+   border-radius: 50%;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  margin:0;
+  animation: donut-rotate 1000ms cubic-bezier(.4,0,.22,1) infinite;
 }
 
 @keyframes search_fade_in {
@@ -28,4 +65,21 @@
     transform: translateX(-100%);
     opacity: 0;
   }
+}
+
+@keyframes logo-icon-spin{
+  from{
+      transform: rotate(0deg);
+
+  } to {
+    transform: rotate(360deg);
+
+  }
+
+}
+
+@keyframes donut-rotate {
+  0% { -webkit-transform: rotate(0) }
+  50% { -webkit-transform: rotate(-140deg) }
+  100% { -webkit-transform: rotate(0) }
 }

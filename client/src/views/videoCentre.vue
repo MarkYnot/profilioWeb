@@ -9,10 +9,17 @@
       <transition name="searchTransition">
         <div class="searchInput" v-show="this.search">
     
-          <input placeholder="Type to Search"/>
+          <input placeholder="Type to Search" v-model="searchInput" @change="searching($event)"/>
           <a-icon type="close" theme="outlined" class="close" :style="{fontSize:'2.5vw', color:'black', marginTop:'2vh'}" @click="closeSearch()"/>
         </div>
       </transition>
+
+     <!-- spinner -->
+      <div class="pswp__preloader__icn">
+        <div class="pswp__preloader__cut">
+           <div class="pswp__preloader__donut"></div>
+        </div>
+      </div>
 
       <transition name="searchTransition">
       <span class="popular" v-show="this.search" >Latest result</span>
@@ -20,42 +27,15 @@
 
       <transition name="searchTransition">
       <div class="searchResult" v-show="this.search">
-          <div class="resultIntro">
-              <img alt="" src="../assets/Ecommerce.jpeg">
+          <div class="resultIntro" :key="item.id" v-for="item in projectList">
+              <img alt="" :src="item.photoLink">
                    <div class="itemText">
-                    <p>Ecommerce Website</p><br/>
-                    <span>MEVN Stack</span>
-                 
-                   </div>
-           </div>
-
-            <div class="resultIntro">
-              <img alt="" src="../assets/videoSelection2.png">
-                   <div class="itemText">
-                    <p>Ecommerce Website</p><br/>
-                    <span>phs</span>
-                 
-                   </div>
-           </div>
-
-            <div class="resultIntro">
-              <img alt="" src="../assets/videoSelection3.jpg">
-                   <div class="itemText">
-                    <p>Ecommerce Website</p><br/>
-                    <span>phs</span>
-                 
+                      <p>{{item.name}}</p><br/>
+                      <span>{{item.stack}}</span>
                    </div>
            </div>
 
 
-            <div class="resultIntro">
-              <img alt="" src="../assets/videoSelection3.jpg">
-                   <div class="itemText">
-                    <p>Ecommerce Website</p><br/>
-                    <span>phs</span>
-                 
-                   </div>
-           </div>
     </div>
       </transition>
 
@@ -144,6 +124,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
           collapsed: false,
           Ecommerce:false,
           search:false,
+          searchInput:'',
           text: true,
           path:'',
           allVideo:[],
@@ -155,6 +136,37 @@ import videoImg5 from '../assets/videoSelection3.jpg'
             {icon: videoImg4},
             {icon: videoImg5},
            ],
+           projectList:[
+            {
+              id:1,
+              name:"Ecommerce Website",
+              stack:"MEVN",
+              photoLink:videoImg2
+            },
+
+            {
+              id:2,
+              name:"ChatTogether",
+              stack:"Node + Spring",
+              photoLink:videoImg4
+            },
+
+            {
+             id:3,
+             name:"Second Hand market",
+             stack:"JSP + Java",
+             photoLink:videoImg5
+            },
+
+            {
+             id:4, 
+             name:"Study Banana",
+             stack:"MERN",
+             photoLink:videoImg1
+            },
+            
+            
+            ],
            backImg: "",
            MenuItem:"MenuItem0",
            fontWeight0: true,
@@ -191,6 +203,10 @@ import videoImg5 from '../assets/videoSelection3.jpg'
       setTimeout(()=>{
           this.text = true;
       }, 500)
+    },
+
+    searching(event){
+      console.log(event.target.value)
     },
 
     handleScroll(){
@@ -587,6 +603,8 @@ body{
   height:9vh;
   width:9vw;
 }
+
+
 
 </style>
 
