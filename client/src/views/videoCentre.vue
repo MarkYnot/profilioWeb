@@ -15,18 +15,19 @@
       </transition>
 
      <!-- spinner -->
-      <div class="pswp__preloader__icn">
-        <div class="pswp__preloader__cut">
-           <div class="pswp__preloader__donut"></div>
-        </div>
+      <div class="pswp__preloader__icn" v-show="this.spinner">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
       </div>
 
+
       <transition name="searchTransition">
-      <span class="popular" v-show="this.search" >Latest result</span>
+      <span class="popular" v-show="this.popular" >Latest result</span>
        </transition>
 
       <transition name="searchTransition">
-      <div class="searchResult" v-show="this.search">
+      <div class="searchResult" v-show="this.popular">
           <div class="resultIntro" :key="item.id" v-for="item in projectList">
               <img alt="" :src="item.photoLink">
                    <div class="itemText">
@@ -55,7 +56,7 @@
 
         <div class="hpHeader">
         <Header>
-          <div slot="search" class="searchBar"  @click="search = !search, text = false">
+          <div slot="search" class="searchBar"  @click="startSearch()">
                   <a-icon type="search" class="w" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
               <span>SEARCH</span>
             </div>
@@ -125,9 +126,11 @@ import videoImg5 from '../assets/videoSelection3.jpg'
           Ecommerce:false,
           search:false,
           searchInput:'',
+          popular: false,
           text: true,
+          spinner:false,
           path:'',
-          allVideo:[],
+          resultSet:[],
           pageNumber:0,
           videoImgList: [
             {icon: videoImg1},
@@ -203,10 +206,39 @@ import videoImg5 from '../assets/videoSelection3.jpg'
       setTimeout(()=>{
           this.text = true;
       }, 500)
+      this.popular = false
     },
 
     searching(event){
       console.log(event.target.value)
+      if(!event.target.value){
+        this.popular = true;
+         return
+      }
+
+      this.popular = false;
+      this.spinner = true;
+      console.log(this.spinner)
+      let reg = new RegExp(event.target.value)
+      let resultSet = []
+      
+     this.projectList.forEach(item=>{
+          if(reg.test(item.name)){
+            resultSet.push(item)
+          }
+      })
+
+      
+ 
+    if(resultSet != []){
+      this.spinner = false;
+      this.resultSet = resultSet;
+      console.log(this.resultSet)
+
+    }else{
+      alert("no result")
+    }
+    
     },
 
     handleScroll(){
@@ -241,15 +273,11 @@ import videoImg5 from '../assets/videoSelection3.jpg'
       }
     },
 
-    // startSearch(){
-    //     const videoInput = document.getElementById('textInput').value
-    //     if(videoInput != ""){
-    //       this.$router.push({path:`/search&${videoInput}`})
-    //     }else{
-    //       alert('please enter keyword first')
-    //     }
-     
-    // }
+    startSearch(){
+        this.search = !this.search;
+        this.text = false;
+        this.popular = true
+    },
 
 
      videoGif(number){
