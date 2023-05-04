@@ -10,17 +10,31 @@
         <div class="searchInput" v-show="this.search">
     
           <input placeholder="Type to Search" v-model="searchInput" @change="searching($event)"/>
-          <a-icon type="close" theme="outlined" class="close" :style="{fontSize:'2.5vw', color:'black', marginTop:'2vh'}" @click="closeSearch()"/>
+          <a-icon type="close" theme="outlined" class="close" :style="{fontSize:'4vmin', color:'black', marginTop:'2vh'}" @click="closeSearch()"/>
         </div>
       </transition>
 
+
+   <div class="resultArea" v-if="this.resultReturn">
+      <div class="returnedResult" v-for="result in resultList" :key="result.id">
+          <img alt="" :src="result.photoLink">
+                   <div class="resultText">
+                      <p>{{result.name}}</p><br/>
+                      <span>{{result.stack}}</span>
+                   </div>
+
+            <span class="resultType">{{result.category}}</span>
+      </div>
+   </div>
+
+    <span class="zeroResult" v-if="this.zeroResult">No Result</span>
+
      <!-- spinner -->
-      <div class="pswp__preloader__icn" v-show="this.spinner">
-          <div class="pswp__preloader__cut">
+      <div class="pswp__preloader__icn" v-show="spinner">
+          <div class="pswp__preloader__cut" >
             <div class="pswp__preloader__donut"></div>
           </div>
       </div>
-
 
       <transition name="searchTransition">
       <span class="popular" v-show="this.popular" >Latest result</span>
@@ -130,7 +144,6 @@ import videoImg5 from '../assets/videoSelection3.jpg'
           text: true,
           spinner:false,
           path:'',
-          resultSet:[],
           pageNumber:0,
           videoImgList: [
             {icon: videoImg1},
@@ -139,33 +152,45 @@ import videoImg5 from '../assets/videoSelection3.jpg'
             {icon: videoImg4},
             {icon: videoImg5},
            ],
+
+           resultList:[],
+           resultReturn:false,
+           zeroResult:false,
            projectList:[
             {
               id:1,
               name:"Ecommerce Website",
               stack:"MEVN",
-              photoLink:videoImg2
+              photoLink:videoImg2,
+              date:"03/04/2022",
+              category: "Blog"
             },
 
             {
               id:2,
               name:"ChatTogether",
               stack:"Node + Spring",
-              photoLink:videoImg4
+              photoLink:videoImg4,
+              date:"03/04/2022",
+              category: "Article"
             },
 
             {
              id:3,
              name:"Second Hand market",
              stack:"JSP + Java",
-             photoLink:videoImg5
+             photoLink:videoImg5,
+             date:"03/04/2022",
+             category: "Blog"
             },
 
             {
              id:4, 
              name:"Study Banana",
              stack:"MERN",
-             photoLink:videoImg1
+             photoLink:videoImg1,
+             date:"03/04/2022",
+             category: "Blog"
             },
             
             
@@ -210,15 +235,18 @@ import videoImg5 from '../assets/videoSelection3.jpg'
     },
 
     searching(event){
-      console.log(event.target.value)
+      this.zeroResult = false;
+     
+      
       if(!event.target.value){
         this.popular = true;
+        this.spinner = false;  
          return
       }
-
-      this.popular = false;
+      this.resultReturn = false;
       this.spinner = true;
-      console.log(this.spinner)
+      this.popular = false;
+
       let reg = new RegExp(event.target.value)
       let resultSet = []
       
@@ -227,17 +255,22 @@ import videoImg5 from '../assets/videoSelection3.jpg'
             resultSet.push(item)
           }
       })
+            
+      setTimeout(()=>{
+          if(resultSet.length != 0){
+              this.spinner = false;
+              this.resultList = resultSet;
+              this.resultReturn = true;
+              console.log(1)
+              console.log(resultSet)
 
-      
- 
-    if(resultSet != []){
-      this.spinner = false;
-      this.resultSet = resultSet;
-      console.log(this.resultSet)
-
-    }else{
-      alert("no result")
-    }
+            }else{
+              this.zeroResult = true;
+              this.spinner = false;
+              console.log(2)
+            }
+      },3000)
+   
     
     },
 
@@ -276,7 +309,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
     startSearch(){
         this.search = !this.search;
         this.text = false;
-        this.popular = true
+        this.popular = true;
     },
 
 
@@ -379,18 +412,16 @@ body{
     // border-bottom: 2px solid #dbdbdb;  
 }
 
-.searchInput{
-   float: left;
-   height:3.7vh;
-   width: 93%;
-   border-left: 0px;
-   border-top: 0px;
-   border-bottom: 0px;
-   border-right:solid 2px #8b898969;
-   outline-color: rgba(126, 162, 196, 0.514);
-   font-size: 1.2vw;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+// .searchInput{
+//    float: left;
+//    border-left: 0px;
+//    border-top: 0px;
+//    border-bottom: 0px;
+//    border-right:solid 2px #8b898969;
+//    outline-color: rgba(126, 162, 196, 0.514);
+//    font-size: 1.2vw;
+//    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+// }
 
 
 .searchBar{
@@ -525,7 +556,7 @@ body{
 	position: absolute;
   display: grid;
   grid-template-columns: 20% 70% 10%;
-  grid-template-rows: 17% 28% 5% 25% 25%;
+  grid-template-rows: 17% 8% 20% 5% 25% 25%;
   z-index:1;
   transition: all 2s;
 }
@@ -536,6 +567,7 @@ body{
   width: 100%;
   height: 100%;
   border-width: 0 0 0 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -543,13 +575,80 @@ body{
   float: left;
   color:black;
   width:96%;
-  font-size: 3vw;
+  font-size: 4vmin;
+  height: 100%;
   border-width: 0 0 2px 0;
   border-color: black;
   border-style: solid;
   transition: all 1s;
   outline: none;
 }
+
+.resultArea{
+    grid-column: 2;
+    grid-row: 3/6;
+    width:96%;
+    height:100%;
+    transition: 1s;
+}
+
+.returnedResult{
+    width:100%;
+    height:10vh;
+    text-align: right;
+    margin-top: 3vh;
+}
+
+
+.returnedResult:hover{
+  background: rgba(255, 255, 255, 0.714);
+  border-radius: 2%;
+  transition: 1s;
+}
+
+.returnedResult img{ 
+  float: left;
+  margin-left: 0.6vw;
+  height:9vh;
+  width:9vw;
+}
+
+.resultText{
+  float: left;
+  margin-left: 2vw;
+  width:70%;
+  text-align: left;
+  height:90%;
+  line-height: 1.7vh; //space when using br
+  margin-top:0.5vh;
+}
+
+.resultText p{
+  font-size: 2.5vmin;
+  font-weight: bold;
+}
+
+.resultText span{
+  color: gray;
+  font-size: 1.5vmin;
+}
+
+.resultType{
+  color: gray;
+  font-size: 1.7vmin;
+  position: relative;
+  top:2.5vh;
+}
+
+.zeroResult{
+   grid-column: 2;
+   grid-row: 3;
+   margin-top: 5vh;
+   text-align: center;
+   font-size: 3vmin;
+   transition: all 1s;
+}
+
 
 .close:hover{
     transition: 0.3s;
@@ -572,7 +671,7 @@ body{
 }
 
 .popular{
-  grid-row: 3;
+  grid-row: 4;
   grid-column: 2;
   margin-right: 54vw;
   float: left;
@@ -581,7 +680,7 @@ body{
 }
 
 .searchResult{
-  grid-row:4/6;
+  grid-row:5/7;
   grid-column:2/4;
   overflow-y: scroll;
   width:100%;
@@ -596,8 +695,7 @@ body{
 }
 
 .itemText{
-    height:100%;
-    
+    height:100%; 
 }
 
 .itemText p{
