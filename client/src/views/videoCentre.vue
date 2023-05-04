@@ -241,6 +241,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
       if(!event.target.value){
         this.popular = true;
         this.spinner = false;  
+        this.resultReturn = false;
          return
       }
       this.resultReturn = false;
@@ -308,8 +309,11 @@ import videoImg5 from '../assets/videoSelection3.jpg'
 
     startSearch(){
         this.search = !this.search;
+        if(this.resultReturn){
+          this.popular = false;
+        }else this.popular = true;
         this.text = false;
-        this.popular = true;
+        
     },
 
 
