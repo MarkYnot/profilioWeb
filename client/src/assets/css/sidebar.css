@@ -1,0 +1,7 @@
+.SidebarFade-enter-active, .SidebarFade-leave-active{
+  transition: opacity 0.5s;
+}
+
+.SidebarFade-enter, .SidebarFade-leave{
+   opacity:0
+}

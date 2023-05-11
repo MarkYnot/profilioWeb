@@ -9,8 +9,8 @@
       <transition name="searchTransition">
         <div class="searchInput" v-show="this.search">
     
-          <input placeholder="Type to Search" v-model="searchInput" @change="searching($event)"/>
-          <a-icon type="close" theme="outlined" class="close" :style="{fontSize:'4vmin', color:'black', marginTop:'2vh'}" @click="closeSearch()"/>
+          <input placeholder="Type And Press Enter to Search" v-model="searchInput" @change="searching($event)"/>
+          <a-icon type="close" theme="outlined" class="close"  @click="closeSearch()"/>
         </div>
       </transition>
 
@@ -35,6 +35,8 @@
             <div class="pswp__preloader__donut"></div>
           </div>
       </div>
+     <!-- //spinner -->
+
 
       <transition name="searchTransition">
       <span class="popular" v-show="this.popular" >Latest result</span>
@@ -43,11 +45,13 @@
       <transition name="searchTransition">
       <div class="searchResult" v-show="this.popular">
           <div class="resultIntro" :key="item.id" v-for="item in projectList">
+            <router-link :to="item.link">
               <img alt="" :src="item.photoLink">
                    <div class="itemText">
-                      <p>{{item.name}}</p><br/>
+                      <p>{{item.name}}</p><br/><br/>
                       <span>{{item.stack}}</span>
                    </div>
+              </router-link>
            </div>
 
 
@@ -78,9 +82,9 @@
       </Header>
       </div>
 
+    
     <button class="sideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
               <a-icon :style="{fontSize:'3vw'}" :type="collapsed ? 'close' : 'menu-fold'" />  
-            
    </button>
       
 <!-- 
@@ -88,10 +92,11 @@
 
       <span  class="name" :style="collapsed?'color: black' :'color: white'">  JUNJIE LIN</span>
 
-
+        <transition name="SidebarFade">
         <div class="SideBar" v-if="this.collapsed">
               <SideBar :collapsed="collapsed"/>
         </div>
+        </transition>
 
         <div class="videoContent">
            <span v-show="this.text">
@@ -127,6 +132,7 @@ import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
 import '../assets/css/searchBar.css'
+import '../assets/css/sidebar.css'
 import '../assets/css/animation.css'
 import videoImg1 from '../assets/VideoSelection.jpg'
 import videoImg2 from '../assets/Ecommerce.jpeg'
@@ -163,7 +169,8 @@ import videoImg5 from '../assets/videoSelection3.jpg'
               stack:"MEVN",
               photoLink:videoImg2,
               date:"03/04/2022",
-              category: "Blog"
+              category: "Blog",
+              link:"/Ecommerce"
             },
 
             {
@@ -172,7 +179,8 @@ import videoImg5 from '../assets/videoSelection3.jpg'
               stack:"Node + Spring",
               photoLink:videoImg4,
               date:"03/04/2022",
-              category: "Article"
+              category: "Article",
+              link:"/Ecommerce"
             },
 
             {
@@ -181,7 +189,8 @@ import videoImg5 from '../assets/videoSelection3.jpg'
              stack:"JSP + Java",
              photoLink:videoImg5,
              date:"03/04/2022",
-             category: "Blog"
+             category: "Blog",
+             link:"/Ecommerce"
             },
 
             {
@@ -190,7 +199,8 @@ import videoImg5 from '../assets/videoSelection3.jpg'
              stack:"MERN",
              photoLink:videoImg1,
              date:"03/04/2022",
-             category: "Blog"
+             category: "Blog",
+             link:"/Ecommerce"
             },
             
             
@@ -228,10 +238,30 @@ import videoImg5 from '../assets/videoSelection3.jpg'
 
     closeSearch(){
       this.search = !this.search
-      setTimeout(()=>{
-          this.text = true;
-      }, 500)
-      this.popular = false
+      switch(this.pageNumber){
+       case 0:
+          setTimeout(()=>{this.text = true;}, 500)
+          break;
+      
+      case 1:
+          setTimeout(()=>this.Ecommerce = true, 500)
+          break;
+
+      case 2:
+          setTimeout(()=>{this.text = false;}, 500)
+          break;
+
+      case 3:
+          setTimeout(()=>{this.text = false;}, 500)
+          break;
+
+      case 4:
+          setTimeout(()=>{this.text = false;}, 500)
+          break;
+
+      }
+    
+      console.log(this.pageNumber)
     },
 
     searching(event){
@@ -313,7 +343,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
           this.popular = false;
         }else this.popular = true;
         this.text = false;
-        
+        this.Ecommerce = false;
     },
 
 
@@ -357,6 +387,8 @@ import videoImg5 from '../assets/videoSelection3.jpg'
 body{
   line-height:0;
 }
+
+
 
 .videoCentreContainer{
   width: 100%;
@@ -455,7 +487,7 @@ body{
   height: 3.6vh;
   background: none;
   color:white;
-  border: 0px;
+  border: none;
   margin-top: 0.5vh;
   margin-bottom: 16px;
   border-radius: 50%;
@@ -466,11 +498,9 @@ body{
   z-index: 20;
 }
 
-
-
 .sideBarButton:active{
   background-color: rgba(196, 195, 195, 0.514);
-  border: solid 2px rgba(196, 195, 195, 0.514);
+  // border: solid 2px rgba(196, 195, 195, 0.514);
 }
 
 // .centreBody{
@@ -488,14 +518,14 @@ body{
 
 
 .SideBar{
-  grid-row: 1/4;
+  grid-row: 1/6;
   grid-column: 1/4;
   width: 40%;
   box-shadow: 5px 0px 0px -5px rgba(54, 54, 54, 0.527);
   height: auto;
   border-right: black;
   z-index: 10;
-  transition: 2s;
+  transition: 2s opacity;
 }
 
 .videoContent{
@@ -519,6 +549,7 @@ body{
   text-align: left;
   transition: all 4s;
   grid-row: 1;
+  transition-duration: 2s all;
 }
 
 
@@ -653,34 +684,30 @@ body{
    transition: all 1s;
 }
 
+.close{
+  font-size: 4vmin;
+  color:black;
+  margin-top: 2vh;
+  position: absolute;
+  float: right;
+}
 
 .close:hover{
     transition: 0.3s;
     opacity: 0.5;
 }
 
-/*search animation*/
-.fade-enter-active {
-  transition: 0.1s;
-   opacity: 0;
-}
-
-.fade-leave-active{
-   transition: 0.9s;
-   background: transparent;
-}
-
-.fade-enter{
-  opacity: 0;
-}
 
 .popular{
   grid-row: 4;
   grid-column: 2;
-  margin-right: 54vw;
+  position:absolute;
   float: left;
-  font-size: 2.7vw;
+  font-size: 4vmin;
   font-weight: bold;
+  height:100%;
+  // width:100%;
+  // overflow-y: ;
 }
 
 .searchResult{
@@ -698,16 +725,26 @@ body{
  margin-top:4vh;
 }
 
+.resultIntro img{
+  float: left;
+  margin-left: 0.6vw;
+  height:9vh;
+  width:9vw;
+}
+
 .itemText{
-    height:100%; 
+    height:100%;
+    float: right;
+    width: 21vw;
+    line-height: 2vh;
 }
 
 .itemText p{
     float:left;
-    font-size: 1.3vw;
+    font-size: 2vmin;
     font-weight: bold;
-    margin-top: 0.5vh;
-    margin-left:2vw;
+    // margin-top: 0.5vh;
+    // margin-left:2vw;
     height: 0;
 }
 
@@ -718,8 +755,8 @@ body{
 
 .itemText span{
     float:left;
-     margin-left:2vw;
-    font-size: 1.3vw;
+    // margin-left:2vw;
+    font-size: 1.8vmin;
 }
 
 .itemText span:hover{
@@ -727,12 +764,7 @@ body{
    text-decoration: underline;
 }
 
-.resultIntro img{
-  float: left;
-  margin-left: 0.6vw;
-  height:9vh;
-  width:9vw;
-}
+
 
 
 

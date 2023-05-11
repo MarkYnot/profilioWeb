@@ -1,13 +1,69 @@
 
-
+/*search animation*/
 .searchTransition-enter-active {
-    animation: search_fade_in  2s linear;
+    animation: search_fade_in  1.5s cubic-bezier(.4,0,.22,1);
 }
 
 .searchTransition-leave-to{
-  animation: search_fade_out  2s linear;
+  animation: search_fade_out  1.5s cubic-bezier(.4,0,.22,1);
 }
 
+.fade-enter-active {
+  animation: fade_in 2s;
+  background: none;
+}
+
+.fade-leave-active{
+  animation: fade_out 2s;
+  background: none;
+}
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes fade_out{
+  0% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes search_fade_in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes search_fade_out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/*search animation end*/
+
+
+
+/*Spinner animation*/
 .pswp__preloader__icn {
   opacity:0.75;
   grid-column: 2;
@@ -45,41 +101,20 @@
   animation: donut-rotate 1000ms cubic-bezier(.4,0,.22,1) infinite;
 }
 
-@keyframes search_fade_in {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes search_fade_out {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes logo-icon-spin{
-  from{
-      transform: rotate(0deg);
-
-  } to {
-    transform: rotate(360deg);
-
-  }
-
-}
-
 @keyframes donut-rotate {
   0% { -webkit-transform: rotate(0) }
   50% { -webkit-transform: rotate(-140deg) }
   100% { -webkit-transform: rotate(0) }
 }
+
+@keyframes logo-icon-spin{
+  from{
+      transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
+}
+/*End*/
+
+
+

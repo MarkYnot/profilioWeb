@@ -1,14 +1,71 @@
 !<template>
   <div class="videoCentreContainer"> 
-    <!-- :style="{'background':'url('+backImg+') 50% 50% / cover' }" -->
 
- 
+<!-- search status -->
+  <transition name="fade">
+  <div class="searchArea" v-show="this.search">
+
+      <transition name="searchTransition">
+        <div class="searchInput" v-show="this.search">
+    
+          <input placeholder="Type And Press Enter to Search" v-model="searchInput" @change="searching($event)"/>
+          <a-icon type="close" theme="outlined" class="close"  @click="closeSearch()"/>
+        </div>
+      </transition>
+
+
+   <div class="resultArea" v-if="this.resultReturn">
+      <div class="returnedResult" v-for="result in resultList" :key="result.id">
+          <img alt="" :src="result.photoLink">
+                   <div class="resultText">
+                      <p>{{result.name}}</p><br/>
+                      <span>{{result.stack}}</span>
+                   </div>
+
+            <span class="resultType">{{result.category}}</span>
+      </div>
+   </div>
+
+    <span class="zeroResult" v-if="this.zeroResult">No Result</span>
+
+     <!-- spinner -->
+      <div class="pswp__preloader__icn" v-show="spinner">
+          <div class="pswp__preloader__cut" >
+            <div class="pswp__preloader__donut"></div>
+          </div>
+      </div>
+     <!-- //spinner -->
+
+
+      <transition name="searchTransition">
+      <span class="popular" v-show="this.popular" >Latest result</span>
+       </transition>
+
+      <transition name="searchTransition">
+      <div class="searchResult" v-show="this.popular">
+          <div class="resultIntro" :key="item.id" v-for="item in projectList">
+            <router-link :to="item.link">
+              <img alt="" :src="item.photoLink">
+                   <div class="itemText">
+                      <p>{{item.name}}</p><br/><br/>
+                      <span>{{item.stack}}</span>
+                   </div>
+            </router-link>
+           </div>
+
+
+    </div>
+      </transition>
+
+</div>
+  </transition>
+ <!-- End -->
       
       
 
     <div class="hpHeader">
       <Header>
-             <div slot="search" class="searchBar">
+             <div slot="search" class="searchBar" @click="startSearch()">
                   <a-icon type="search" class="w" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
               <span>SEARCH</span>
             </div>
@@ -24,10 +81,13 @@
 
 
       <span @click="redirecting()" class="name" :style="collapsed?'color: black' :'color: white'">JUNJIE LIN</span>
-
+        
+         <transition name="SidebarFade">
         <div class="SideBar" v-if="this.collapsed">
               <SideBar :collapsed="collapsed"/>
         </div>
+         </transition>
+
 
         <div class="projectIntroduction" :style="{'background':'url('+backImg+') 50% 50% / cover' }">
         <div class="containerShadow"/>
@@ -176,6 +236,8 @@ import Header from '../components/projectHeader.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
 import '../assets/css/searchBar.css'
+import '../assets/css/sidebar.css'
+import '../assets/css/animation.css'
 import videoImg1 from '../assets/Ecommerce.jpeg'
 import videoImg2 from '../assets/login.png'
 import videoImg3 from '../assets/videogif2.gif'
@@ -200,6 +262,56 @@ import Video from '../components/mini-player.vue'
            backImg: "",
            videoURL:'',
            MenuItem:"MenuItem0",
+           resultList:[],
+           Ecommerce:false,
+           search:false,
+           searchInput:'',
+           popular: false,
+           text: true,
+           spinner:false,
+           resultReturn:false,
+           zeroResult:false,
+           projectList:[
+            {
+              id:1,
+              name:"Ecommerce Website",
+              stack:"MEVN",
+              photoLink:videoImg2,
+              date:"03/04/2022",
+              category: "Blog",
+              link:"/Ecommerce"
+            },
+
+            {
+              id:2,
+              name:"ChatTogether",
+              stack:"Node + Spring",
+              photoLink:videoImg4,
+              date:"03/04/2022",
+              category: "Article",
+              link:"/Ecommerce"
+            },
+
+            {
+             id:3,
+             name:"Second Hand market",
+             stack:"JSP + Java",
+             photoLink:videoImg5,
+             date:"03/04/2022",
+             category: "Blog",
+             link:"/Ecommerce"
+            },
+
+            {
+             id:4, 
+             name:"Study Banana",
+             stack:"MERN",
+             photoLink:videoImg1,
+             date:"03/04/2022",
+             category: "Blog",
+             link:"/Ecommerce"
+            },
+          ],
        }
     },
 
@@ -232,16 +344,87 @@ import Video from '../components/mini-player.vue'
         }
     },
 
-    // startSearch(){
-    //     const videoInput = document.getElementById('textInput').value
-    //     if(videoInput != ""){
-    //       this.$router.push({path:`/search&${videoInput}`})
-    //     }else{
-    //       alert('please enter keyword first')
-    //     }
-     
-    // }
+    closeSearch(){
+        this.search = !this.search
+        switch(this.pageNumber){
+        case 0:
+            setTimeout(()=>{this.text = true;}, 500)
+            break;
+        
+        case 1:
+            setTimeout(()=>this.Ecommerce = true, 500)
+            break;
 
+        case 2:
+            setTimeout(()=>{this.text = false;}, 500)
+            break;
+
+        case 3:
+            setTimeout(()=>{this.text = false;}, 500)
+            break;
+
+        case 4:
+            setTimeout(()=>{this.text = false;}, 500)
+            break;
+
+        }
+      
+      console.log(this.pageNumber)
+    },
+
+
+  
+      startSearch(){
+        this.search = !this.search;
+        if(this.resultReturn){
+          this.popular = false;
+        }else this.popular = true;
+        this.text = false;
+        this.Ecommerce = false;
+    },
+
+    searching(event){
+        this.zeroResult = false;
+      
+        
+        if(!event.target.value){
+          this.popular = true;
+          this.spinner = false;  
+          this.resultReturn = false;
+          return
+        }
+        this.resultReturn = false;
+        this.spinner = true;
+        this.popular = false;
+
+        let reg = new RegExp(event.target.value)
+        let resultSet = []
+        
+      this.projectList.forEach(item=>{
+            if(reg.test(item.name)){
+              resultSet.push(item)
+            }
+        })
+              
+        setTimeout(()=>{
+            if(resultSet.length != 0){
+                this.spinner = false;
+                this.resultList = resultSet;
+                this.resultReturn = true;
+                console.log(1)
+                console.log(resultSet)
+
+              }else{
+                this.zeroResult = true;
+                this.spinner = false;
+                console.log(2)
+              }
+        },3000)
+   
+    
+    },
+     
+     
       redirecting() {
         this.$router.push('/')
     },
@@ -272,6 +455,8 @@ body{
   transition: all 1s;
   z-index: 1;
 }
+
+
 
 .containerShadow{
   background-color:black;
@@ -647,5 +832,196 @@ body{
       margin-top: 4vh;
       float:left;
       margin-left:1.3vw;
-    }
+}
+
+
+//search status:
+.searchArea{
+  grid-row:1/3;
+  grid-column: 1/4;
+  width:100%;
+  height: 100%;
+  background-color:white;
+  opacity: 0.85;
+	position: absolute;
+  display: grid;
+  grid-template-columns: 20% 70% 10%;
+  grid-template-rows: 17% 8% 20% 5% 25% 25%;
+  z-index:1;
+  transition: all 2s;
+}
+
+.searchInput{
+  grid-column: 2;
+  grid-row: 2/3;
+  width: 100%;
+  height: 100%;
+  border-width: 0 0 0 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.searchInput input{
+  float: left;
+  color:black;
+  width:96%;
+  font-size: 4vmin;
+  height: 100%;
+  border-width: 0 0 2px 0;
+  border-color: black;
+  border-style: solid;
+  transition: all 1s;
+  outline: none;
+}
+
+.resultArea{
+    grid-column: 2/4;
+    grid-row: 3/6;
+    width:96%;
+    height:100%;
+    transition: 1s;
+}
+
+.returnedResult{
+    width:92%;
+    height:10vh;
+    text-align: right;
+    margin-top: 3vh;
+}
+
+
+.returnedResult:hover{
+  background: rgba(255, 255, 255, 0.714);
+  border-radius: 2%;
+  transition: 1s;
+}
+
+.returnedResult img{ 
+  float: left;
+  margin-left: 0.6vw;
+  height:7vh;
+  width:7vw;
+}
+
+.resultText{
+  float: left;
+  margin-left: 2vw;
+  width:67%;
+  text-align: left;
+  height:90%;
+  line-height: 1vh; //space when using br
+  margin-top:0.5vh;
+}
+
+.resultText p{
+  font-size: 1.8vmin;
+  font-weight: bold;
+}
+
+.resultText span{
+  color: gray;
+  font-size: 1.4vmin;
+}
+
+.resultType{
+  color: gray;
+  font-size: 1.4vmin;
+  position: relative;
+  float: right;
+  
+}
+
+.zeroResult{
+   grid-column: 2;
+   grid-row: 3;
+   margin-top: 5vh;
+   text-align: center;
+   font-size: 3vmin;
+   transition: all 1s;
+}
+
+.close{
+  font-size: 4vmin;
+  color:black;
+  margin-top: 2vh;
+  position: absolute;
+  float: right;
+}
+
+.close:hover{
+    transition: 0.3s;
+    opacity: 0.5;
+}
+
+
+.popular{
+  grid-row: 4;
+  grid-column: 2;
+  position:absolute;
+  float: left;
+  font-size: 4vmin;
+  font-weight: bold;
+  height:100%;
+  // width:100%;
+  // overflow-y: ;
+}
+
+.searchResult{
+  grid-row:5/7;
+  grid-column:2/4;
+  overflow-y: scroll;
+  width:100%;
+  height: 100%;
+}
+
+.resultIntro{
+ float: left;
+ width: 50%;
+ height:20%;
+ margin-top:4vh;
+}
+
+.resultIntro img{
+  float: left;
+  margin-left: 0.6vw;
+  height:7vh;
+  width:7vw;
+}
+
+.itemText{
+    height:100%;
+    float: right;
+    width: 11vw;
+    line-height: 2vh;
+}
+
+.itemText p{
+    float:left;
+    font-size: 1.6vmin;
+    font-weight: bold;
+    // margin-top: 0.5vh;
+    // margin-left:2vw;
+    height: 0;
+}
+
+.itemText p:hover{
+  opacity: 0.3;
+  transition: all 0.8s;
+}
+
+.itemText span{
+    float:left;
+    font-size: 1.4vmin;
+}
+
+.itemText span:hover{
+   transition: all 0.6s;
+   text-decoration: underline;
+}
+
+.pswp__preloader__icn {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+}
+
 </style>
