@@ -12,8 +12,8 @@ export default[
   },
 
   {
-    path: '/video/likes',
-    name: 'likeVideo',
-    component:()=> import(`../views/likeVideo.vue`)
+    path: '/resume',
+    name: 'resume',
+    component:()=> import(`../views/resume.vue`)
   }
 ]

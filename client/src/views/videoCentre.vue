@@ -17,13 +17,15 @@
 
    <div class="resultArea" v-if="this.resultReturn">
       <div class="returnedResult" v-for="result in resultList" :key="result.id">
-          <img alt="" :src="result.photoLink">
+           <router-link :to="result.link" active-class="router-link-active">
+               <img alt="" :src="result.photoLink">
                    <div class="resultText">
                       <p>{{result.name}}</p><br/>
                       <span>{{result.stack}}</span>
                    </div>
 
             <span class="resultType">{{result.category}}</span>
+           </router-link>
       </div>
    </div>
 
@@ -51,7 +53,7 @@
                       <p>{{item.name}}</p><br/><br/>
                       <span>{{item.stack}}</span>
                    </div>
-              </router-link>
+            </router-link>
            </div>
 
 
@@ -82,7 +84,7 @@
       </Header>
       </div>
 
-    
+
     <button class="sideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
               <a-icon :style="{fontSize:'3vw'}" :type="collapsed ? 'close' : 'menu-fold'" />  
    </button>
@@ -388,6 +390,15 @@ body{
   line-height:0;
 }
 
+.router-link-active{
+  text-decoration: none;
+  color:black;
+}
+
+a{
+   text-decoration: none;
+   color:grey;
+}
 
 
 .videoCentreContainer{
@@ -464,7 +475,7 @@ body{
    width:15vw;
    height:4vh;
    margin-top: 2vh;
-   transition: all 1s ease-in;
+   transition: all 1s ;
 }
 
 .searchBar button{

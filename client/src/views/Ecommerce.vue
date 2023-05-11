@@ -16,6 +16,7 @@
 
    <div class="resultArea" v-if="this.resultReturn">
       <div class="returnedResult" v-for="result in resultList" :key="result.id">
+           <router-link :to="result.link">
           <img alt="" :src="result.photoLink">
                    <div class="resultText">
                       <p>{{result.name}}</p><br/>
@@ -23,6 +24,7 @@
                    </div>
 
             <span class="resultType">{{result.category}}</span>
+           </router-link>
       </div>
    </div>
 
@@ -279,7 +281,7 @@ import Video from '../components/mini-player.vue'
               photoLink:videoImg2,
               date:"03/04/2022",
               category: "Blog",
-              link:"/Ecommerce"
+              link:"/"
             },
 
             {

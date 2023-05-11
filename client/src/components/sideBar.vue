@@ -22,7 +22,7 @@
 
 
       <a-menu-item key="3">
-            <router-link to="/video/likes"/>
+            <router-link to="/resume"/>
           <!-- <a-icon type="like" theme="filled"/> -->
           <span>Resume</span>
       </a-menu-item>
