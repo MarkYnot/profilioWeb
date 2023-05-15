@@ -26,12 +26,21 @@
         </transition>
 
         <div class="Content">
-           <div class="intro">
-              <p>Hi guys, Here just a story of a tedious boy who love software development </p>
-           </div>
+            <div class="intro">
+                <p>Hi guys, Here just a story of a tedious boy who love software development </p>
+            </div>
 
+            <div class="rName">
+                <p>JunJie (Mark) Lin</p><br/><br/><br/>
+                <span>Graduate Software Engineer</span>
+            </div>
 
-      </div>
+            <div class="avatar">
+                <img alt="" src="../assets/me.jpg"/>
+            </div>
+        
+        </div>
+
 </div>
 </template>
 
@@ -97,7 +106,6 @@ import '../assets/css/video.css'
     grid-column: 2/3;
     background: transparent;
     float:right;
-
     // border-bottom: 2px solid #dbdbdb;  
 }
 
@@ -134,10 +142,6 @@ import '../assets/css/video.css'
 //   border: 0 0 0 0;
 // }
 
-
-
-
-
 .SideBar{
   grid-row: 1/3;
   grid-column: 1/3;
@@ -157,7 +161,7 @@ import '../assets/css/video.css'
 }
 
 .rSearchBar:hover{
-        opacity: 0.6;
+   opacity: 0.6;
 }
 
 .Content{
@@ -167,27 +171,64 @@ import '../assets/css/video.css'
   height: 100%;
   // background: #dbdbdb36;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 10% 40% 50%;
+  grid-template-columns: 20% 45% 15% 20%;
+  grid-template-rows: 5% 45% 50%;
 }
 
 .intro{
   grid-row:1;
-  grid-column:1;
+  grid-column:2/4;
   background: #dbdbdb36;
-  width: 68%;
-  height: 54%;
-  margin-left: 12vw;
+  width: 100%;
+  height: 100%;
+  // margin-left: 12vw;
   border-radius: 5px;
-
+  // overflow: scroll;
 }
 
 .intro p{
   font-size: 2.3vmin;
   font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
-  display: inline;
+  // display: inline;
   text-align: center;
 }
 
+.rName{
+  width:100%;
+  height: 100%;
+  grid-row: 2;
+  grid-column: 2/3;
+  margin-top: 3vh;
+  float:left;
+}
+
+.rName p{
+  float: left;
+  font-size: 7.5vmin;
+  font-weight: bolder;
+  margin-bottom:0 !important;
+}
+
+.rName span{
+  float:left;
+  line-height: 2vh;
+  // position: absolute;
+  font-size: 2.6vmin;
+}
+
+.avatar{
+  border: 2px solid white;
+  grid-row: 2/3;
+  grid-column: 3;
+  width:200w;
+  height:259w;
+  margin-top: 4vh;
+  float:right;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+}
 
 </style>
