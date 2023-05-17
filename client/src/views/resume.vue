@@ -125,7 +125,7 @@ import '../assets/css/video.css'
 .myName{
    grid-row: 1/2;
    grid-column: 2;
-   font-size: 4.5vmin;
+   font-size: 30px;
    float: left;
    margin-left: 1vw;
    position: absolute;
@@ -169,25 +169,28 @@ import '../assets/css/video.css'
   grid-column: 1/3;
   width:100%;
   height: 100%;
+  overflow-y:scroll;
   // background: #dbdbdb36;
   display: grid;
   grid-template-columns: 20% 45% 15% 20%;
-  grid-template-rows: 5% 45% 50%;
+  grid-template-rows: minmax(50px, 200px) 45% 50%;
+
 }
 
 .intro{
   grid-row:1;
   grid-column:2/4;
   background: #dbdbdb36;
-  width: 100%;
-  height: 100%;
-  // margin-left: 12vw;
+  // width: 100%;
+  // height: 100%;
+  padding: 10px 20px;
   border-radius: 5px;
+  // margin-left: 12vw;
   // overflow: scroll;
 }
 
 .intro p{
-  font-size: 2.3vmin;
+  font-size: 18px;
   font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
   // display: inline;
   text-align: center;
@@ -204,7 +207,7 @@ import '../assets/css/video.css'
 
 .rName p{
   float: left;
-  font-size: 7.5vmin;
+  font-size: 50px;
   font-weight: bolder;
   margin-bottom:0 !important;
 }
@@ -213,15 +216,15 @@ import '../assets/css/video.css'
   float:left;
   line-height: 2vh;
   // position: absolute;
-  font-size: 2.6vmin;
+  font-size: 15px;
 }
 
 .avatar{
   border: 2px solid white;
   grid-row: 2/3;
   grid-column: 3;
-  width:200w;
-  height:259w;
+  width:200px;
+  height:259px;
   margin-top: 4vh;
   float:right;
 }
