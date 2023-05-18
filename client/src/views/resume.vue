@@ -6,14 +6,14 @@
     <Header>
        <div slot="search" class="rSearchBar" >
              <!-- bulb -->
-                  <a-icon type="alert" class="w" theme="outlined" :style="{fontSize:'3.5vmin', color:'white'}" />
+                  <a-icon type="alert" class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}" />
             </div>
     </Header>
   </div>
 
 
       <button class="rSideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
-              <a-icon :style="{fontSize:'2.8vmin',marginTop:'0.5vh'}" :type="collapsed ? 'close' : 'menu-fold'" /></button>
+              <a-icon :style="{fontSize:'24px',marginTop:'5px'}" :type="collapsed ? 'close' : 'menu-fold'" /></button>
 
  
 
@@ -81,7 +81,7 @@ import '../assets/css/video.css'
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
  body{
   line-height:0;
 }
@@ -95,7 +95,7 @@ import '../assets/css/video.css'
 	transform: translate(-50%,-50%);
   display: grid;
   grid-template-columns: auto 95%;
-  grid-template-rows: 8% 92%;
+  grid-template-rows: 60px 92%;
   background: rgba(86, 118, 105, 0.768);
   overflow-y: scroll;
 }
@@ -127,7 +127,7 @@ import '../assets/css/video.css'
    grid-column: 2;
    font-size: 30px;
    float: left;
-   margin-left: 1vw;
+   margin-left: 15px;
    position: absolute;
    color: white;
    font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
@@ -147,7 +147,7 @@ import '../assets/css/video.css'
   grid-column: 1/3;
   box-shadow: 5px 0px 10px -5px rgba(54, 54, 54, 0.527);
   height: 100%;
-  width:30%;
+  width:250px;
   
   // -webkit-box-shadow: #666 0px 0px 10px;
   // -moz-box-shadow: rgb(61, 61, 61) 0px 0px 10px;
@@ -172,9 +172,16 @@ import '../assets/css/video.css'
   overflow-y:scroll;
   // background: #dbdbdb36;
   display: grid;
-  grid-template-columns: 20% 45% 15% 20%;
-  grid-template-rows: minmax(50px, 200px) 45% 50%;
+  grid-template-columns: 20% auto 15% 20%;
+  grid-template-rows: minmax(40px, auto) auto 50%;
+  @media screen and (max-width:1088px){
+     grid-template-rows: minmax(40px, 80px) 16% 50%;
+     grid-template-columns: 10% auto auto 10%;
+  }
 
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  // gap: 15px;
 }
 
 .intro{
@@ -185,6 +192,7 @@ import '../assets/css/video.css'
   // height: 100%;
   padding: 10px 20px;
   border-radius: 5px;
+
   // margin-left: 12vw;
   // overflow: scroll;
 }
@@ -200,9 +208,12 @@ import '../assets/css/video.css'
   width:100%;
   height: 100%;
   grid-row: 2;
-  grid-column: 2/3;
+  grid-column: 2/4;
   margin-top: 3vh;
   float:left;
+  @media screen and (max-width:1088px){
+  
+   }
 }
 
 .rName p{
@@ -210,28 +221,43 @@ import '../assets/css/video.css'
   font-size: 50px;
   font-weight: bolder;
   margin-bottom:0 !important;
+  @media screen and (max-width:1088px){
+   font-size: 35px;  
+   }
 }
 
 .rName span{
   float:left;
-  line-height: 2vh;
+  line-height: 10px;
   // position: absolute;
   font-size: 15px;
+  @media screen and (max-width:1088px){
+    line-height: 1px;
+   }
 }
 
 .avatar{
   border: 2px solid white;
   grid-row: 2/3;
-  grid-column: 3;
+  grid-column: 3/4;
   width:200px;
   height:259px;
   margin-top: 4vh;
   float:right;
+  @media screen and (max-width:1088px){
+   grid-row: 3/4;
+   grid-column: 2/4;
+   margin-top:0; 
+   margin-left:60px;
+   
+  }
 }
 
 .avatar img{
   width:100%;
   height:100%;
 }
+
+
 
 </style>

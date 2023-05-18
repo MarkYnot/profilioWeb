@@ -117,11 +117,6 @@
 //   color: white;
 // }
 
-.headerTilte{
-  grid-column: 2;
-  grid-row: 1;
-  margin-left: 13vw;
-}
 
 /deep/ .ant-menu-submenu{
    border-bottom: 0 !important; 
@@ -146,10 +141,13 @@
 
 .headerTilte{
   float: right;
-  height: 2.2vw;
-  width: auto;
-  margin-top:2vh;
-  margin-right: 0.5vw;
+  height: 30px;
+  width: 30px;
+  margin-top:15px;
+  margin-right: 1vw;
+  grid-column: 2;
+  grid-row: 1;
+  margin-left: 13vw;
   /* animation: logo-icon-spin infinite 20s linear; */
 }
 
@@ -158,16 +156,20 @@
   opacity: 0.6;
 }
 
-
 .headerText{
   float: right;
-  width: 3.2vw;
-  margin-top:1.5vh;
+  width: 40px;
+  height: 45px;
+  margin-top:10px;
+  margin-left:3px;
+
 }
 
 .headerText:hover{
   transition: 0.3s;
   opacity: 0.6;
 }
+
+
 
 </style>
