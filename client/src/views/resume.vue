@@ -31,7 +31,7 @@
             </div>
 
             <div class="rName">
-                <p>JunJie (Mark) Lin</p><br/><br/><br/>
+                <p>JunJie (Mark) Lin</p><br/><br/><br/><br/>
                 <span>Graduate Software Engineer</span>
             </div>
 
@@ -208,10 +208,10 @@ import '../assets/css/video.css'
   width:100%;
   height: 100%;
   grid-row: 2;
-  grid-column: 2/4;
+  grid-column: 2/3;
   margin-top: 3vh;
   float:left;
-  @media screen and (max-width:1088px){
+  @media screen and (max-width:767px){
   
    }
 }
@@ -221,9 +221,11 @@ import '../assets/css/video.css'
   font-size: 50px;
   font-weight: bolder;
   margin-bottom:0 !important;
-  @media screen and (max-width:1088px){
-   font-size: 35px;  
-   }
+  @media screen and (max-width:767px){
+   font-size: 20px;  
+  }
+
+
 }
 
 .rName span{
@@ -231,7 +233,7 @@ import '../assets/css/video.css'
   line-height: 10px;
   // position: absolute;
   font-size: 15px;
-  @media screen and (max-width:1088px){
+  @media screen and (max-width:767px){
     line-height: 1px;
    }
 }
@@ -244,7 +246,7 @@ import '../assets/css/video.css'
   height:259px;
   margin-top: 4vh;
   float:right;
-  @media screen and (max-width:1088px){
+  @media screen and (max-width:767px){
    grid-row: 3/4;
    grid-column: 2/4;
    margin-top:0; 
