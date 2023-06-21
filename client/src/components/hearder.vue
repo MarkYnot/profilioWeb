@@ -31,7 +31,7 @@
             >
                 <a-sub-menu >
                     <span slot="title" >
-                    <a-icon type="alert" theme="outlined" :style="{fontSize:'21px', color:'white'}" />
+                    <a-icon class="mobileList" type="menu" theme="outlined"/>
                     </span>
 
                     <a-menu-item key="setting:1">
@@ -62,7 +62,6 @@
           hasPhoto: false,
           photoCorrect: false,
           windowWidth: window.innerWidth
-
        }
 
     }, 
@@ -103,7 +102,7 @@
   padding: 0;
   line-height: 4.5vh;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;  
   border-bottom: 0px;  
   border-top:0px;  
@@ -135,9 +134,16 @@
   position: relative;
 
   margin-top: 11px;
-  // float:right;
   grid-column: 4;
   grid-row: 1;
+}
+
+.mobileList{
+  font-size:21px;
+  color:white;
+    @media screen and (max-width:280){
+         font-size: 10px;
+   }
 }
 
 // .searchBar{

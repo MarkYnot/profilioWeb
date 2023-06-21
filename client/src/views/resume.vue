@@ -13,7 +13,7 @@
 
 
       <button class="rSideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
-              <a-icon :style="{fontSize:'24px',marginTop:'5px'}" :type="collapsed ? 'close' : 'menu-fold'" /></button>
+              <a-icon class="foldList" :style="{fontSize:'24px',marginTop:'5px'}" :type="collapsed ? 'close' : 'menu-fold'" /></button>
 
  
 
@@ -38,9 +38,48 @@
             <div class="avatar">
                 <img alt="" src="../assets/me.jpg"/>
             </div>
-        
-        </div>
 
+            <div class="aboutMe">
+                 <p>About Me</p>
+                 <span>I am a recent graduated student From the University of Sydney with major study in Software Engineering and have a huge passion for building software to solve some real-life problems. I also enjoy spending time on joining coding competition with my friends like Hackathon or Competitive Programming (Atcoder) during my free times.</span>
+
+                 
+
+                 <p>My Project Blog</p> 
+                 <div class="projectList" >
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <span>02/02/2022</span>
+                </div>
+
+                <div class="projectList" >
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <span>02/02/2022</span>
+                </div>
+
+                <div class="projectList" >
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <span>02/02/2022</span>
+                </div>
+
+                <div class="projectList" >
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <span>02/02/2022</span>
+                </div>
+
+
+                   <p>My habit</p> 
+                   <span>Playing video game (puzzle and rogue-like), listening to music (Lo-fi), reading book (specially sci-fi), manga/anime, doing programming challenge (like Competitive Programming ) and learning about the computer</span>
+
+
+                    <p>I'm on the Internet</p> 
+                     <!-- <ul>
+                        <li>hahah</li>
+                     </ul> -->
+            </div>
+
+  
+
+   </div>
 </div>
 </template>
 
@@ -56,7 +95,8 @@ import '../assets/css/video.css'
           collapsed: false,
           allVideo:[],
           User:[],
-          collectionList:[]
+         
+
        }
     },
 
@@ -82,6 +122,7 @@ import '../assets/css/video.css'
 </script>
 
 <style lang="scss" scoped>
+ 
  body{
   line-height:0;
 }
@@ -98,6 +139,7 @@ import '../assets/css/video.css'
   grid-template-rows: 60px 92%;
   background: rgba(86, 118, 105, 0.768);
   overflow-y: scroll;
+  overflow-x: scroll;
 }
 
  .hpHeader{
@@ -106,13 +148,13 @@ import '../assets/css/video.css'
     grid-column: 2/3;
     background: transparent;
     float:right;
+    // opacity: 0.4;
     // border-bottom: 2px solid #dbdbdb;  
 }
 
 .rSideBarButton{
   width: 3vw;
   height: 3.6vh;
-  // background: black;
   background: none;
   border: 0;
   border-radius: 50%;
@@ -133,6 +175,10 @@ import '../assets/css/video.css'
    font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
    transition: 1s;
    z-index: 20;
+   @media screen and (max-width:767px){
+      font-size: 25px;
+      margin-top: 0.5vh;
+   }
 }
 
 // .buttonBack{
@@ -218,34 +264,58 @@ import '../assets/css/video.css'
   margin-top: 3vh;
   float:left;
   @media screen and (max-width:767px){
-       grid-column: 2/4;
+    grid-column: 2/4;
    }
 }
 
 .rName p{
+  height:0;
   float: left;
   font-size: 50px;
   font-weight: bolder;
-  margin-bottom:0 !important;
+
   @media screen and (max-width:769px){
    font-size: 40px;  
   }
 
 }
 
+//For Samsung and Iphone
 @media screen and (max-width: 767px){
   .rName p{
-  float: left;
-  font-size: 30px;
-  font-weight: bolder;
-  margin-bottom:0 !important;
+    font-size: 30px;
   }
 
+   
   .w{
-    font-size: 23px !important;
-  }
+    font-size: 23px !important;//dark mode icon
+
 }
 
+//For Galaxy Fold
+@media screen and (max-width: 280px){
+    .rName p{
+    font-size: 25px;
+  }
+
+  .avatar{
+       margin-left:40px !important;
+  }
+
+    }
+
+  .foldList{
+     font-size: 19px !important;
+  }
+
+  .rSideBarButton{
+     margin-top: 0.4vh;
+  }
+
+  .myName{
+     font-size: 22px !important;
+  }
+}
 
 .rName span{
   float:left;
@@ -253,7 +323,6 @@ import '../assets/css/video.css'
   // position: absolute;
   font-size: 25px;
   @media screen and (max-width:767px){
-    line-height: 0px;
      font-size: 15px;
    }
 }
@@ -269,8 +338,8 @@ import '../assets/css/video.css'
   @media screen and (max-width:767px){
    grid-row: 3/4;
    grid-column: 2/4;
-   margin-top:0; 
-   margin-left:85px;
+   margin-top:2vh; 
+   margin-left:70px;
    width:150px;
    height:200px;
   }
@@ -280,6 +349,70 @@ import '../assets/css/video.css'
   width:100%;
   height:100%;
 }
+
+.aboutMe{
+  grid-column: 2/4;
+  grid-row:3;
+  width: 100%;
+  height: 100%;
+}
+
+.aboutMe p{
+  float: left;
+  height:0;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration:underline;
+  margin-top:25px;
+}
+
+.aboutMe span{
+  float: left;
+  text-align: left;
+  margin-top:20px;
+}
+
+.projectList{
+    // float: left;
+    width: 100%;
+    height:20vh;
+    float: left;
+    margin-top:10px;
+}
+
+.projectList p{
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 13px;
+  float: left;
+  text-align: left;
+}
+
+.projectList span{
+  float: left;
+  line-height: 1vh;
+}
+
+.projectList:hover{
+  background: rgb(153, 171, 197);
+}
+
+.socialMedia{
+    float: left;
+    width: fit;
+    height:10%;
+    border: solid 1px black;
+    
+}
+
+.socialMedia a{
+  color: black !important;
+  float: left;
+  
+}
+
+
+
 
 
 
