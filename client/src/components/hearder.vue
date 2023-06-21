@@ -7,12 +7,12 @@
 
    </slot> -->
 
-      <a style='grid-column:2' href="https://github.com/MarkYnot" target="_blank"> 
+      <a style='grid-column:2' href="https://github.com/MarkYnot" target="_blank" v-if="!isMobile"> 
           <img class="headerTilte" v-lazy="'/static/github1.png'" alt="headerTitle">   
       </a>
 
 
-      <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank">
+      <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank" v-if="!isMobile">
         <img class="headerText" v-lazy="'/static/linkedin1.png'" alt="headerTitle">
       </a>
 
@@ -20,6 +20,32 @@
       <slot name="search" >
          
       </slot>
+
+
+        <a-menu
+              theme="light"
+              mode="horizontal"
+              style="{lineHeight: 64px}"
+              class="userInfoSlot"
+             v-if="isMobile"
+            >
+                <a-sub-menu >
+                    <span slot="title" >
+                    <a-icon type="alert" theme="outlined" :style="{fontSize:'21px', color:'white'}" />
+                    </span>
+
+                    <a-menu-item key="setting:1">
+                        <a href="https://github.com/MarkYnot" target="_blank">Github</a>
+                      </a-menu-item>
+
+                      <a-menu-item key="setting:2">
+                        <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank">Linkedin</a>
+                      </a-menu-item>
+              
+          
+                </a-sub-menu>
+            
+            </a-menu>
    
       
 </div>
@@ -34,7 +60,9 @@
           username: "Mark",
           photo: "",
           hasPhoto: false,
-          photoCorrect: false
+          photoCorrect: false,
+          windowWidth: window.innerWidth
+
        }
 
     }, 
@@ -42,21 +70,29 @@
       userService
     },
 
-    created(){
-      
+    beforeDestroy(){
+        window.removeEventListener('resize', this.handleResize)
        
     },
 
     
     mounted(){
-      
-
+      window.addEventListener('resize', this.handleResize);
     },
-
+    computed:{
+       
+          isMobile() {
+            return this.windowWidth <= 697; 
+          }
+    },
     methods:{
         onChange(checked) {
       // console.log(`a-switch to ${checked}`);
-    },
+        },
+
+        handleResize() {
+          this.windowWidth = window.innerWidth;
+        }     
     }
   }
 </script>
@@ -76,6 +112,10 @@
   display: grid;
   grid-template-columns: 50% 25% 5% 20%; 
   grid-template-rows: 100%;
+       @media screen and (max-width:767px){
+         grid-template-columns: 50% 20% 10% 20%; 
+   }
+
 }
 
 /deep/ .ant-layout-header{
@@ -93,10 +133,10 @@
 
 .userInfoSlot{
   position: relative;
-  left: 5vw;
-  top: 0.1vh;
+
+  margin-top: 11px;
   // float:right;
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 1;
 }
 

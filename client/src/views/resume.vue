@@ -31,8 +31,8 @@
             </div>
 
             <div class="rName">
-                <p>JunJie (Mark) Lin</p><br/><br/><br/><br/>
-                <span>Graduate Software Engineer</span>
+                <p>JunJie (Mark) Lin</p><br/><br/><br/>
+                <span>Software Engineer</span>
             </div>
 
             <div class="avatar">
@@ -154,10 +154,13 @@ import '../assets/css/video.css'
 }
 
 .rSearchBar{
-   width:15vw;
-   height:5vh;
-   margin-top: 2vh;
+  //  width:15vw;
+  //  height:5vh;
+   margin-top: 10px;
    transition: all 1s;
+     @media screen and (max-width:767px){
+       grid-column: 3/4;
+   }
 }
 
 .rSearchBar:hover{
@@ -202,6 +205,9 @@ import '../assets/css/video.css'
   font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
   // display: inline;
   text-align: center;
+    @media screen and (max-width:767px){
+       font-size: 15px;
+   }
 }
 
 .rName{
@@ -212,7 +218,7 @@ import '../assets/css/video.css'
   margin-top: 3vh;
   float:left;
   @media screen and (max-width:767px){
-  
+       grid-column: 2/4;
    }
 }
 
@@ -221,20 +227,34 @@ import '../assets/css/video.css'
   font-size: 50px;
   font-weight: bolder;
   margin-bottom:0 !important;
-  @media screen and (max-width:767px){
-   font-size: 20px;  
+  @media screen and (max-width:769px){
+   font-size: 40px;  
   }
 
-
 }
+
+@media screen and (max-width: 767px){
+  .rName p{
+  float: left;
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom:0 !important;
+  }
+
+  .w{
+    font-size: 23px !important;
+  }
+}
+
 
 .rName span{
   float:left;
   line-height: 10px;
   // position: absolute;
-  font-size: 15px;
+  font-size: 25px;
   @media screen and (max-width:767px){
-    line-height: 1px;
+    line-height: 0px;
+     font-size: 15px;
    }
 }
 
@@ -250,8 +270,9 @@ import '../assets/css/video.css'
    grid-row: 3/4;
    grid-column: 2/4;
    margin-top:0; 
-   margin-left:60px;
-   
+   margin-left:85px;
+   width:150px;
+   height:200px;
   }
 }
 
