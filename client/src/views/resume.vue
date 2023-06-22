@@ -17,7 +17,7 @@
 
  
 
-       <span  class="myName" :style="collapsed?'color: black' :'color: white'">  JUNJIE LIN</span>
+       <span  class="myName" @click="redirecting()" :style="collapsed?'color: black' :'color: white'">  JUNJIE LIN</span>
 
         <transition name="SidebarFade">
         <div class="SideBar" v-if="this.collapsed">
@@ -47,22 +47,22 @@
 
                  <p>My Project Blog</p> 
                  <div class="projectList" >
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website </p>
                     <span>02/02/2022</span>
                 </div>
 
                 <div class="projectList" >
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
                     <span>02/02/2022</span>
                 </div>
 
                 <div class="projectList" >
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
                     <span>02/02/2022</span>
                 </div>
 
                 <div class="projectList" >
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p><br/><br/>
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
                     <span>02/02/2022</span>
                 </div>
 
@@ -71,10 +71,16 @@
                    <span>Playing video game (puzzle and rogue-like), listening to music (Lo-fi), reading book (specially sci-fi), manga/anime, doing programming challenge (like Competitive Programming ) and learning about the computer</span>
 
 
-                    <p>I'm on the Internet</p> 
-                     <!-- <ul>
-                        <li>hahah</li>
-                     </ul> -->
+                    <p>Reach me on the Internet</p> <br/><br/>
+                     <ul role="list" class="socialMedia">
+                        <li><a href="https://github.com/MarkYnot" target="_blank"><button><img v-lazy="'/static/github.png'"><span>@MarkYnot</span></button></a></li>
+                        
+                         <li><a href="https://www.linkedin.com/in/junjie-lin-142444216/" target="_blank"><button><img v-lazy="'/static/linkedin.png'"><span>@Linkedin(Junjie Lin)</span></button></a></li>
+                        
+                          <!-- <li><a href="https://github.com/MarkYnot" target="_blank"><button><img v-lazy="'/static/github1.png'"><span>@MarkYnot</span></button></a></li> -->
+                        
+                          <li><a><button><img v-lazy="'/static/gmail.png'"><span>mark727221029@gmail.com</span></button></a></li>
+                     </ul>
             </div>
 
   
@@ -106,6 +112,10 @@ import '../assets/css/video.css'
      VideoService
    },
 
+   mounted(){
+      console.log(window.innerWidth, window.innerHeight)
+   },
+
    async created(){
        
 
@@ -114,7 +124,11 @@ import '../assets/css/video.css'
    methods:{
       toggleCollapsed() {
       this.collapsed = !this.collapsed;
-    }
+    },
+
+      redirecting() {
+        this.$router.push('/')
+    },
 
    }
     
@@ -218,29 +232,25 @@ import '../assets/css/video.css'
   grid-column: 1/3;
   width:100%;
   height: 100%;
-  overflow-y:scroll;
+  // overflow-y:scroll;
   // background: #dbdbdb36;
   display: grid;
   grid-template-columns: 20% auto 15% 20%;
-  grid-template-rows: minmax(40px, auto) auto 50%;
-  @media screen and (max-width:1088px){
-     grid-template-rows: minmax(40px, 80px) 16% 50%;
-     grid-template-columns: 10% auto auto 10%;
-  }
-
+  grid-template-rows: 20% auto 50%;
   // display: grid;
   // grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   // gap: 15px;
 }
 
 .intro{
-  grid-row:1;
+  grid-row:1/2;
   grid-column:2/4;
   background: #dbdbdb36;
-  // width: 100%;
-  // height: 100%;
+  width: 100%;
+  height: fit-content;
   padding: 10px 20px;
   border-radius: 5px;
+  overflow-y: hidden;
 
   // margin-left: 12vw;
   // overflow: scroll;
@@ -263,9 +273,6 @@ import '../assets/css/video.css'
   grid-column: 2/3;
   margin-top: 3vh;
   float:left;
-  @media screen and (max-width:767px){
-    grid-column: 2/4;
-   }
 }
 
 .rName p{
@@ -273,36 +280,85 @@ import '../assets/css/video.css'
   float: left;
   font-size: 50px;
   font-weight: bolder;
-
   @media screen and (max-width:769px){
    font-size: 40px;  
   }
 
 }
 
+.rName span{
+  float:left;
+  line-height: 10px;
+  // position: absolute;
+  font-size: 25px;
+}
+
 //For Samsung and Iphone
 @media screen and (max-width: 767px){
-  .rName p{
-    font-size: 30px;
+  .rName{
+    grid-column: 2/4;
   }
 
-   
+  // .rName p{
+  //   font-size: 30px !important;
+  // }
+
+  .rName span{
+   font-size: 15px !important;
+}
+
   .w{
     font-size: 23px !important;//dark mode icon
+  }
 
+  .Content{
+     grid-template-rows: 18% auto auto auto;
+     grid-template-columns: 10% auto auto 10%;
+  }
+
+.avatar{
+     grid-row: 3/4 !important;
+     grid-column: 2/4 !important;
+     margin-top:2vh !important; 
+     margin-left:50px;
+     width:150px;
+     height:200px;
+     z-index: 1;
+     float:none !important;
+  }
+
+ .aboutMe{
+     z-index: 1;
+     grid-row: 4/5 !important;
+ }
+
+ .projectList span{
+    margin-top: 40px !important;
+ }
+}
+
+
+//for ipad and ipad mini
+@media screen and (max-width: 820px){
+  .rName p{
+    font-size: 35px !important;
+  }
+
+   .projectList span{
+    margin-top: 40px !important;
+ }
 }
 
 //For Galaxy Fold
 @media screen and (max-width: 280px){
     .rName p{
-    font-size: 25px;
+    font-size: 27px !important;
   }
 
   .avatar{
-       margin-left:40px !important;
+       margin-left:20px !important;
   }
 
-    }
 
   .foldList{
      font-size: 19px !important;
@@ -315,17 +371,22 @@ import '../assets/css/video.css'
   .myName{
      font-size: 22px !important;
   }
+
+  .projectList span{
+    line-height: 55px !important;
+  }
+
+   .projectList span{
+    margin-top: 40px !important;
+ }
+
+   .aboutMe{
+    grid-column: 2/5 !important;
+   }
+
 }
 
-.rName span{
-  float:left;
-  line-height: 10px;
-  // position: absolute;
-  font-size: 25px;
-  @media screen and (max-width:767px){
-     font-size: 15px;
-   }
-}
+
 
 .avatar{
   border: 2px solid white;
@@ -335,14 +396,6 @@ import '../assets/css/video.css'
   height:259px;
   margin-top: 4vh;
   float:right;
-  @media screen and (max-width:767px){
-   grid-row: 3/4;
-   grid-column: 2/4;
-   margin-top:2vh; 
-   margin-left:70px;
-   width:150px;
-   height:200px;
-  }
 }
 
 .avatar img{
@@ -352,9 +405,9 @@ import '../assets/css/video.css'
 
 .aboutMe{
   grid-column: 2/4;
-  grid-row:3;
+  grid-row:3/4;
   width: 100%;
-  height: 100%;
+  height: fit-content;
 }
 
 .aboutMe p{
@@ -373,24 +426,25 @@ import '../assets/css/video.css'
 }
 
 .projectList{
-    // float: left;
     width: 100%;
-    height:20vh;
+    min-height: 60px;
+    height:fit-content;
     float: left;
-    margin-top:10px;
+    margin-top:30px;
+
 }
 
 .projectList p{
   text-decoration: none !important;
   font-weight: 700;
   font-size: 13px;
-  float: left;
   text-align: left;
+  margin: 0;
 }
 
 .projectList span{
+  // margin-top: 1vh;
   float: left;
-  line-height: 1vh;
 }
 
 .projectList:hover{
@@ -399,21 +453,55 @@ import '../assets/css/video.css'
 
 .socialMedia{
     float: left;
-    width: fit;
-    height:10%;
-    border: solid 1px black;
-    
+    width: 100%;
+    height:fit-content;
+    padding: 0;
+    // border: solid 1px black;
 }
+
+.socialMedia li{
+  width: 100%;
+  float: left;
+  margin-top: 2vh;
+  margin-left:1vw;
+  font-weight: bold;
+  list-style: none;
+
+  // list-style-image: url(../assets/Ecommerce.jpeg);
+}
+
+.socialMedia li button{
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  width: fit-content;
+}
+
+.socialMedia li button:hover{
+   background: rgb(153, 171, 197);
+   transition: 0.4s;
+}
+
+.socialMedia li button span{
+   grid-column: 2;
+   margin: 0;
+   font-size: 12px;
+   font-weight: 500;
+}
+
+.socialMedia li button img{
+   grid-column: 1;
+   height: 15px;
+   width: 15px;
+}
+
 
 .socialMedia a{
-  color: black !important;
-  float: left;
-  
+ color: black !important;
+ float: left;
 }
-
-
-
-
 
 
 </style>

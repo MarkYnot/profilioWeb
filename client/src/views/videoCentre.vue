@@ -546,7 +546,6 @@ a{
   height: 100%;
   z-index: 1;
   display: grid;
-
   grid-template-rows: 65% 35%;
 }
 
@@ -773,6 +772,31 @@ a{
 .itemText span:hover{
    transition: all 0.6s;
    text-decoration: underline;
+}
+
+@media screen and (max-width:769px){
+    //5project Menus
+   .MenuItem{
+     font-size: 13px;
+     margin-left: 3.5vw;
+   }
+
+   .videoContent{
+      grid-column: 2/4;
+   }
+
+   .videoContent span{
+     font-size: 25px;
+     margin-left: 9px !important;
+     margin-top: 20rem!important;
+   }
+
+   .videoCentreContainer{
+     background: url('../assets/videogif2.gif') 50% 50% / cover !important;
+   }
+
+
+
 }
 
 
