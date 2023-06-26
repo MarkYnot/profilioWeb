@@ -76,7 +76,7 @@
 
     
     mounted(){
-      window.addEventListener('resize', this.handleResize);
+       window.addEventListener('resize', this.handleResize);
     },
     computed:{
        
@@ -132,10 +132,12 @@
 
 .userInfoSlot{
   position: relative;
-
   margin-top: 11px;
   grid-column: 4;
   grid-row: 1;
+    @media  screen and (max-width: 697px) {
+       grid-column: 3/5 !important;
+    }
 }
 
 .mobileList{

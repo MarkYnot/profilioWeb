@@ -86,7 +86,7 @@
 
 
     <button class="sideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
-              <a-icon :style="{fontSize:'3vw'}" :type="collapsed ? 'close' : 'menu-fold'" />  
+              <a-icon class="sideBarIcon" :style="{fontSize:'3vw'}" :type="collapsed ? 'close' : 'menu-fold'" />  
    </button>
       
 <!-- 
@@ -141,6 +141,8 @@ import videoImg2 from '../assets/Ecommerce.jpeg'
 import videoImg3 from '../assets/videogif2.gif'
 import videoImg4 from '../assets/videoSelection2.png'
 import videoImg5 from '../assets/videoSelection3.jpg'
+import videoImg6 from '../assets/fly.jpg'
+
   export default {
     data(){
        return {
@@ -213,7 +215,9 @@ import videoImg5 from '../assets/videoSelection3.jpg'
            fontWeight1: true,
            fontWeight2: true,
            fontWeight3: true,
-           fontWeight4: true
+           fontWeight4: true,
+           windowWidth: 0
+
        }
     },
 
@@ -223,8 +227,16 @@ import videoImg5 from '../assets/videoSelection3.jpg'
      VideoService
    },
 
+   beforeDestroy(){
+    window.removeEventListener('resize', this.changeSize)
+   },
+
     mounted(){
-     this.backImg = this. videoImgList[0].icon
+       window.addEventListener('resize', this.changeSize)
+
+      if(window.innerWidth > 697) this.backImg = this.videoImgList[0].icon
+      else if(window.innerWidth <= 697) this.backImg = videoImg6;
+     
      let selectedMenuItem = document.getElementById(this.MenuItem);
      selectedMenuItem.style.fontWeight = "900"
    },
@@ -233,6 +245,15 @@ import videoImg5 from '../assets/videoSelection3.jpg'
       toggleCollapsed() {
       this.collapsed = !this.collapsed;
     },
+
+      changeSize() {
+          // this.windowWidth = window.innerWidth;
+          if(window.innerWidth <= 820 && this.pageNumber == 0){
+              this.backImg = videoImg6;
+          }else if(window.innerWidth > 820 && this.pageNumber == 0){
+              this.backImg = this.videoImgList[0].icon
+          }
+      },   
     
     redirecting() {
         this.$router.push(this.path)
@@ -358,7 +379,12 @@ import videoImg5 from '../assets/videoSelection3.jpg'
         MenuItemList.forEach(element => {
            element.style.fontWeight = ""
         });
-         this.backImg = this.videoImgList[number].icon
+
+
+        if(window.innerWidth <= 820 && number == 0 ) this.backImg = videoImg6 
+        else this.backImg = this.videoImgList[number].icon
+         
+
          this.MenuItem = "MenuItem" + number
          let selectedMenuItem = document.getElementById(this.MenuItem);
          selectedMenuItem.style.fontWeight = "900"
@@ -774,11 +800,16 @@ a{
    text-decoration: underline;
 }
 
-@media screen and (max-width:769px){
+// for iphone, samsung
+@media screen and (max-width:767px){
     //5project Menus
    .MenuItem{
      font-size: 13px;
-     margin-left: 3.5vw;
+     margin-left: 18px;
+   }
+
+   .bottomMenu{
+     margin-left: 14px;
    }
 
    .videoContent{
@@ -788,19 +819,39 @@ a{
    .videoContent span{
      font-size: 25px;
      margin-left: 9px !important;
-     margin-top: 20rem!important;
+     margin-top: 85% !important;
    }
 
-   .videoCentreContainer{
-     background: url('../assets/videogif2.gif') 50% 50% / cover !important;
+  //  .videoCentreContainer{
+  //    background: url('../assets/videogif2.gif') 50% 50% / cover !important;
+  //  }
+
+   .searchBar{
+        grid-column: 1/3;
+        margin-left:60px;
+        margin-top: 9px;
+        width: 75%;
    }
 
+   .searchBar span{
+      font-size: 15px;
+   }
 
+   .w{
+      font-size: 20px !important;
+   }
 
+    .name{
+      font-size: 20px !important;
+      margin-top: 8px;
+      margin-left: 10px;
+    }
+   
+    .sideBarIcon{
+      font-size: 18px !important;
+      margin-top: 8px;
+    }
 }
-
-
-
 
 
 </style>
