@@ -234,8 +234,8 @@ import videoImg6 from '../assets/fly.jpg'
     mounted(){
        window.addEventListener('resize', this.changeSize)
 
-      if(window.innerWidth > 697) this.backImg = this.videoImgList[0].icon
-      else if(window.innerWidth <= 697) this.backImg = videoImg6;
+      if(window.innerWidth > 820) this.backImg = this.videoImgList[0].icon
+      else if(window.innerWidth <= 820) this.backImg = videoImg6;
      
      let selectedMenuItem = document.getElementById(this.MenuItem);
      selectedMenuItem.style.fontWeight = "900"
@@ -248,9 +248,9 @@ import videoImg6 from '../assets/fly.jpg'
 
       changeSize() {
           // this.windowWidth = window.innerWidth;
-          if(window.innerWidth <= 820 && this.pageNumber == 0){
+          if(window.innerWidth <= 912 && this.pageNumber == 0){
               this.backImg = videoImg6;
-          }else if(window.innerWidth > 820 && this.pageNumber == 0){
+          }else if(window.innerWidth > 912 && this.pageNumber == 0){
               this.backImg = this.videoImgList[0].icon
           }
       },   
@@ -852,6 +852,50 @@ a{
       margin-top: 8px;
     }
 }
+
+//For ipad 
+// @media screen and (max-width:912px){
+//        .searchBar{
+//         grid-column: 1/3;
+//         margin-left:90px;
+//         margin-top: 9px;
+//         width: 75%;
+//    }
+
+//      .searchBar span{
+//       font-size: 38px;
+//    }
+
+//       .w{
+//       font-size: 38px ;
+//    }
+
+//      .sideBarIcon{
+//       font-size: 30px ;
+//       margin-top: 8px;
+//     }
+
+//    .videoContent{
+//      grid-column: 1/4;
+//    }
+
+//    .videoContent span{
+//     margin-left: 100px;
+//     margin-top: 39vh;
+//     font-size: 35px;
+//    }
+
+//     .MenuItem{
+//      font-size: 25px;
+//      margin-left: 5.5vw;
+//    }
+
+//     .bottomMenu{
+//      margin-left: 8px;
+//    }
+
+
+// }
 
 
 </style>

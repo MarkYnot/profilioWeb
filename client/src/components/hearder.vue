@@ -81,7 +81,7 @@
     computed:{
        
           isMobile() {
-            return this.windowWidth <= 697; 
+            return this.windowWidth <= 912; 
           }
     },
     methods:{
@@ -140,12 +140,29 @@
     }
 }
 
+@media screen and (max-width: 912px){
+      .userInfoSlot{
+        grid-column: 3/5 !important;
+      }
+
+      .mobileList{
+        font-size:25px !important;
+        margin-top: 8px;
+      }
+}
+
+@media screen and (max-width: 280px){
+     .mobileList{
+       font-size: 10px !important;
+     }
+}
+
 .mobileList{
   font-size:21px;
   color:white;
-    @media screen and (max-width:280){
-         font-size: 10px;
-   }
+  //   @media screen and (max-width:280px){
+  //        font-size: 10px !important;
+  //  }
 }
 
 // .searchBar{
