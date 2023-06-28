@@ -865,7 +865,7 @@ a{
     }
 
     .resultIntro img{
-      height: 85%;
+      height: 70%;
       width: 25%;
     }
 
@@ -881,6 +881,31 @@ a{
 
     .itemText span{
       font-size: 10px;
+    }
+
+    .searchArea{
+      grid-template-rows: 17% 8% 10% 25% 40%;
+    }
+
+    .popular {
+      grid-row: 3;
+      grid-column: 1/4;
+      margin-top: 40px;
+      margin-left: 25px;
+      font-size: 23px;
+    }
+
+    .searchResult{
+      grid-row: 4/7;
+      grid-column: 1/4;
+      margin-left: 35px;
+      margin-top: 20px;
+    }
+
+    .searchInput{
+      grid-column: 1/4;
+      margin-left: 25px;
+      width:85%;
     }
 }
 
