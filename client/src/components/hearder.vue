@@ -140,7 +140,8 @@
     }
 }
 
-@media screen and (max-width: 912px){
+//For ipad and sueface pro 7
+@media screen and (min-width: 768px)and (max-width: 912px){
       .userInfoSlot{
         grid-column: 3/5 !important;
       }

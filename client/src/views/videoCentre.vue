@@ -741,7 +741,7 @@ a{
   float: left;
   font-size: 4vmin;
   font-weight: bold;
-  height:100%;
+  // height:100%;
   // width:100%;
   // overflow-y: ;
 }
@@ -766,6 +766,10 @@ a{
   margin-left: 0.6vw;
   height:9vh;
   width:9vw;
+}
+
+.resultIntro a{
+   color: black !important;
 }
 
 .itemText{
@@ -801,7 +805,7 @@ a{
 }
 
 // for iphone, samsung
-@media screen and (max-width:767px){
+@media screen and (min-width: 281px)and (max-width:767px){
     //5project Menus
    .MenuItem{
      font-size: 13px;
@@ -819,12 +823,15 @@ a{
    .videoContent span{
      font-size: 25px;
      margin-left: 9px !important;
-     margin-top: 85% !important;
+     margin-top: 70% !important;
    }
 
-  //  .videoCentreContainer{
-  //    background: url('../assets/videogif2.gif') 50% 50% / cover !important;
-  //  }
+   .contentButton{
+     width: 180px;
+     height: 30px;
+     margin-left: 15px;
+     margin-top: 10px;
+   }
 
    .searchBar{
         grid-column: 1/3;
@@ -851,51 +858,75 @@ a{
       font-size: 18px !important;
       margin-top: 8px;
     }
+
+    .resultIntro{
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .resultIntro img{
+      height: 85%;
+      width: 25%;
+    }
+
+    .itemText{
+      float: left;
+      width: 180px;
+      margin-left: 10px;
+    }
+
+    .itemText p{
+      font-size: 15px;
+    }
+
+    .itemText span{
+      font-size: 10px;
+    }
 }
 
-//For ipad 
-// @media screen and (max-width:912px){
-//        .searchBar{
-//         grid-column: 1/3;
-//         margin-left:90px;
-//         margin-top: 9px;
-//         width: 75%;
-//    }
+//For ipad and surface pro 7
+@media screen and (min-width: 768px)and (max-width:912px){
+       .searchBar{
+        grid-column: 1/3;
+        margin-left:90px;
+        margin-top: 9px;
+        width: 75%;
+   }
 
-//      .searchBar span{
-//       font-size: 38px;
-//    }
+     .searchBar span{
+      font-size: 38px;
+   }
 
-//       .w{
-//       font-size: 38px ;
-//    }
+      .w{
+       font-size: 38px !important;
+   }
 
-//      .sideBarIcon{
-//       font-size: 30px ;
-//       margin-top: 8px;
-//     }
+     .sideBarIcon{
+      font-size: 30px ;
+      margin-top: 8px;
+    }
 
-//    .videoContent{
-//      grid-column: 1/4;
-//    }
+   .videoContent{
+     grid-column: 1/4;
+   }
 
-//    .videoContent span{
-//     margin-left: 100px;
-//     margin-top: 39vh;
-//     font-size: 35px;
-//    }
+   .videoContent span{
+    margin-left: 100px;
+    margin-top: 39vh;
+    font-size: 35px;
+   }
 
-//     .MenuItem{
-//      font-size: 25px;
-//      margin-left: 5.5vw;
-//    }
+    .MenuItem{
+     font-size: 25px;
+     margin-left: 5.5vw;
+   }
 
-//     .bottomMenu{
-//      margin-left: 8px;
-//    }
+    .bottomMenu{
+     margin-left: 8px;
+   }
 
 
-// }
+}
 
 
 </style>
