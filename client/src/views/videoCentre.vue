@@ -234,8 +234,8 @@ import videoImg6 from '../assets/fly.jpg'
     mounted(){
        window.addEventListener('resize', this.changeSize)
 
-      if(window.innerWidth > 820) this.backImg = this.videoImgList[0].icon
-      else if(window.innerWidth <= 820) this.backImg = videoImg6;
+      if(window.innerWidth > 912) this.backImg = this.videoImgList[0].icon
+      else if(window.innerWidth <= 912) this.backImg = videoImg6;
      
      let selectedMenuItem = document.getElementById(this.MenuItem);
      selectedMenuItem.style.fontWeight = "900"
@@ -249,8 +249,10 @@ import videoImg6 from '../assets/fly.jpg'
       changeSize() {
           // this.windowWidth = window.innerWidth;
           if(window.innerWidth <= 912 && this.pageNumber == 0){
+              console.log(1)
               this.backImg = videoImg6;
           }else if(window.innerWidth > 912 && this.pageNumber == 0){
+               console.log(2)
               this.backImg = this.videoImgList[0].icon
           }
       },   
@@ -805,7 +807,7 @@ a{
 }
 
 // for iphone, samsung
-@media screen and (min-width: 281px)and (max-width:767px){
+@media screen and (max-width:767px){
     //5project Menus
    .MenuItem{
      font-size: 13px;
@@ -861,12 +863,13 @@ a{
 
     .resultIntro{
       width: 100%;
-      margin-top: 10px;
+      height: 16%;
+      margin-top: 1px;
     }
 
     .resultIntro img{
-      height: 70%;
-      width: 25%;
+      height: 50%;
+      width: 15%;
     }
 
     .itemText{
@@ -876,7 +879,7 @@ a{
     }
 
     .itemText p{
-      font-size: 15px;
+      font-size: 11px;
     }
 
     .itemText span{
@@ -907,6 +910,58 @@ a{
       margin-left: 25px;
       width:85%;
     }
+
+    .resultArea{
+      grid-column: 1/4;
+    }
+
+    .returnedResult{
+      margin-left: 25px;
+      height: 16%;
+      width: 85%;
+      margin-top: 10px;
+    }
+
+    .returnedResult a{
+      color: black !important;
+    }
+
+    .returnedResult img{
+     height: 50%;
+     width: 15%;
+    }
+
+
+    .resultText p{
+      font-size: 13px !important;
+    }
+
+    .resultText span{
+      font-size: 11px;
+    }
+
+    .resultText{
+      line-height: 10px;
+    }
+
+    .resultType{
+      font-size: 10px;
+    }
+
+
+}
+
+//For Surface Duo
+@media screen and (min-width: 540px) and (max-width: 767px){
+   .videoContent span{
+      // font-size: 20px;
+      margin-top: 55% !important;
+  }
+  
+   .MenuItem{
+       margin-left: 27px; 
+       font-size: 16px;
+   }
 }
 
 //For ipad and surface pro 7
@@ -918,16 +973,16 @@ a{
         width: 75%;
    }
 
-     .searchBar span{
+   .searchBar span{
       font-size: 38px;
    }
 
-      .w{
+   .w{
        font-size: 38px !important;
    }
 
-     .sideBarIcon{
-      font-size: 30px ;
+    .sideBarIcon{
+      font-size: 30px;
       margin-top: 8px;
     }
 
@@ -941,13 +996,60 @@ a{
     font-size: 35px;
    }
 
-    .MenuItem{
+   .MenuItem{
      font-size: 25px;
      margin-left: 5.5vw;
    }
 
     .bottomMenu{
      margin-left: 8px;
+   }
+}
+
+// For galaxy fold
+@media screen and (max-width:280px){
+    .name{
+      font-size: 16px !important;
+    }
+
+    .sideBarIcon{
+      font-size: 14px !important;
+    }
+
+    .searchBar{
+      grid-column: 1/3;
+      margin-left: 40px;
+    }
+
+       .searchBar span{
+      font-size: 12px;
+   }
+
+   .w{
+      font-size: 15px !important;
+   }
+
+   .videoContent span{
+      font-size: 20px;
+      margin-top: 90% !important;
+   }
+
+   .bottomMenu{
+    grid-column: 1/4;
+    
+   }
+
+   .MenuItem{
+       margin-left: 10px; 
+       font-size: 11.5px;
+   }
+
+   .resultText{
+     line-height: 7px;
+   }
+
+   .returnedResult{
+    width: 90%;
    }
 
 

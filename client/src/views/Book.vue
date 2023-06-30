@@ -57,8 +57,27 @@ export default {
 
   },
 
-  method(){
+  methods:{
+    test(){
+         const codeBlock = document.getElementById('codeBlock');
+        const codeLines = Array.from(codeBlock.querySelectorAll('.code-line'));
+        const codeWithoutLineNumbers = codeLines.map(line => line.innerText.replace(/^\d+\s/, '')).join('\n');
 
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = codeWithoutLineNumbers;
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextarea);
+
+        this.isCopied = true;
+        this.copyButtonText = 'Copied';
+
+        setTimeout(() => {
+          this.isCopied = false;
+          this.copyButtonText = 'Copy';
+        }, 2000);
+    }
 
   }
 

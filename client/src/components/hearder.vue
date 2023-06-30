@@ -152,10 +152,19 @@
       }
 }
 
+
+//for Galaxy fold
 @media screen and (max-width: 280px){
      .mobileList{
        font-size: 10px !important;
      }
+
+       .userInfoSlot{
+        grid-column: 2/5 !important;
+        margin-left: 20px;
+      }
+
+
 }
 
 .mobileList{
