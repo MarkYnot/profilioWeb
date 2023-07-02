@@ -239,6 +239,7 @@ import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
 import '../assets/css/searchBar.css'
 import '../assets/css/sidebar.css'
+import '../assets/css/mediaQuery.css'
 import '../assets/css/animation.css'
 import videoImg1 from '../assets/Ecommerce.jpeg'
 import videoImg2 from '../assets/login.png'
@@ -572,7 +573,6 @@ body{
   
 // }
 
-
 .SideBar{
   grid-row: 1/4;
   grid-column: 1/4;
@@ -582,7 +582,6 @@ body{
   border-right: black;
   z-index: 10;
   transition: 2s;
-
 }
 
 .projectIntroduction{
@@ -1025,5 +1024,6 @@ body{
   grid-column: 1 !important;
   grid-row: 2 !important;
 }
+
 
 </style>
