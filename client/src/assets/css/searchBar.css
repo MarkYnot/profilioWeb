@@ -1,7 +1,8 @@
 .searchBar{
   grid-column: 4;
   grid-row: 1;
-  margin-top: 2.5vh;
+  width:15vw;
+  height:4vh;
 }
 
 .searchBar:hover{

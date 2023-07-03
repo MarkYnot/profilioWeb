@@ -6,12 +6,12 @@
 
 
    </slot> -->
-       <a style='grid-column:2' href="https://github.com/MarkYnot" target="_blank"> 
+       <a style='grid-column:2' href="https://github.com/MarkYnot" target="_blank" v-if="!isMobile"> 
           <img class="headerTilte" v-lazy="'/static/github1.png'" alt="headerTitle">
        </a>
 
 
-        <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank">
+        <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank" v-if="!isMobile">
         <img class="headerText" v-lazy="'/static/linkedin1.png'" alt="headerTitle">
         </a>
   
@@ -19,6 +19,31 @@
       <slot name="search" >
          
       </slot>
+
+       <a-menu
+              theme="light"
+              mode="horizontal"
+              style="{lineHeight: 64px}"
+              class="mobileMenu"
+             v-if="isMobile"
+            >
+                <a-sub-menu >
+                    <span slot="title" >
+                    <a-icon class="mobileListIcon" type="menu" theme="outlined"/>
+                    </span>
+
+                    <a-menu-item key="setting:1">
+                        <a href="https://github.com/MarkYnot" target="_blank">Github</a>
+                      </a-menu-item>
+
+                      <a-menu-item key="setting:2">
+                        <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank">Linkedin</a>
+                      </a-menu-item>
+              
+          
+                </a-sub-menu>
+            
+            </a-menu>
   
 
 
@@ -33,9 +58,7 @@
     data(){
        return {
           username: "Mark",
-          photo: "",
-          hasPhoto: false,
-          photoCorrect: false
+          windowWidth: window.innerWidth
        }
 
     }, 
@@ -43,65 +66,21 @@
       userService
     },
 
-    created(){
-      
-       
+    computed:{
+        isMobile(){
+           return this.windowWidth <= 912
+        }  
     },
 
-    
     mounted(){
-      
-           
-        const userid = this.$cookies.get('userid')
-      //   if(userid){
-      //         userService.getUserInfo(userid).then(user=>{
-                   
-      //            if(user.data[0].photo || user.data[0].lastname){
-      //                console.log(user)
-      //               this.username = user.data[0].lastname
-      //               this.photo = user.data[0].photo
-      //               this.hasPhoto = true
-      //               this.checkPhoto()
-      //               this.$emit('currentUser',user.data[0])
-      //            }
-      //   });
-        
-      //   }else{
-      //       alert('please login first')
-      //       this.$router.push({path: "/login"})
-
-      // }
-
-
+       window.addEventListener('resize', this.onChange)
     },
 
     methods:{
-        onChange(checked) {
-      // console.log(`a-switch to ${checked}`);
+        onChange() {
+         this.windowWidth = window.innerWidth;
     },
 
-    checkPhoto(){
-   
-      if(this.photo.includes('base64')){
-          
-          this.photoCorrect = true
-      }
-
-
-    },
-
-    async logout(){
-       const userid = this.$cookies.get('userid')
-      let confirmation = confirm('Are you sure log out?') 
-             if(confirmation){
-                this.$cookies.remove("firstname"); 
-                this.$cookies.remove("lastname");
-                this.$cookies.remove("state");
-                this.$cookies.remove("username");
-                this.$cookies.remove("userid");
-                this.$router.push({path:"/login"})
-            }
-       }
 
     }
   }
@@ -137,26 +116,30 @@
   box-shadow: #666 0px 0px 10px;
 }
 
-.userInfoSlot{
+.mobileMenu{
   position: relative;
-  left: 5vw;
-  top: 0.1vh;
-  // float:right;
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.searchBar{
+  top: 12px;
+  padding-left: 20px;
   grid-column: 4;
   grid-row: 1;
-  position: relative;
-  top:1.5vh;
 }
 
-.searchBar span{
-  font-size: 1.5vw;
-  font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif !important;
-  color: white;
+// .searchBar{
+//   grid-column: 4;
+//   grid-row: 1;
+//   position: relative;
+//   top:1.5vh;
+// }
+
+// .searchBar span{
+//   font-size: 1.5vw;
+//   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif !important;
+//   color: white;
+// }
+
+.mobileListIcon{
+  font-size:21px;
+  color:white;
 }
 
 

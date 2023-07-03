@@ -3,27 +3,27 @@
 
 <!-- search status -->
   <transition name="fade">
-  <div class="searchArea" v-show="this.search">
+  <div class="searchStatus" v-show="this.search">
 
       <transition name="searchTransition">
-        <div class="searchInput" v-show="this.search">
+        <div class="searchingInput" v-show="this.search">
     
           <input placeholder="Type And Press Enter to Search" v-model="searchInput" @change="searching($event)"/>
-          <a-icon type="close" theme="outlined" class="close"  @click="closeSearch()"/>
+          <a-icon type="close" theme="outlined" class="closeIcon"  @click="closeSearch()"/>
         </div>
       </transition>
 
 
-   <div class="resultArea" v-if="this.resultReturn">
-      <div class="returnedResult" v-for="result in resultList" :key="result.id">
+   <div class="resultSet" v-if="this.resultReturn">
+      <div class="searchResult" v-for="result in resultList" :key="result.id">
            <router-link :to="result.link">
           <img alt="" :src="result.photoLink">
-                   <div class="resultText">
+                   <div class="resultFrame">
                       <p>{{result.name}}</p><br/>
                       <span>{{result.stack}}</span>
                    </div>
 
-            <span class="resultType">{{result.category}}</span>
+            <span class="resultCategory">{{result.category}}</span>
            </router-link>
       </div>
    </div>
@@ -40,15 +40,15 @@
 
 
       <transition name="searchTransition">
-      <span class="popular" v-show="this.popular" >Latest result</span>
+      <span class="LastestResult" v-show="this.popular" >Latest result</span>
        </transition>
 
       <transition name="searchTransition">
-      <div class="searchResult" v-show="this.popular">
-          <div class="resultIntro" :key="item.id" v-for="item in projectList">
+      <div class="searchMatch" v-show="this.popular">
+          <div class="matchIntro" :key="item.id" v-for="item in projectList">
             <router-link :to="item.link">
               <img alt="" :src="item.photoLink">
-                   <div class="itemText">
+                   <div class="matchText">
                       <p>{{item.name}}</p><br/><br/>
                       <span>{{item.stack}}</span>
                    </div>
@@ -75,7 +75,7 @@
   </div>
 
     <button class="sideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
-              <a-icon :style="{fontSize:'1.8vw', marginTop:'1vh'}" :type="collapsed ? 'close' : 'menu-fold'" />  
+              <a-icon :style="{fontSize:'1.8vw', marginTop:'1vh'}" :type="collapsed ? 'close' : 'menu-fold'" class="barButtonIcon"/>  
             
    </button>
       
@@ -123,16 +123,15 @@
             </div>
             
             <span class="published">Published at 18/12/2022</span>
-            <a-icon class="readIcon" type="search" theme="outlined"/>
-            <span class="textLength">7mins reading</span>
+            <span class="textLength"> - 7mins reading</span>
 
             <div class="content">
 
               <span>
               The overview of this project is to build a Ecommerce
-              web application which named PhoneZone. <br/>PhoneZone provides 
+              web application which named PhoneZone. PhoneZone provides 
               users with an easy-trading platform where users could 
-              conveniently obtain their <br/>
+              conveniently obtain their
               products by ordering on this platform.
               </span>  
               
@@ -140,9 +139,9 @@
             
               <span>
               In this article, i will introduce the crucial modules of this web 
-              application and how to implement each <br/>
+              application and how to implement each
               of funtionalities in the modules. In addition, this article will only focus on the 
-              implementation of some <br/>
+              implementation of some
               crucial funtionality, feel free to access the project in my github.
               </span>
 
@@ -168,9 +167,9 @@
               <span class="textBeforeCode">Please reach the html code:</span>
               <div class="homePageCode"/>
               
-              <span>• Step 1. Sketch 3 frames as a html content container by using div tag and mainpulate its style by css.<br/>
-              <br/>
-              • Step 2. If you attempt to mainpulate the form of html element like the div frame you just sketched, <br/>either simply write document.getElementById('IDName') for single element selection or write document.getElementByClassName('className') for multiple elements selection.
+              <span>• Step 1. Sketch 3 frames as a html content container by using div tag and mainpulate its style by css.
+              <br/><br/>
+              • Step 2. If you attempt to mainpulate the form of html element like the div frame you just sketched, either simply write document.getElementById('IDName') for single element selection or write document.getElementByClassName('className') for multiple elements selection.
               <br/><br/>
                <!-- Step 3. Once you obtain the html element, you could use methods like setAttribute(), append() to mainipulate html element style to your preference.   -->
               </span>
@@ -191,11 +190,12 @@
             <span id="cssText">Please reach the css code:</span>
             <div class="homePageCss"/>
             
-            <span>• Step 1. In the css part, we need to identify the classname or ID we set in the HTML. Symbol # is the <br/>ID selector which aim to select html elements with its unique ID. Symbol . lets you define counter styles <br/>inline with classname, directly as the value of a property such as list-style<br/>
-              <br/>
-              • Step 2. This project is based on grid layout, each html elements is placed in a specific postion. you <br/>need to decide size of each columns and rows in the page by mainipulating the size of grid-template-<br/>rows and grid-template-column. Then, Each html element will be placed in specific grid by adjusting <br/>grid-row and grid-column. 
+            <span>• Step 1. In the css part, we need to identify the classname or ID we set in the HTML. Symbol # is the ID selector which aim to select html elements with its unique ID. Symbol . lets you define counter styles inline with classname, directly as the value of a property such as list-style<br/><br/>
+              
+              • Step 2. This project is based on grid layout, each html elements is placed in a specific postion. you need to decide size of each columns and rows in the page by mainipulating the size of grid-template-rows and grid-template-column. Then, Each html element will be placed in specific grid by adjusting grid-row and grid-column. 
               <br/><br/>
-              • Step 3. Next we need to set up css style of each html element by adjusting thier attribute liks margin, <br/>padding, size to ensure all elements in an appropriate position. 
+
+              • Step 3. Next we need to set up css style of each html element by adjusting thier attribute liks margin, padding, size to ensure all elements in an appropriate position. 
               </span>
               
               <div class="greyDisplay" :style="{}">
@@ -210,8 +210,10 @@
             <div class="loginHtml"/>
 
             <span>• Step 1. Similarly sketch frames as a html content container by using div tag and mainpulate its style by css<br/><br/>
-              • Step 2. This project is based on grid layout, each html elements is placed in a specific postion. you <br/>need to decide size of each columns and rows in the page by mainipulating the size of grid-template-<br/>rows and grid-template-column. Then, Each html element will be placed in specific grid by adjusting <br/>grid-row and grid-column. 
+
+              • Step 2. This project is based on grid layout, each html elements is placed in a specific postion. you need to decide size of each columns and rows in the page by mainipulating the size of grid-template-rows and grid-template-column. Then, Each html element will be placed in specific grid by adjusting grid-row and grid-column. 
               <br/><br/>
+
               • Step 3. Now, you can place different html elements like input, buttom into the grids. 
             </span>
 
@@ -220,8 +222,7 @@
                 </span>
              </div> 
              
-            <span class="textBeforeCode" :style="{marginTop:'2vh !important'}">In this part, we will focus on the front-end JS and Backend JS code, Lets have a look at the html <br/>and JS code for this function:</span> 
-      
+            <span class="textBeforeCode" :style="{marginTop:'2vh !important'}">In this part, we will focus on the front-end JS and Backend JS code, Lets have a look at the html and JS code for this function:</span> 
            </div>
 
 
@@ -237,16 +238,15 @@
 import Header from '../components/projectHeader.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
-import '../assets/css/searchBar.css'
 import '../assets/css/sidebar.css'
-import '../assets/css/mediaQuery.css'
+// import '../assets/css/mediaQuery.css'
 import '../assets/css/animation.css'
 import videoImg1 from '../assets/Ecommerce.jpeg'
 import videoImg2 from '../assets/login.png'
 import videoImg3 from '../assets/videogif2.gif'
 import videoImg4 from '../assets/videoSelection2.png'
 import videoImg5 from '../assets/videoSelection3.jpg'
-import Video from '../components/mini-player.vue'
+// import Video from '../components/mini-player.vue'
   export default {
     data(){
        return {
@@ -322,7 +322,7 @@ import Video from '../components/mini-player.vue'
      Header,
      SideBar,
      VideoService,
-     Video
+    //  Video
    },
 
     mounted(){
@@ -503,41 +503,22 @@ body{
     // border-bottom: 2px solid #dbdbdb;  
 }
 
-.searchInput{
-   float: left;
-   height:3.7vh;
-   width: 93%;
-   border-left: 0px;
-   border-top: 0px;
-   border-bottom: 0px;
-   border-right:solid 2px #8b898969;
-   outline-color: rgba(126, 162, 196, 0.514);
-   font-size: 1.2vw;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
 
-.searchBar{
-   width:15vw;
-   height:4vh;
-   margin-top: 0.4vh;
-  //  border: solid 2px;
-}
+// .searchInput{
+//    float: left;
+//    height:3.7vh;
+//    width: 93%;
+//    border-left: 0px;
+//    border-top: 0px;
+//    border-bottom: 0px;
+//    border-right:solid 2px #8b898969;
+//    outline-color: rgba(126, 162, 196, 0.514);
+//    font-size: 1.2vw;
+//    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+// }
 
-.searchBar button{
-   border-top-right-radius: 4px;
-   border-top-left-radius: 4px;
-   float: right;
-   width: 7%;
-   height: 3.6vh;
-   border: 0px;
-   transition: all 0.2s;
-  //  ff
-}
 
-.searchBar button:hover{
-      background-color: rgba(196, 195, 195, 0.514);
-}
 
 .sideBarButton{
   width: 3vw;
@@ -584,6 +565,12 @@ body{
   transition: 2s;
 }
 
+.searchBar{
+  position: relative;
+  top:0 !important;
+  margin-top: 2.4vh; 
+}
+
 .projectIntroduction{
   grid-row: 1/3;
   grid-column: 1/4;
@@ -603,7 +590,7 @@ body{
   height: 100%;
   background: white;
   display: grid;
-  grid-template-columns: 8% 30% 30% 42%;
+  grid-template-columns: 8% 30% 30% 32%;
   grid-template-rows: 5% 95%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -716,13 +703,14 @@ body{
 
 #tableTitle{
   font-weight: bolder;
-  font-size: 1.8vw !important;
+  font-size: 1.8vw ;
 }
 
 .content{
   grid-row: 2;
   grid-column: 2/5;
   margin-top: 12vh;
+
 }
 
 .content span{
@@ -731,14 +719,17 @@ body{
   font-size: 1vw;
   text-align: left;
   margin-top:6vh;
+  display: inline-block;
+  word-wrap:break-word;
+  white-space: normal;
+  width: 90%;
 }
 
 .content ul{
   position: relative;
   float:left;
-  padding:0;
-  margin-top:12vh;
-  right: 23vw;
+  padding-left:2vw;
+  margin-top:2vh;
 }
 
 .content ul li{
@@ -837,7 +828,7 @@ body{
 
 
 //search status:
-.searchArea{
+.searchStatus{
   grid-row:1/3;
   grid-column: 1/4;
   width:100%;
@@ -852,7 +843,7 @@ body{
   transition: all 2s;
 }
 
-.searchInput{
+.searchingInput{
   grid-column: 2;
   grid-row: 2/3;
   width: 100%;
@@ -862,7 +853,7 @@ body{
 }
 
 
-.searchInput input{
+.searchingInput input{
   float: left;
   color:black;
   width:96%;
@@ -875,7 +866,7 @@ body{
   outline: none;
 }
 
-.resultArea{
+.resultSet{
     grid-column: 2/4;
     grid-row: 3/6;
     width:96%;
@@ -883,7 +874,7 @@ body{
     transition: 1s;
 }
 
-.returnedResult{
+.searchResult{
     width:92%;
     height:10vh;
     text-align: right;
@@ -891,20 +882,20 @@ body{
 }
 
 
-.returnedResult:hover{
+.searchResult:hover{
   background: rgba(255, 255, 255, 0.714);
   border-radius: 2%;
   transition: 1s;
 }
 
-.returnedResult img{ 
+.searchResult img{ 
   float: left;
   margin-left: 0.6vw;
   height:7vh;
   width:7vw;
 }
 
-.resultText{
+.resultFrame{
   float: left;
   margin-left: 2vw;
   width:67%;
@@ -914,17 +905,17 @@ body{
   margin-top:0.5vh;
 }
 
-.resultText p{
+.resultFrame p{
   font-size: 1.8vmin;
   font-weight: bold;
 }
 
-.resultText span{
+.resultFrame span{
   color: gray;
   font-size: 1.4vmin;
 }
 
-.resultType{
+.resultCategory{
   color: gray;
   font-size: 1.4vmin;
   position: relative;
@@ -941,7 +932,7 @@ body{
    transition: all 1s;
 }
 
-.close{
+.closeIcon{
   font-size: 4vmin;
   color:black;
   margin-top: 2vh;
@@ -949,13 +940,13 @@ body{
   float: right;
 }
 
-.close:hover{
+.closeIcon:hover{
     transition: 0.3s;
     opacity: 0.5;
 }
 
 
-.popular{
+.LastestResult{
   grid-row: 4;
   grid-column: 2;
   position:absolute;
@@ -967,7 +958,7 @@ body{
   // overflow-y: ;
 }
 
-.searchResult{
+.searchMatch{
   grid-row:5/7;
   grid-column:2/4;
   overflow-y: scroll;
@@ -975,28 +966,28 @@ body{
   height: 100%;
 }
 
-.resultIntro{
+.matchIntro{
  float: left;
  width: 50%;
  height:20%;
  margin-top:4vh;
 }
 
-.resultIntro img{
+.matchIntro img{
   float: left;
   margin-left: 0.6vw;
   height:7vh;
   width:7vw;
 }
 
-.itemText{
+.matchText{
     height:100%;
     float: right;
     width: 11vw;
     line-height: 2vh;
 }
 
-.itemText p{
+.matchText p{
     float:left;
     font-size: 1.6vmin;
     font-weight: bold;
@@ -1005,17 +996,17 @@ body{
     height: 0;
 }
 
-.itemText p:hover{
+.matchText p:hover{
   opacity: 0.3;
   transition: all 0.8s;
 }
 
-.itemText span{
+.matchText span{
     float:left;
     font-size: 1.4vmin;
 }
 
-.itemText span:hover{
+.matchText span:hover{
    transition: all 0.6s;
    text-decoration: underline;
 }
@@ -1024,6 +1015,195 @@ body{
   grid-column: 1 !important;
   grid-row: 2 !important;
 }
+
+@media screen and (min-width: 360px)and (max-width:767px){
+  .videoCentreContainer{
+    overflow: scroll !important;
+    grid-template-columns: 10% 30% 60% !important;
+    grid-template-rows: 10% 90% 100% !important;
+  }
+
+  .projectIntroduction{
+    grid-column: 1/5 !important; 
+  }  
+
+  .projectContent{
+    grid-column: 1/5 !important;
+    grid-row: 3/4 !important;
+    overflow-y: visible !important;
+    overflow-x: none !important;
+  }
+
+  .introText{
+     font-size: 25px !important;
+  }
+
+  .information{
+    font-size: 12px !important;
+    padding-left: 8px;
+  }
+
+  .introContent{
+    padding-left: 20px;
+  }
+
+  .introContent li{
+    margin-left: 0 !important;
+  }
+
+  .greenTitle{
+     font-size: 10px !important;
+  }
+
+  .name{
+    font-size: 20px !important;
+  }
+
+  .barButtonIcon{
+    font-size: 15px !important;
+    margin-top: 7px !important;
+  }
+
+  .mobileMenu{
+    grid-column: 4/5 !important;
+    margin-top: 11px !important;
+  }
+
+  .searchBar{
+    grid-column: 1/4 !important;
+    margin-left: 30% !important;
+    margin-top: 9px !important;
+  }
+
+  .searchBar span{
+    font-size: 17px !important;
+  }
+
+  .darkMode span{
+     font-size: 10px !important;
+  }
+
+  .published{
+    font-size: 10px !important;
+    width: 100%;
+  }
+
+  .textLength{
+    font-size: 10px !important;
+  }
+
+  .content{
+    margin-top: 6px !important;
+    white-space: nowrap !important;
+    /* grid-column: 2/5 !important; */
+  }
+
+  .content span{
+    font-size: 10px !important;
+    margin-top: 30px !important;
+    width: 90% !important;
+    display: inline-block !important;
+    word-wrap:break-word !important;
+    white-space: normal !important;
+  }
+
+  #tableTitle{
+    font-size: 15px !important;
+  }
+
+  .content h2{
+    font-size: 15px !important;
+  }
+
+  .content ul {
+    padding-left: 18px !important;
+  }
+
+  .content ul li{
+    font-size: 11px !important;
+  }
+
+  .searchStatus{
+    grid-template-rows: 17% 8% 10% 40% 25%;
+  }
+  
+  .searchingInput{
+    margin-left: 0 !important;
+  }
+
+  .LastestResult{
+    grid-row: 3;
+    padding-top: 40px;
+  }
+
+  .matchIntro{
+     width: 90%;
+     height: 15%;
+     margin-top: 20px;
+  }
+
+  .searchMatch{
+    grid-row: 4/7;
+  }
+
+  .matchIntro img{
+    height: 100%;
+    width: 30%;
+  }
+
+  .matchText{
+    float: left;
+    width: 50%;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+
+  .matchText p{
+    font-size: 10px;
+  }
+
+  .matchText span{
+    font-size: 9px;
+  }
+
+  .resultSet{
+    width: 95%;
+  }
+
+  .searchResult{
+    margin-left: 0;
+    margin-top: 17px;
+    height: 50px;
+  }
+
+  .searchResult img{
+    height: 100%;
+    width: 20%;
+  }
+
+  .resultFrame p{
+    font-size: 12px;
+  }
+
+  .resultFrame span{
+    font-size: 8px;
+  }
+
+  .resultCategory{
+    font-size: 8px;
+  }
+
+
+
+
+
+  
+
+
+
+}
+
+
 
 
 </style>

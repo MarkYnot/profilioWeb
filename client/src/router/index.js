@@ -5,7 +5,7 @@ import Book from '../views/Book.vue'
 // import Test from '../views/test'
 import Ecommerce from '../views/Ecommerce'
 import modeSelection from '../views/modeSelection'
-import videoCentre from '../views/videoCentre'
+import homePage from '../views/homePage'
 import videoRouter from './video' 
 // import gameRouter from './game'
 
@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: videoCentre
+    component: homePage
   },
   {
     path: '/about',
