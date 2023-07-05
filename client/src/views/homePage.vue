@@ -232,10 +232,12 @@ import videoImg6 from '../assets/fly.jpg'
    },
 
     mounted(){
+       console.log(window.innerWidth, window.innerHeight)
        window.addEventListener('resize', this.changeSize)
 
-      if(window.innerWidth > 912) this.backImg = this.videoImgList[0].icon
-      else if(window.innerWidth <= 912) this.backImg = videoImg6;
+      // if(window.innerWidth > 912) this.backImg = this.videoImgList[0].icon
+      // else if(window.innerWidth <= 912) this.backImg = videoImg6;
+      this.changeSize();
      
      let selectedMenuItem = document.getElementById(this.MenuItem);
      selectedMenuItem.style.fontWeight = "900"
@@ -247,13 +249,16 @@ import videoImg6 from '../assets/fly.jpg'
     },
 
       changeSize() {
-          // this.windowWidth = window.innerWidth;
+         
           if(window.innerWidth <= 912 && this.pageNumber == 0){
               console.log(1)
-              this.backImg = videoImg6;
+                if(window.innerHeight > 400) this.backImg = videoImg6;
+                else this.backImg = this.videoImgList[0].icon
+             
           }else if(window.innerWidth > 912 && this.pageNumber == 0){
                console.log(2)
-              this.backImg = this.videoImgList[0].icon
+                if(window.innerHeight <= 400) this.backImg = videoImg6;
+                else this.backImg = this.videoImgList[0].icon
           }
       },   
     
@@ -383,8 +388,13 @@ import videoImg6 from '../assets/fly.jpg'
         });
 
 
-        if(window.innerWidth <= 820 && number == 0 ) this.backImg = videoImg6 
-        else this.backImg = this.videoImgList[number].icon
+        if(window.innerWidth <= 920 && number == 0 ) {
+            if(window.innerHeight < 500)this.backImg = this.videoImgList[0].icon
+            else this.backImg = videoImg6
+
+        }else {
+          this.backImg = this.videoImgList[number].icon
+          }
          
 
          this.MenuItem = "MenuItem" + number
@@ -807,7 +817,7 @@ a{
 }
 
 // for iphone, samsung
-@media screen and (max-width:767px){
+@media screen and (min-height:400px) and (max-width:737px){
     //5project Menus
    .MenuItem{
      font-size: 13px;
@@ -952,7 +962,7 @@ a{
 }
 
 //For Surface Duo
-@media screen and (min-width: 540px) and (max-width: 767px){
+@media screen and (height: 720px)and (min-width: 540px) and (max-width: 767px){
    .videoContent span{
       // font-size: 20px;
       margin-top: 55% !important;

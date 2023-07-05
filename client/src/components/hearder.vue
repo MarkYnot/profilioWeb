@@ -61,7 +61,8 @@
           photo: "",
           hasPhoto: false,
           photoCorrect: false,
-          windowWidth: window.innerWidth
+          windowWidth: window.innerWidth,
+          windowHeight: window.innerHeight
        }
 
     }, 
@@ -81,7 +82,7 @@
     computed:{
        
           isMobile() {
-            return this.windowWidth <= 912; 
+            return this.windowWidth <=912 && this.windowHeight > 400; 
           }
     },
     methods:{
@@ -90,7 +91,10 @@
         },
 
         handleResize() {
+          
           this.windowWidth = window.innerWidth;
+          this.windowHeight = window.innerHeight;
+        
         }     
     }
   }
