@@ -512,7 +512,7 @@ a{
 .searchBar{
    width:15vw;
    height:4vh;
-   margin-top: 2vh;
+   margin-top: 12px;
    transition: all 1s ;
 }
 
@@ -604,8 +604,8 @@ a{
 .contentButton{
   margin-left: 27vw;
   margin-top: 3vh;
-  width: 20vw;
-  height: 4vh;
+  width: 200px;
+  height: 35px;
   background: transparent;
   border-color: whitesmoke;
   grid-row: 2;
@@ -848,7 +848,7 @@ a{
    .searchBar{
         grid-column: 1/3;
         margin-left:60px;
-        margin-top: 9px;
+        margin-top: 5px;
         width: 75%;
    }
 

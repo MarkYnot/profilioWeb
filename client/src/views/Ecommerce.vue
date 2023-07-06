@@ -327,6 +327,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
 
     mounted(){
       this.backImg = this. videoImgList[0].icon
+      console.log(window.innerWidth, window.innerHeight)
 
 
    },
@@ -502,7 +503,6 @@ body{
     z-index: 20;
     // border-bottom: 2px solid #dbdbdb;  
 }
-
 
 
 // .searchInput{
@@ -791,7 +791,7 @@ body{
   text-align: left;
   font-size: 1.1vw;
   margin-left: 1.3vw;
-  margin-top:2vh !important;
+  margin-top:2vh;
 }
 
 .homePageCss{
@@ -1016,7 +1016,8 @@ body{
   grid-row: 2 !important;
 }
 
-@media screen and (min-width: 360px)and (max-width:767px){
+//iphone and samsung
+@media screen and (min-height: 400px)and (min-width: 360px)and (max-width:767px){
   .videoCentreContainer{
     overflow: scroll !important;
     grid-template-columns: 10% 30% 60% !important;
@@ -1053,6 +1054,10 @@ body{
 
   .greenTitle{
      font-size: 10px !important;
+  }
+
+  .greyDisplay span{
+    margin-top: 0 !important;
   }
 
   .name{
@@ -1192,18 +1197,382 @@ body{
   .resultCategory{
     font-size: 8px;
   }
+}
 
+//ipad and surface pro 7
+@media screen and (max-width: 912px) and (min-height: 1024px) and (max-height: 1368px) and (min-width: 768px){
+    .videoCentreContainer{
+    overflow: scroll !important;
+    grid-template-columns: 10% 30% 60% !important;
+    grid-template-rows: 10% 90% 100% !important;
+  }
 
+  .projectIntroduction{
+    grid-column: 1/5 !important; 
+  }  
 
+  .projectContent{
+    grid-column: 1/5 !important;
+    grid-row: 3/4 !important;
+    overflow-y: visible !important;
+    overflow-x: none !important;
+  }
 
+  .introText{
+     font-size: 40px !important;
+  }
 
+  .information{
+    font-size: 18px !important;
+    padding-left: 8px;
+  }
+
+  .introContent{
+    padding-left: 20px;
+  }
+
+  .introContent li{
+    margin-left: 0 !important;
+  }
+
+  .greenTitle{
+     font-size: 16px !important;
+  }
+
+  .name{
+    font-size: 40px !important;
+  }
+
+  .barButtonIcon{
+    font-size: 15px !important;
+    margin-top: 7px !important;
+  }
+
+  .mobileMenu{
+    grid-column: 4/5 !important;
+    margin-top: 11px !important;
+  }
+
+  .searchBar{
+    grid-column: 1/4 !important;
+    margin-left: 30% !important;
+    margin-top: 18px !important;
+  }
+
+  .darkMode{
+    margin-top: 60px;
+  }
+
+  .searchBar span{
+    font-size: 30px !important;
+  }
+
+  .darkMode span{
+     font-size: 18px !important;
+  }
+
+  .published{
+    font-size: 18px !important;
+    width: 100%;
+  }
+
+  .textLength{
+    font-size: 18px !important;
+  }
+
+  .content{
+    margin-top: 20px !important;
+    white-space: nowrap !important;
+    /* grid-column: 2/5 !important; */
+  }
+
+  .content span{
+    font-size: 17px !important;
+    margin-top: 30px !important;
+    width: 90% !important;
+    display: inline-block !important;
+    word-wrap:break-word !important;
+    white-space: normal !important;
+  }
+
+  #tableTitle{
+    font-size: 30px !important;
+  }
+
+  .content h2{
+    font-size: 22px !important;
+  }
+
+  .content ul {
+    padding-left: 18px !important;
+  }
+
+  .content ul li{
+    font-size: 17px !important;
+  }
+
+  .searchStatus{
+    grid-template-rows: 17% 8% 10% 40% 25%;
+  }
   
+  .searchingInput{
+    margin-left: 0 !important;
+  }
 
+  .LastestResult{
+    grid-row: 3;
+    padding-top: 40px;
+  }
 
+  .matchIntro{
+     width: 90%;
+     height: 15%;
+     margin-top: 20px;
+  }
 
+  .searchMatch{
+    grid-row: 4/7;
+  }
+
+  .matchIntro img{
+    height: 100%;
+    width: 30%;
+  }
+
+  .matchText{
+    float: left;
+    width: 50%;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+
+  .matchText p{
+    font-size: 10px;
+  }
+
+  .matchText span{
+    font-size: 9px;
+  }
+
+  .resultSet{
+    width: 95%;
+  }
+
+  .searchResult{
+    margin-left: 0;
+    margin-top: 17px;
+    height: 50px;
+  }
+
+  .searchResult img{
+    height: 100%;
+    width: 20%;
+  }
+
+  .resultFrame p{
+    font-size: 12px;
+  }
+
+  .resultFrame span{
+    font-size: 8px;
+  }
+
+  .resultCategory{
+    font-size: 8px;
+  }
 }
 
 
+
+
+//For Galaxy Fold
+@media screen and (max-width: 912px) and (height: 653px){
+    .videoCentreContainer{
+    overflow-y: scroll !important;
+    grid-template-columns: 10% 30% 60% !important;
+    grid-template-rows: 10% 90% 100% !important;
+  }
+
+  .projectIntroduction{
+    grid-column: 1/5 !important; 
+  }  
+
+  .projectContent{
+    grid-column: 1/5 !important;
+    grid-row: 3/4 !important;
+    overflow-y: visible !important;
+    overflow-x: none !important;
+  }
+
+  .introText{
+     font-size: 25px !important;
+  }
+
+  .information{
+    font-size: 9.1px !important;
+    padding-left: 8px;
+  }
+
+  .introContent{
+    padding-left: 20px;
+  }
+
+  .introContent li{
+    margin-left: 0 !important;
+    width: 100%;
+  }
+
+  .greenTitle{
+     font-size: 8px !important;
+  }
+
+  .name{
+    font-size: 16px !important;
+    margin-top: 9px ;
+  }
+
+  .barButtonIcon{
+    font-size: 15px !important;
+    margin-top: 7px !important;
+  }
+
+  .mobileMenu{
+    grid-column: 4/5 !important;
+    margin-top: 11px !important;
+  }
+
+  .searchBar{
+    grid-column: 1/4 !important;
+    margin-left: 30% !important;
+    margin-top: 9px !important;
+  }
+
+  .searchBar span{
+    font-size: 13px !important;
+  }
+
+  .darkMode span{
+     font-size: 8.5px !important;
+  }
+
+  .published{
+    font-size: 7.5px !important;
+    width: 100%;
+  }
+
+  .textLength{
+    font-size: 7.5px !important;
+  }
+
+  .content{
+    margin-top: 6px !important;
+    white-space: nowrap !important;
+    /* grid-column: 2/5 !important; */
+  }
+
+  .content span{
+    font-size: 10px !important;
+    // margin-top: 30px !important;
+    width: 90% !important;
+    display: inline-block !important;
+    word-wrap:break-word !important;
+    white-space: normal !important;
+  }
+
+  #tableTitle{
+    font-size: 15px !important;
+  }
+
+  .content h2{
+    font-size: 15px !important;
+  }
+
+  .content ul {
+    padding-left: 18px !important;
+  }
+
+  .content ul li{
+    font-size: 11px !important;
+  }
+
+  .searchStatus{
+    grid-template-rows: 17% 8% 10% 40% 25%;
+  }
+  
+  .searchingInput{
+    margin-left: 0 !important;
+  }
+
+  .LastestResult{
+    grid-row: 3;
+    padding-top: 40px;
+    font-size: 18px !important;
+  }
+
+  .matchIntro{
+     width: 90%;
+     height: 15%;
+     margin-top: 20px;
+  }
+
+  .searchMatch{
+    grid-row: 4/7;
+  }
+
+  .matchIntro img{
+    height: 100%;
+    width: 30%;
+  }
+
+  .matchText{
+    float: left;
+    width: 60%;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+
+  .matchText p{
+    font-size: 10px;
+  }
+
+  .matchText span{
+    font-size: 9px;
+  }
+
+  .resultSet{
+    width: 95%;
+  }
+
+  .searchResult{
+    margin-left: 0;
+    margin-top: 25px;
+    height: 50px;
+    width: 95%;
+  }
+
+  .searchResult img{
+    height: 100%;
+    width: 20%;
+  }
+
+  .resultFrame{
+    width: 60% !important;
+  }
+
+  .resultFrame p{
+    font-size: 12px;
+  }
+
+  .resultFrame span{
+    font-size: 8px;
+  }
+
+  .resultCategory{
+    font-size: 9px;
+    padding-top: 15px;
+  }
+
+}
 
 
 </style>

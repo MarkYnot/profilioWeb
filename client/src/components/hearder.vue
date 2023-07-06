@@ -220,8 +220,10 @@
 
 .headerTilte{
   float: right;
-  height: 30px;
-  width: 30px;
+  // height: 6vh;
+  // width: 3vw;
+  height: 18px;
+  width: 18px;
   margin-top:15px;
   margin-right: 1vw;
   grid-column: 2;
@@ -237,8 +239,10 @@
 
 .headerText{
   float: right;
-  width: 40px;
-  height: 45px;
+  width: 28px;
+  height: 30px;
+  // width: 5vw;
+  // height: 10vh;
   margin-top:10px;
   margin-left:3px;
 

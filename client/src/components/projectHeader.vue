@@ -58,7 +58,8 @@
     data(){
        return {
           username: "Mark",
-          windowWidth: window.innerWidth
+          windowWidth: window.innerWidth,
+          windowHeight: window.innerHeight
        }
 
     }, 
@@ -68,7 +69,7 @@
 
     computed:{
         isMobile(){
-           return this.windowWidth <= 912
+           return this.windowWidth <= 912 && this.windowHeight > 400;
         }  
     },
 
@@ -79,6 +80,7 @@
     methods:{
         onChange() {
          this.windowWidth = window.innerWidth;
+          this.windowHeight = window.innerHeight;
     },
 
 
@@ -114,6 +116,18 @@
   -webkit-box-shadow: #666 0px 0px 10px;
   -moz-box-shadow: #666 0px 0px 10px;
   box-shadow: #666 0px 0px 10px;
+}
+
+
+//ipad and surface pro 7
+@media screen and (max-width: 912px) and (min-height: 1024px) and (max-height: 1368px) and (min-width: 768px){
+    .mobileListIcon{
+        font-size:25px !important;
+    }
+
+    .mobileMenu{
+      top: 25px !important;
+    }
 }
 
 .mobileMenu{
