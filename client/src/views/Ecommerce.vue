@@ -165,7 +165,13 @@
 
               <h2>1.Home page</h2>
               <span class="textBeforeCode">Please reach the html code:</span>
-              <div class="homePageCode"/>
+
+              <div class="homePageCode">
+                 <CodeBlock code="function hello() {
+                        console.log('Hello, world!');
+                    }" language="javascript" />
+              </div>
+
               
               <span>• Step 1. Sketch 3 frames as a html content container by using div tag and mainpulate its style by css.
               <br/><br/>
@@ -241,6 +247,7 @@ import VideoService from '../services/videoService'
 import '../assets/css/sidebar.css'
 // import '../assets/css/mediaQuery.css'
 import '../assets/css/animation.css'
+import CodeBlock from '../components/codeBlock.vue'
 import videoImg1 from '../assets/Ecommerce.jpeg'
 import videoImg2 from '../assets/login.png'
 import videoImg3 from '../assets/videogif2.gif'
@@ -322,6 +329,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
      Header,
      SideBar,
      VideoService,
+     CodeBlock
     //  Video
    },
 
@@ -768,7 +776,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-image: url("../assets/homepageHtml.png");
+  // background-image: url("../assets/homepageHtml.png");
 }
 
 .textBeforeCode{

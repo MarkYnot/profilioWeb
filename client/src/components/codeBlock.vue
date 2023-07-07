@@ -1,6 +1,7 @@
 <template>
   <div class="code-container">
     <pre class="code-editor">
+      <!-- :class="`language-${language}`"  -->
       <code id="codeBlock" class="language-javascript">
         <div v-for="(line, index) in codeLines" :key="index" class="code-line">
           <span class="line-number">{{ index + 1 }}</span>
@@ -15,6 +16,8 @@
 <script>
 import 'prismjs';
 import 'prismjs/themes/prism.css';
+// import 'prismjs/themes/prism-json';
+// import 'prismjs/themes/prism-java';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-css';
@@ -59,6 +62,18 @@ export default {
       copyButtonText: 'Copy',
     };
   },
+
+    props: {
+    // code: {
+    //   type: String,
+    //   required: true,
+    // },
+    language: {
+      type: String,
+      default: 'javascript',
+    },
+  },
+
   created() {
     this.codeLines = this.code.split('\n');
     Prism.highlightAll();
@@ -98,7 +113,8 @@ export default {
 
 
     highlightSyntax(line) {
-      return Prism.highlight(line, Prism.languages.javascript, 'javascript');
+       const language = Prism.languages[this.language]
+      return Prism.highlight(line, language, this.language);
     },
   },
 };
@@ -118,7 +134,7 @@ export default {
   /* text-shadow: none !important; */
   font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
-  overflow-x: auto;
+  overflow-x: scroll;
   line-height: 1.4;
 }
 

@@ -7,7 +7,7 @@
     <pre>
       <code :class="`language-${language}`" v-html="formattedCode"></code>
     </pre>
-  </div>
+</div>
 
 </template>
 
