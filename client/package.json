@@ -10,6 +10,7 @@
     "@ant-design/icons-vue": "^6.1.0",
     "@babel/parser": "^7.22.5",
     "ant-design-vue": "^1.7.8",
+    "clipboard": "^2.0.11",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
     "face-api.js": "^0.22.2",
@@ -25,6 +26,7 @@
     "vue-prism-component": "^2.0.0",
     "vue-router": "^3.2.0",
     "vue-simple-clamp": "^1.1.1",
+    "vue3-code-block": "^2.2.11",
     "vuex": "^3.4.0",
     "webrtc-adapter": "^8.1.0"
   },

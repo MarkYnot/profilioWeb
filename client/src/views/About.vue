@@ -2,10 +2,10 @@
   <div class="code-container">
     <pre class="code-editor">
       <code id="codeBlock" class="language-javascript">
-        <span v-for="(line, index) in codeLines" :key="index" class="code-line">
+        <div v-for="(line, index) in codeLines" :key="index" class="code-line">
           <span class="line-number">{{ index + 1 }}</span>
-          <span v-html="highlightSyntax(line)"></span>
-        </span>
+          <span v-html="highlightSyntax(line)" class="functionCode"></span>
+        </div>
       </code>
     </pre>
     <button @click="copyCode" :disabled="isCopied" class="copy-button">{{ copyButtonText }}</button>
@@ -49,7 +49,7 @@ export default {
         let reg = new RegExp(event.target.value)
         let resultSet = []
         
-      this.projectList.forEach(item=>{
+        this.projectList.forEach(item=>{
             if(reg.test(item.name)){
               resultSet.push(item)
             }
@@ -104,17 +104,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .code-container {
   position: relative;
 }
 
 .code-editor {
   position: relative;
-  background-color: black;
-  color: #212121;
+  background-color: rgb(30, 29, 29);
+  /* color: red; */
   padding: 20px;
   border-radius: 5px;
+  /* text-shadow: none !important; */
   font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
   overflow-x: auto;
@@ -122,20 +123,38 @@ export default {
 }
 
 .code-line {
-  display: block;
+  display: grid;
+  grid-template-columns: 100px 1fr;
   position: relative;
   height: 15px;
-  margin-top: 3px;
+  width: 1400px;
+  margin-top: 8px;
+}
+
+.code-line span {
+  text-shadow: none !important;
+}
+
+/deep/ .token.operator{
+  background: transparent !important;
+   color: rgba(224, 224, 158, 0.658);
+}
+
+.functionCode{
+  grid-column: 2;
+  color: rgb(224, 224, 158);
 }
 
 .line-number {
   position: absolute;
-  left: -2.5em;
+  grid-column: 2;
+  left: -6.5em;
   width: 2.5em;
-  text-align: right;
+  text-align: left;
   color: #757575;
   user-select: none;
   font-size: 14px;
+  top: 0px;
 }
 
 .copy-button {

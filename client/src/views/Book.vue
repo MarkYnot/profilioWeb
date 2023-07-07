@@ -1,91 +1,113 @@
 <template>
-  <table>
-    <a id="555">xxxxx</a>
-    <tr>
-      <td>id</td>
-      <td>书名</td>
-      <td>作者</td>
-    </tr>
-    <tr :key="book.id" v-for="book in books">
-      <td>{{book.id}}</td>
-      <td>{{book.name}}</td>
-      <td>{{book.author}}</td>
-    </tr>
-  </table>
+<div class="code-block">
+    <div class="header">
+      <div class="language">{{ language }}</div>
+      <button class="copy-button" @click="copyCode">Copy</button>
+    </div>
+    <pre>
+      <code :class="`language-${language}`" v-html="formattedCode"></code>
+    </pre>
+  </div>
 
 </template>
 
 <script>
 import testServce from "../services/testServce";
+import Prism from 'prismjs';
+
+
 export default {
   name: "Book.vue",
   data(){
     return{
-      datas:[
-        {
-          id:1,
-          name:'书1212',
-          author:'作者1'
-        },
-        {
-          id:2,
-          name:'书2332',
-          author:'作者2'
-        },
-        {
-          id:3,
-          name:'书2442',
-          author:'作者3'
-        }
-
-      ],
-      books:[]
-
+  
     }
   },
+
+  props: {
+    code: {
+      type: String,
+      required: true,
+    },
+    language: {
+      type: String,
+      default: 'javascript',
+    },
+  },
+
+   computed: {
+    formattedCode() {
+      return this.highlightCode(this.code);
+    },
+  },
+
+     methods:{
+        highlightCode(code) {
+      const language = Prism.languages[this.language];
+      return Prism.highlight(code, language, this.language);
+    },
+    
+    
+    copyCode() {
+      const codeElement = this.$el.querySelector('code');
+      const clipboard = new Clipboard(codeElement, {
+        text: () => this.code,
+      });
+      clipboard.on('success', () => {
+        clipboard.destroy();
+        // Perform any additional actions when the code is copied
+        console.log('Code copied!');
+      });
+      clipboard.on('error', () => {
+        clipboard.destroy();
+        // Handle any error that may occur during copying
+        console.error('Failed to copy code!');
+      });
+      clipboard.onClick({ target: codeElement });
+    },
+  },
+    
 
   components:{
     testServce
   },
   created(){
-    // testServce.getAllBookData()
-    axios.get(`http://localhost:3001/book/findAll`).then(result=>{
-
-      console.log(result.data)
-      this.books = result.data
-    })
-
-  },
-
-  methods:{
-    test(){
-         const codeBlock = document.getElementById('codeBlock');
-        const codeLines = Array.from(codeBlock.querySelectorAll('.code-line'));
-        const codeWithoutLineNumbers = codeLines.map(line => line.innerText.replace(/^\d+\s/, '')).join('\n');
-
-        const tempTextarea = document.createElement('textarea');
-        tempTextarea.value = codeWithoutLineNumbers;
-        document.body.appendChild(tempTextarea);
-        tempTextarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempTextarea);
-
-        this.isCopied = true;
-        this.copyButtonText = 'Copied';
-
-        setTimeout(() => {
-          this.isCopied = false;
-          this.copyButtonText = 'Copy';
-        }, 2000);
-    }
+   
 
   }
-
-
 
 }
 </script>
 
 <style scoped>
+
+/* Add any custom styles for the code block here */
+.code-block {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.language {
+  font-weight: bold;
+}
+
+.copy-button {
+  background-color: #f4f4f4;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+  background-color: #e0e0e0;
+}
 
 </style>

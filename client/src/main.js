@@ -14,11 +14,13 @@ import vueMiniPlayer from 'vue-mini-player'
 import 'vue-mini-player/lib/vue-mini-player.css'
 import ElementUI from 'element-ui'
 import { Dialog, Table, TableColumn, MessageBox } from 'element-ui'
+// import CodeBlock from 'vue3-code-block'
 
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 // Vue.use(VueClamp);
+// Vue.use(CodeBlock)
 Vue.use(vueMiniPlayer)
 Vue.use(VueCookies);
 Vue.use(Antd);
