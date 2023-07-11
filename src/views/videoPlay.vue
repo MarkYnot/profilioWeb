@@ -107,7 +107,7 @@
 import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
 import VideoService from '../services/videoService'
-import Video from '../components/mini-player.vue'
+// import Video from '../components/mini-player.vue'
 import userService from '../services/userService'
 
   export default {
