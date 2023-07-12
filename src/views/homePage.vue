@@ -598,6 +598,7 @@ a{
   transition: all 4s;
   grid-row: 1;
   transition-duration: 2s all;
+  white-space: pre-wrap;
 }
 
 
