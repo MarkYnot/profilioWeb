@@ -102,8 +102,10 @@
 
         <div class="videoContent">
            <span v-show="this.text">
-             Full Stack Developer  <br/>
-           Have a look at my work<br/>
+             Full Stack Developer  
+            <br/>
+           Have a look at my work
+           <br/>
            and get in touch 
            </span>
           
