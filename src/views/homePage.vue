@@ -101,7 +101,7 @@
         </transition>
 
         <div class="videoContent">
-            <span v-show="this.text">
+            <span v-if="this.text">
               Full Stack Developer  
               <br/>
             Have a look at my work
