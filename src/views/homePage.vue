@@ -597,7 +597,7 @@ a{
   font-weight: bolder;
   text-align: left;
   transition: all 4s;
-  grid-row: 1;
+  grid-row: 1/3;
   transition-duration: 2s all;
   white-space: pre-line;
 }
