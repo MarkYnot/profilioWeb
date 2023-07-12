@@ -101,13 +101,14 @@
         </transition>
 
         <div class="videoContent">
-           <span v-show="this.text">
-             Full Stack Developer  
+            <span v-show="this.text">
+              Full Stack Developer  
+              <br/>
+            Have a look at my work
             <br/>
-           Have a look at my work
-           <br/>
-           and get in touch 
-           </span>
+            and get in touch 
+            </span>
+ 
           
             <span v-if="this.Ecommerce">Ecommerce Website</span>
 
@@ -599,7 +600,7 @@ a{
   font-weight: bolder;
   text-align: left;
   transition: all 4s;
-  grid-row: 1/3;
+  grid-row: 1;
   transition-duration: 2s all;
   white-space: pre-line;
 }
