@@ -141,8 +141,48 @@
 
 /deep/ .ant-menu-item{
     top: 15vh;
+}
+
+
+
+// for iphone, samsung
+@media screen and (min-height:400px) and (max-width:737px){
+   /deep/ .ant-menu-item span{
+      font-size: 25px !important;
+      float: left;
+   }
+
+   /deep/ .ant-menu-item {
+      padding-left: 16px !important;
+   }
 
 }
+
+//For Surface Duo
+@media screen and (height: 720px)and (min-width: 540px) and (max-width: 767px){
+
+
+}
+
+//For ipad and surface pro 7
+@media screen and (min-width: 768px)and (max-width:912px){
+
+  /deep/ .ant-menu-inline .ant-menu-item{
+    height: 60px !important;
+    margin-top: 30px !important;
+    top: 150px !important
+}
+  
+}
+
+// For galaxy fold
+@media screen and (max-width:280px){
+
+
+}
+
+
+
 
 
 // /deep/ .ant-menu-item .anticon{

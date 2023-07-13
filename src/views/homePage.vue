@@ -963,7 +963,11 @@ a{
       font-size: 10px;
     }
 
-    
+    .SideBar{
+     width: 50% !important;
+   }
+
+
 
 
 }
@@ -1067,6 +1071,10 @@ a{
 
    .returnedResult{
     width: 90%;
+   }
+
+   .SideBar{
+     width: 60% !important;
    }
 
 
