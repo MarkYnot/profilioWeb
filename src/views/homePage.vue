@@ -595,7 +595,7 @@ a{
   margin-left: 23vw;
   margin-top:40vh;
   float: left;
-  height: 60%;
+  // height: 60%;
   font-size: 3vw;
   font-weight: bolder;
   text-align: left;
