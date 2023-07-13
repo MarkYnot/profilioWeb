@@ -428,7 +428,7 @@ import videoImg6 from '../assets/fly.jpg'
 <style lang="less">
 
 body{
-  line-height:0;
+  // line-height:0;
 }
 
 .router-link-active{

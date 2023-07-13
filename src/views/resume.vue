@@ -138,7 +138,7 @@ import '../assets/css/video.css'
 <style lang="scss" scoped>
  
  body{
-  line-height:0;
+  // line-height:0;
 }
 
 .likeVideoContainer{
