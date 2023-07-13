@@ -71,7 +71,7 @@
                    <span>Playing video game (puzzle and rogue-like), listening to music (Lo-fi), reading book (specially sci-fi), manga/anime, doing programming challenge (like Competitive Programming ) and learning about the computer</span>
 
 
-                    <p>Reach me on the Internet</p> <br/><br/>
+                    <p class="reachMe">Reach me on the Internet</p> <br/><br/>
                      <ul role="list" class="socialMedia">
                         <li><a href="https://github.com/MarkYnot" target="_blank"><button><img v-lazy="'/static/github.png'"><span>@MarkYnot</span></button></a></li>
                         
@@ -216,11 +216,15 @@ import '../assets/css/video.css'
 .rSearchBar{
   //  width:15vw;
   //  height:5vh;
-   margin-top: 10px;
+   margin-top: 13px;
    transition: all 1s;
-     @media screen and (max-width:767px){
+     @media screen and  (min-height:400px) and (max-width:737px){
        grid-column: 3/4;
    }
+}
+
+.w{
+  font-size: 20px !important;
 }
 
 .rSearchBar:hover{
@@ -235,7 +239,7 @@ import '../assets/css/video.css'
   // overflow-y:scroll;
   // background: #dbdbdb36;
   display: grid;
-  grid-template-columns: 20% auto 15% 20%;
+  grid-template-columns: 10% auto 15% 12% 8%;
   grid-template-rows: 20% auto 50%;
   // display: grid;
   // grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -244,7 +248,7 @@ import '../assets/css/video.css'
 
 .intro{
   grid-row:1/2;
-  grid-column:2/4;
+  grid-column:2/5;
   background: #dbdbdb36;
   width: 100%;
   height: fit-content;
@@ -280,10 +284,6 @@ import '../assets/css/video.css'
   float: left;
   font-size: 50px;
   font-weight: bolder;
-  @media screen and (max-width:769px){
-   font-size: 40px;  
-  }
-
 }
 
 .rName span{
@@ -294,33 +294,43 @@ import '../assets/css/video.css'
 }
 
 //For Samsung and Iphone
-@media screen and (max-width: 767px){
+@media screen and  (min-height:400px) and (max-width:737px){
   .rName{
     grid-column: 2/4;
   }
 
-  // .rName p{
-  //   font-size: 30px !important;
-  // }
+  .rName p{
+    font-size: 35px !important;
+  }
 
   .rName span{
    font-size: 15px !important;
 }
 
+  .intro{
+    grid-column: 2/4;
+  }
+
+  .rSearchBar{
+    grid-column: 2/3;
+    margin-left:25px;
+    margin-top: 12px;
+  }
+
   .w{
-    font-size: 23px !important;//dark mode icon
+    font-size: 20px !important;//dark mode icon
   }
 
   .Content{
-     grid-template-rows: 18% auto auto auto;
+     grid-template-rows: 18% 20% auto auto;
      grid-template-columns: 10% auto auto 10%;
   }
 
 .avatar{
      grid-row: 3/4 !important;
      grid-column: 2/4 !important;
-     margin-top:2vh !important; 
-     margin-left:50px;
+     margin-top:10px !important; 
+     margin-left:50px !important;
      width:150px;
      height:200px;
      z-index: 1;
@@ -330,6 +340,7 @@ import '../assets/css/video.css'
  .aboutMe{
      z-index: 1;
      grid-row: 4/5 !important;
+     grid-column: 2/4 !important;
  }
 
  .projectList span{
@@ -337,9 +348,8 @@ import '../assets/css/video.css'
  }
 }
 
-
 //for ipad and ipad mini
-@media screen and (max-width: 820px){
+@media screen and (min-width: 768px)and (max-width:912px){
   .rName p{
     font-size: 35px !important;
   }
@@ -347,6 +357,20 @@ import '../assets/css/video.css'
    .projectList span{
     margin-top: 40px !important;
  }
+
+ .rSearchBar{
+     grid-column: 2/3;
+ }
+
+ .Content{
+   grid-template-rows: 10% auto 62%;
+ }
+
+ .intro{
+   margin-top: 13px;
+ }
+
+
 }
 
 //For Galaxy Fold
@@ -384,6 +408,27 @@ import '../assets/css/video.css'
     grid-column: 2/5 !important;
    }
 
+   .rSearchBar{
+     grid-column: 2/3;
+     grid-row: 1;
+   }
+
+   .intro{
+    grid-column:2/4;
+    margin-left: 10px;
+   }
+
+   .w{
+     font-size: 16px !important;
+   }
+
+   .aboutMe{
+     grid-column: 2/4 !important;
+   }
+
+   .reachMe{
+     font-size: 18px !important;
+   }
 }
 
 
@@ -394,8 +439,9 @@ import '../assets/css/video.css'
   grid-column: 3/4;
   width:200px;
   height:259px;
-  margin-top: 4vh;
+  margin-top: 40px;
   float:right;
+  margin-left: 20px;
 }
 
 .avatar img{
@@ -404,7 +450,7 @@ import '../assets/css/video.css'
 }
 
 .aboutMe{
-  grid-column: 2/4;
+  grid-column: 2/5;
   grid-row:3/4;
   width: 100%;
   height: fit-content;

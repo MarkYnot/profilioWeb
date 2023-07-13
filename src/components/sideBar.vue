@@ -131,7 +131,7 @@
 }
 
 /deep/ .ant-menu-inline .ant-menu-item{
-    height: 9vh;
+    // height: 9vh;
     margin-top: 3vh;
 }
 
