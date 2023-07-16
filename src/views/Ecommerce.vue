@@ -101,16 +101,14 @@
                   <span class="information">The website could be taken a while to be loaded since the project is on a free Heroku machine</span>
                 </li>
 
-
                 <li> 
                   <div class="greenTitle">GITHUB</div>
-                  <span class="information"><a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce">https://github.com/MarkYnot/ECommerce</a>(Click here to check out the further description about the project)</span>
-              
+                  <span class="information"><a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce">Feel free to Edit on Github </a> </span>
                 </li>
                 
                   <li> 
                   <div class="greenTitle">STACK</div>
-                  <span class="information">NodeJS, ReactJS, MongoDB, ExpressJS, EslintJS,MD5, Base64</span>
+                  <span class="information">NodeJS, VueJS, MongoDB, ExpressJs</span>
                 </li>
         </ul>
        
@@ -128,11 +126,11 @@
             <div class="content">
 
               <span>
-              The overview of this project is to build a Ecommerce
+              Welcome to the first post in the my project blog,The overview of this project is to build a Ecommerce
               web application which named PhoneZone. PhoneZone provides 
               users with an easy-trading platform where users could 
               conveniently obtain their
-              products by ordering on this platform.
+              products by ordering on this platform.  In this post, I will show you everything I know about how to implement some typical fucntionality of a .
               </span>  
               
              
@@ -162,17 +160,27 @@
                  <li><a>Shopping Cart</a></li>
                  <li><a>Change Username/Password</a></li>
               </ul>
+      
+              <h2>Prerequisites</h2>
+              <span :style="{ marginTop:'0'}">1. You have to be somewhat familiar with NodeJs. If you have not tried NodeJS before, I highly recommend you to follow <a target="_blank" class="linkToOther" href="https://nodejs.org/en/docs">NodeJS tutorial </a>   <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> from their official website (since they explained everything quite clearly and help you build serverness API with NodeJs).
+              <br/><br/>
+               2. About styling, I suggest you to use CSS framework (or even pure CSS) that you are good at currently.  I will try as much as I can to explain all typical css mianipulator we used, so you can apply same idea.
 
-              <h2>1.Home page</h2>
+              <br/><br/>
+               3. About VueJs, I highly recommend you to follow checkout their <a target="_blank" class="linkToOther" href="https://vuejs.org/guide/introduction.html">Getting start Page </a>   <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> , there may be many process reagrding its installation, application and specific related plunin. Then Watching <a target="_blank" class="linkToOther" href="https://www.youtube.com/watch?v=Vn6FxqvsdMU"> Node+VueJs tutorial</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />  to have some ideas how they connect nodeJs and VueJs, you could go ahead and try out initialal the project since you already have some idea about how connect VueJs and NodeJs.
+              </span>
+
+              <h2>Installation and Configuration</h2>
+
+
+              <h2>Home page</h2>
               <span class="textBeforeCode">Please reach the html code:</span>
 
               <div class="homePageCode">
-                 <CodeBlock code="function hello() {
-                        console.log('Hello, world!');
-                    }" language="javascript" />
+                 <CodeBlock :code="this.homePageCode" language="javascript" />
               </div>
 
-              
+              <br/><br/>
               <span>• Step 1. Sketch 3 frames as a html content container by using div tag and mainpulate its style by css.
               <br/><br/>
               • Step 2. If you attempt to mainpulate the form of html element like the div frame you just sketched, either simply write document.getElementById('IDName') for single element selection or write document.getElementByClassName('className') for multiple elements selection.
@@ -270,6 +278,15 @@ import videoImg5 from '../assets/videoSelection3.jpg'
             {icon: videoImg5},
            ],
            backImg: "",
+           homePageCode:`  startSearch(){
+        this.search = !this.search;
+        if(this.resultReturn){
+              this.popular = false;
+        }else {
+             this.popular = true;
+              this.text = false;
+              this.Ecommerce = false;
+    // }`,
            videoURL:'',
            MenuItem:"MenuItem0",
            resultList:[],
@@ -636,12 +653,23 @@ body{
   text-decoration: none;
   color:white;
   font-weight: bolder;
-  
 }
 
 .githubLink:hover{
   border-bottom: solid 1px white;
 }
+
+.linkToOther{
+  text-decoration: none;
+  color:black;
+  font-weight: bolder;
+}
+
+.linkToOther:hover{
+   border-bottom: solid 1px black;
+}
+
+
 
 .introContent{
   grid-row: 3;
@@ -658,6 +686,7 @@ body{
       float: left;
       list-style: none;
       margin-top: 3vh;
+      width:100%;
 }
 
 .information{
@@ -717,7 +746,7 @@ body{
 .content{
   grid-row: 2;
   grid-column: 2/5;
-  margin-top: 12vh;
+  margin-top: 5vh;
 
 }
 
@@ -769,7 +798,7 @@ body{
 
 .homePageCode{
   width: 85%;
-  height: 70%;
+  height: 50%;
   // background: rgb(238, 236, 236);
   float: left;
   background-size: cover;
@@ -1380,7 +1409,6 @@ body{
   .resultFrame p{
     font-size: 12px;
   }
-
   .resultFrame span{
     font-size: 8px;
   }

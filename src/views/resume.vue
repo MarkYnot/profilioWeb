@@ -207,7 +207,7 @@ import '../assets/css/video.css'
   grid-column: 1/3;
   box-shadow: 5px 0px 10px -5px rgba(54, 54, 54, 0.527);
   height: 100%;
-  width:250px;
+  width:35%;
   
   // -webkit-box-shadow: #666 0px 0px 10px;
   // -moz-box-shadow: rgb(61, 61, 61) 0px 0px 10px;

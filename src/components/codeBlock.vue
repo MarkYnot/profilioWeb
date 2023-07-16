@@ -1,17 +1,20 @@
 <template>
   <div class="code-container">
     <pre class="code-editor">
-      <!-- :class="`language-${language}`"  -->
-      <code id="codeBlock" class="language-javascript">
-        <div v-for="(line, index) in codeLines" :key="index" class="code-line">
-          <span class="line-number">{{ index + 1 }}</span>
-          <span v-html="highlightSyntax(line)" class="functionCode"></span>
-        </div>
-      </code>
+      <!-- class="language-javascript" -->
+      <div id="codeBlock" :class="[`language-${language}`]" >
+        <!-- <div class="code-lines-wrapper"> -->
+          <div v-for="(line,index) in codeLines" :key="line" class="code-line">
+            <div class="line-no">{{ index + 1 }}</div>
+            <span class="functionCode" v-html="highlightSyntax(line)"></span>
+          </div>
+        <!-- </div> -->
+      </div>
     </pre>
     <button @click="copyCode" :disabled="isCopied" class="copy-button">{{ copyButtonText }}</button>
   </div>
 </template>
+
 
 <script>
 import 'prismjs';
@@ -21,42 +24,44 @@ import 'prismjs/themes/prism.css';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers';
+
 
 export default {
   data() {
     return {
-      code: ` startSearch(){
-        this.search = !this.search;
-        if(this.resultReturn){
-          this.popular = false;
-        }else this.popular = true;
-        this.text = false;
-        this.Ecommerce = false;
-    },
+    //   code: ` startSearch(){
+    //     this.search = !this.search;
+    //     if(this.resultReturn){
+    //       this.popular = false;
+    //     }else this.popular = true;
+    //     this.text = false;
+    //     this.Ecommerce = false;
+    // },
 
-    //methods
-    searching(event){
-        this.zeroResult = false;
+    // //methods
+    // searching(event){
+    //     this.zeroResult = false;
       
         
-        if(!event.target.value){
-          this.popular = true;
-          this.spinner = false;  
-          this.resultReturn = false;
-          return
-        }
-        this.resultReturn = false;
-        this.spinner = true;
-        this.popular = false;
+    //     if(!event.target.value){
+    //       this.popular = true;
+    //       this.spinner = false;  
+    //       this.resultReturn = false;
+    //       return
+    //     }
+    //     this.resultReturn = false;
+    //     this.spinner = true;
+    //     this.popular = false;
 
-        let reg = new RegExp(event.target.value)
-        let resultSet = []
+    //     let reg = new RegExp(event.target.value)
+    //     let resultSet = []
         
-        this.projectList.forEach(item=>{
-            if(reg.test(item.name)){
-              resultSet.push(item)
-            }
-        })`,
+    //     this.projectList.forEach(item=>{
+    //         if(reg.test(item.name)){
+    //           resultSet.push(item)
+    //         }
+    //     })`,
       codeLines: [],
       isCopied: false,
       copyButtonText: 'Copy',
@@ -64,19 +69,28 @@ export default {
   },
 
     props: {
-    // code: {
-    //   type: String,
-    //   required: true,
-    // },
+    code: {
+      type: String,
+      required: true,
+    },
     language: {
       type: String,
       default: 'javascript',
     },
   },
 
-  created() {
+  mounted() {
+    // Prism.highlightAll();
     this.codeLines = this.code.split('\n');
-    Prism.highlightAll();
+    console.log(this.codeLines)
+      
+  },
+
+ computed: {
+    highlightedCode() {
+      // Use Prism.highlight with the line-numbers plugin to generate the code with line numbers
+      return Prism.highlight(this.code, Prism.languages[this.language], this.language) + '\n';
+    },
   },
   
   
@@ -87,8 +101,8 @@ export default {
         const tempCodeBlock = codeBlock.cloneNode(true);
 
         // Remove line numbers from the cloned code block
-        const lineNumbers = Array.from(tempCodeBlock.getElementsByClassName('line-number'));
-        lineNumbers.forEach(lineNumber => lineNumber.remove());
+        const lineNumbers = Array.from(tempCodeBlock.getElementsByClassName('line-no'));
+        lineNumbers.forEach(lineNumber => lineNumber.remove('line-no'));
       const codeWithoutLineNumbers = tempCodeBlock.innerText;
       const normalizedCode = codeWithoutLineNumbers.replace(/^\s+/gm, '');
 
@@ -112,9 +126,9 @@ export default {
     },
 
 
-    highlightSyntax(line) {
+     highlightSyntax(line) {
        const language = Prism.languages[this.language]
-      return Prism.highlight(line, language, this.language);
+       return Prism.highlight(line, language, this.language);
     },
   },
 };
@@ -132,19 +146,23 @@ export default {
   padding: 20px;
   border-radius: 5px;
   /* text-shadow: none !important; */
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
-  overflow-x: scroll;
+  // font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  overflow: scroll;
   line-height: 1.4;
+}
+
+.code-lines-wrapper {
+  position: relative;
 }
 
 .code-line {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 10px 300px;
   position: relative;
   height: 15px;
-  width: 1400px;
-  margin-top: 8px;
+  width: 100%;
+  margin-top:2px;
 }
 
 .code-line span {
@@ -159,18 +177,22 @@ export default {
 .functionCode{
   grid-column: 2;
   color: rgb(224, 224, 158);
+  text-align: left;
 }
 
-.line-number {
-  position: absolute;
-  grid-column: 2;
-  left: -6.5em;
+.line-no {
+  grid-column: 1;
   width: 2.5em;
   text-align: left;
   color: #757575;
-  user-select: none;
-  font-size: 14px;
+  font-size: 13px;
   top: 0px;
+  user-select: none !important;
+  -moz-user-select:none;  
+  -webkit-user-select:none; 
+  -ms-user-select:none; 
+  -khtml-user-select:none; 
+  -o-user-select:none; 
 }
 
 .copy-button {
