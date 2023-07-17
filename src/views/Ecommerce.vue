@@ -103,7 +103,7 @@
 
                 <li> 
                   <div class="greenTitle">GITHUB</div>
-                  <span class="information"><a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce">Feel free to Edit on Github </a> </span>
+                  <span class="information">Feel free to contribute on <a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce"><a-icon type="github" theme="outlined" :style="{fontSize:'11px', color:'white'}" /> Github</a> if you see anything go wrong</span>
                 </li>
                 
                   <li> 
@@ -121,16 +121,13 @@
             </div>
             
             <span class="published">Published at 18/12/2022</span>
-            <span class="textLength"> - 7mins reading</span>
+            <span class="textLength"> - 10mins reading</span>
 
             <div class="content">
 
               <span>
-              Welcome to the first post in the my project blog,The overview of this project is to build a Ecommerce
-              web application which named PhoneZone. PhoneZone provides 
-              users with an easy-trading platform where users could 
-              conveniently obtain their
-              products by ordering on this platform.  In this post, I will show you everything I know about how to implement some typical fucntionality of a .
+              Welcome to the first blog,The overview of this project blog is to build a Ecommerce
+              web application which named PhoneZone. PhoneZone provides users with an easy-trading platform where users could conveniently obtain their products by ordering on this platform.  In this post, I will show you everything I know about how to implement some typical fucntionality of Ecommerce application.
               </span>  
               
              
@@ -143,22 +140,22 @@
               crucial funtionality, feel free to access the project in my github.
               </span>
 
-
+<!-- 
               <span>Here is the porject demo:</span>
 
               <iframe class="playerSetting" src="https://www.youtube.com/embed/uAZegV6WbCs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-              </iframe>
+              </iframe> -->
 
               
-              <span id="tableTitle">Table of the crucial funtionalities</span>
+              <span id="tableTitle">Table of content:</span>
            
            
               <ul>
-                 <li><a>Home page</a></li>
+                 <li><a>Prerequisities</a></li>
+                 <li><a>Installation and Configuration</a></li>
                  <li><a>Login</a></li>
-                 <li><a>Change Avantar</a></li>
-                 <li><a>Shopping Cart</a></li>
-                 <li><a>Change Username/Password</a></li>
+                 <li><a>Shopping Cart</a></li>     
+                 <li><a>Upload image</a></li>      
               </ul>
       
               <h2>Prerequisites</h2>
@@ -172,9 +169,9 @@
 
               <h2>Installation and Configuration</h2>
 
-
+              <div class="divisionBar"></div>
               <h2>Login page</h2>
-              <!-- <span class="textBeforeCode">Please reach the html code:</span> -->
+              <span >First, we need to set up the HTML structure and add some form elements. I highly recommanded to consider responsive design to make sure the page looks good on various devices and screen size.</span>
 
               <div class="homePageCode">
                  <CodeBlock :code="this.homePageCode" language="markup" />
@@ -183,68 +180,208 @@
               <br/><br/>
               <span>1. <strong>HTML Structure: </strong> The login page is built using HTML, containing a heading, username and password input fields, a "Log in" button, and a link to the sign-in page. An eye icon is also included as an image element.
               <br/><br/>
-              2. <strong>Data Binding (v-model):</strong> Vue.js is utilized to establish two-way data binding between the input fields and the Vue instance properties username and password. This allows seamless synchronization of user input with the Vue instance data.
+              2. <strong>Data Binding  (v-model): </strong>is utilized to establish two-way data binding between the input fields and the Vue instance properties <strong>username</strong> and <strong>password</strong>. This allows seamless synchronization of user input with the Vue instance data.
               <br/><br/>
-              3. <strong>Conditional Rendering (v-if and v-else):</strong> Conditional rendering is employed to control the visibility of the password input field. The v-if and v-else directives toggle between showing a regular text input or a masked password input based on the value of the pwdType property.
+              3. <strong>Conditional Rendering (v-if and v-else):</strong> Conditional rendering is employed to control the visibility of the password input field. The <code>v-if</code> and <code>v-else</code> directives toggle between showing a regular text input or a masked password input based on the value of the <code>pwdType</code> property.
                 <br/><br/>
-              4. <strong>Event Handling (@click, @mouseover, and @mouseout): </strong> Event listeners are implemented to handle user interactions. The "Log in" button has a click event listener (@click="userLogin") to trigger the userLogin method when clicked. The eye icon has event listeners for click, mouseover, and mouseout, executing the changeType, hoverEye, and outEye methods respectively.
+              4. <strong>Event Handling (@click, @mouseover, and @mouseout): </strong> Event listeners are implemented to handle user interactions. The "Log in" button has a click event listener <code>@click="userLogin"</code> to trigger the <code>userLogin</code> method when <code>clicked</code>. The eye icon has event listeners for click, mouseover, and mouseout, executing the changeType, hoverEye, and outEye methods respectively.
                 <br/><br/>
-              3. <strong>Conditional Rendering (v-if and v-else):</strong> Conditional rendering is employed to control the visibility of the password input field. The <code>v-if</code> and <code>v-else</code> directives toggle between showing a regular text input or a masked password input based on the value of the pwdType property.
-                <br/><br/>
-              3. <strong>Conditional Rendering (v-if and v-else):</strong> Conditional rendering is employed to control the visibility of the password input field. The v-if and v-else directives toggle between showing a regular text input or a masked password input based on the value of the pwdType property.
+              5. <strong>Dynamic Image Source:</strong> The image source <code>('src') </code> of the eye icon is dynamically updated using Vue's :src attribute <code>(v-bind:src) </code>. The source changes between<strong>seenImg</strong> and <strong>unseenImg</strong> based on the value of the seen property. Clicking the icon toggles the value of seen, allowing users to view or mask the password input by showing or hiding the eye icon accordingly.
+
               </span>
 
 
              <div class="greyDisplay">
-                <span>The getElementById() and getElementByClassName() method are the most common methods in the HTML DOM. It is used almost every time you want to read or edit an HTML element. <br/>
+                <span><strong>Form Validation:</strong> Implement client-side form validation to ensure that the entered username and password meet the required criteria (e.g., non-empty fields, valid email format, strong password). Display appropriate error messages to guide users when their input is incorrect.. <br/>
                 </span>
              </div>
 
 
-            <div class="greyDisplay" :style="{height:'19% !important'  }">
-                <span>The code in diagram indicate how the html element style could be mainipulated by setting same a classname. However, the getElementById() allow you to mainipulate html element style to your preference by using methods like setAttribute() or append().
+            <div class="greyDisplay">
+                <span><strong>Security Consideration</strong> code in diagram indicate how the html element style could be mainipulated by setting same a classname. However, the getElementById() allow you to mainipulate html element style to your preference by using methods like setAttribute() or append().
                 </span>
             </div>
 
 
-            <span id="cssText">Please reach the css code:</span>
-            <div class="homePageCss"/>
+            <span id="cssText">Now is the the css part:</span>
+            <div class="homePageCode">
+                 <CodeBlock :code="this.homepageCss" language="css" />
+              </div>
+      
             
-            <span>• Step 1. In the css part, we need to identify the classname or ID we set in the HTML. Symbol # is the ID selector which aim to select html elements with its unique ID. Symbol . lets you define counter styles inline with classname, directly as the value of a property such as list-style<br/><br/>
+            <!-- <span>• Step 1. In the css part, we need to identify the classname or ID we set in the HTML. Symbol # is the ID selector which aim to select html elements with its unique ID. Symbol . lets you define counter styles inline with classname, directly as the value of a property such as list-style<br/><br/>
               
               • Step 2. This project is based on grid layout, each html elements is placed in a specific postion. you need to decide size of each columns and rows in the page by mainipulating the size of grid-template-rows and grid-template-column. Then, Each html element will be placed in specific grid by adjusting grid-row and grid-column. 
               <br/><br/>
 
               • Step 3. Next we need to set up css style of each html element by adjusting thier attribute liks margin, padding, size to ensure all elements in an appropriate position. 
-              </span>
+              </span> -->
+
+                 <ul class="contentUl">  <strong>1. Container Styling (#login):</strong><br/>
+                    <li>The <code>`#login`</code> selector styles the container representing the login form. It uses <code>`text-align:`</code> center to center the form's content horizontally.</li>
+                    <li>The background color is set to white <code>`(background-color: #fff)`</code>, giving the form a clean and minimalist appearance.</li>
+                    <li>To create rounded corners for the form, <code> `border-radius: 20px`</code> is applied, adding a touch of elegance to the design.</li>
+                    <li>The form is given a fixed width of 300 pixels <code>`(width: 300px)`</code> and a fixed height of 350 pixels <code>(`height: 350px`)</code>, ensuring a consistent size on various devices.</li>
+                    <li>To center the form on the page, <code>`margin: auto`</code> and position: absolute are used. The <strong>`top`, `left`, `right`</strong>, and <strong>`bottom`</strong> properties set to 0 ensure the form remains centered.</li>
+              </ul>
+
+
+                 <ul class="contentUl">  <strong>2. Grid Layout (display: grid):</strong><br/>
+                    <li>The form's content is organized using CSS grid layout. <code>`display: grid`</code> enables a grid layout for the container's child elements.</li>
+                    <li>`grid-template-rows: auto` specifies that the grid contains a single row with auto-sizing for the content. This allows the form to adjust its height based on the content.</li>
+                  
+                </ul>
+
+
+               <ul class="contentUl">  <strong>3. Eye Icon Styling (.icon-eye):</strong><br/>
+                    <li>It is given a fixed height and width of 30 pixels each (height: 30px, width: 30px), ensuring a consistent size for the icon.</li>
+                    <li>Positioned absolutely, it is placed at 63% from the left <code>`(left: 63%)`</code> and 48.5% from the top <code>`(top: 48.5%)`</code> of the container. This positioning creates an aesthetically pleasing appearance, slightly to the right and below the form's center.</li>
+                  
+                </ul>
               
               <div class="greyDisplay" :style="{}">
                 <span>CSS grid layout or CSS grid creates complex responsive web design grid layouts more easily and <strong>consistently across browsers</strong>. You could use grid layout to achieve <strong>across-platform web responsive design.</strong>
                 </span>
              </div> 
 
-           <div class="divisionBar"></div>
+             <span>I hope you get what you want, the page should be as what you are expecting. If there something wrong, please refer to  <a target="_blank" class="linkToOther" href="https://github.com/MarkYnot/ECommerce">this repo.</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />  </span>
 
-            <h2 :style="{marginLeft:'0.7vw'}">2.Login</h2>
-            <span class="textBeforeCode">In this part, we will focus on the front-end JS and Backend JS code, Lets have a look at the html <br/>and JS code for this function:</span>
-            <div class="loginHtml"/>
 
-            <span>• Step 1. Similarly sketch frames as a html content container by using div tag and mainpulate its style by css<br/><br/>
+            <span>All right, lets do the coding for login function:</span>
+            <div class="homePageCode">
+                 <CodeBlock :code="this.loginCode" language="javascript" />
+              </div>
+            
+            <span>Now, we first need to create Authentication Mechanism to veriofy if username and password are correctly entered. Create an API endpoint on the backend server to handle user login requests, hash the user's password and store into the database.</span>
 
-              • Step 2. This project is based on grid layout, each html elements is placed in a specific postion. you need to decide size of each columns and rows in the page by mainipulating the size of grid-template-rows and grid-template-column. Then, Each html element will be placed in specific grid by adjusting grid-row and grid-column. 
-              <br/><br/>
+             <div class="homePageCode">
+                 <CodeBlock :code="this.userService" language="javascript" />
+              </div>
 
-              • Step 3. Now, you can place different html elements like input, buttom into the grids. 
+            <span>First i will call the API in userService to connect with the backend. After called it, then go to the backend router:</span>
+
+            <div class="homePageCode">
+                 <CodeBlock :code="this.userBackend" language="javascript" fileName="/routes/user.server.routes.js"/>
+            </div>
+
+            <span>Now, you should see the mondoDB query implemented by Mongoes which is one of middleware for the connection of mongoDb and ExpressJs. I highly recommended you to follow this the <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">mongoose documentation</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> to know how to write CRUD of mongoDB from expressJs.</span>
+
+            <div class="homePageCode">
+                 <CodeBlock :code="this.LoginVerif" language="javascript" fileName="/server/controller/user.controller.js"/>
+            </div>
+
+            <span>I hope you get what you want, the login function shuld work as what you are expecting, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+
+            <div class="divisionBar"></div>
+        
+
+            <h2>Shopping cart</h2>
+             <h3>Set up funcdamental logic for shopping cart page</h3>
+
+            <span class="textBeforeCode">First, we need some content for the website. So we set up the HTML structure, Create shopping Cart display.</span>
+
+             <div class="homePageCode">
+                 <CodeBlock :code="this.shoppingCart" language="markup" fileName="/client/views/cart.vue"/>
+            </div>
+
+            <span>Now, we need to find the way to Fetch Products from Backend. If you already completed <a target="_blank" class="linkToOther" href="https://vegibit.com/vue-js-express-tutorial/">Vue + ExpressJs tutorial <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a>, you know that you can implement restuful API in some logic but display the prodict informationin different ways.
             </span>
 
-            <div class="greyDisplay" :style="{height:'23% !important'}">
-                <span>There are tags that commonly use in web development including input, h1, button and img. The input tag specifies an input field where <strong>the user can enter data </strong>while the h1 tag are used to define HTML heading. The button tag in HTML is used to define the clickable button while The img tag is used to embed an image in an HTML page.
+            <div class="homePageCode">
+               <CodeBlock :code="this.getItem" language="javascript" fileName="/client/views/cart.vue"/>
+            </div>
+
+              <div class="homePageCode">
+               <CodeBlock :code="this.getItemApi" language="javascript" fileName="/client/services/userDataService.js"/>
+            </div>
+
+              <span>Now, we finished writing the restful API <code>getCartList</code>from the front-end <code>userDataService.js</code>, let's go to the backend now and see what happen:
+            </span>
+
+              <div class="homePageCode">
+               <CodeBlock :code="this.getCartList" language="javascript" fileName="/server/routes/user.server.routes.js"/>
+            </div>
+
+              <div class="homePageCode">
+               <CodeBlock :code="this.cartListDetail" language="javascript" fileName="/server/controllers/user.controller.js"/>
+            </div>
+
+
+            <div class="greyDisplay" >
+                <span>If you need to cross the domain to fetch data,  definitly remember the <a target="_blank" class="linkToOther" href="https://www.imperva.com/learn/application-security/csrf-cross-site-request-forgery/?utm_source=google&utm_medium=cpc&utm_campaign=sw-waf-au&utm_content=&utm_term=cross-site%20request%20forgery&gad=1&gclid=Cj0KCQjwzdOlBhCNARIsAPMwjbzQDAy9MQcpGUSc_YOLUxK9eolgqWXL1oWAnLJ-cePolQ_oOKtNr5kaAiCvEALw_wcB">Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) Protection <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> Protect against XSS attacks by sanitizing user input and avoiding direct insertion of user-generated content into the HTML. Implement <code>CSRF tokens</code> to prevent <code>CSRF attacks</code>.
                 </span>
              </div> 
-             
-            <span class="textBeforeCode" :style="{marginTop:'2vh !important'}">In this part, we will focus on the front-end JS and Backend JS code, Lets have a look at the html and JS code for this function:</span> 
-           </div>
 
+                 <span>I hope you get what you expecting for the shopping cart page design, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+             
+           <h3>Add/Delete item to cart</h3>
+               <span :style="{marginTop:'0px'}">From now, i assume you have already know how to implement a cress-domain restFul API to fetch data from backend using <code>http.common</code> component. Well, you know you can also use <code>Axios</code> component to fetch the data too.
+              </span>
+
+              <span>In the similar way, Leverage <code>JavaScript</code> and <code>AJAX</code> to create a dynamic and responsive 'Add to Cart' process.
+              </span>
+
+              <div class="homePageCode">
+                <CodeBlock :code="this.editCart" language="javascript" fileName="/client/views/cart.vue"/>
+             </div>
+
+              <span>You may wanna ask what is different between <code>Axios</code> and <code>http.common</code> component? They looks all similar. Well, Axios is a specific and widely used library with its own distinct name and features, while <code>HTTP Common Component</code> is more generic and could refer to different implementations based on the context. Axios is more recommanded because it works in both browser and Node.js environments.
+              </span>
+
+
+              <div class="homePageCode">
+                <CodeBlock :code="this.addItem" language="javascript" fileName="/server/routes/user.server.routes.js"/>
+             </div>
+
+                  <span> Now, we implemented a function named updateUserItem and deleteItem that <strong>updates/delete</strong> the quantity of a specific product in a user's shopping cart. </span>
+
+               <div class="homePageCode">
+                <CodeBlock :code="this.addItemDetail" language="javascript" fileName="/server/controller/user.controller.js"/>
+             </div>
+
+                <span> The function extracts relevant data from the request query parameters. It captures the <code>`firstname`, `lastname`, `productTitle`, `newnumber`</code> (quantity) values sent in the request.uses the User model (presumably representing users in a database) to find a user based on the <code>firstname</code> and <code>lastname</code> provided in the request. From now, the information in database will be updated and will also be displayed on the page</span>
+
+                <span>Similarly, remove items function use the similar logic to implement the frontend interection and backend database intereaction</span>
+
+                <span>I hope you get what you expecting for the shopping cart functionality, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+
+          <div class="divisionBar"></div>
+
+          <h2>Upload Picture</h2>
+          <h3>Set up HTML Structure for the page</h3>
+          
+          <span class="textBeforeCode">That is the function i use <code>element-Ui</code>, but I will not recommend you to follow the same strategy. Instead, I suggest you to use CSS framework that you are good at. If you are about to use elementUI, I will try as much as I can to explain what <a target="_blank" class="linkToOther" href="https://vuejsprojects.com/element-ui">the property of each Element-ui component</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> so you can apply same idea.</span>
+
+             <div class="homePageCode">
+              <CodeBlock code="npm install -g element-ui" language="bash" fileName=""/>
+          </div>
+
+         <span>And now registered it</span>
+
+          <div class="homePageCode">
+              <CodeBlock :code="this.elementUI" language="javascript" fileName="/client/main.js"/>
+          </div>
+
+          <span>Then set up the HTML strcture, Input fields for product detail, adding product listing and Image upload using element-UI. I bascally choose <code>el-upload</code> and <code>el-bootom</code> to style the website, more element-UI component/themes are <a target="_blank" class="linkToOther" href="https://element.eleme.io/#/en-US/component/layout">here <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </a>.</span>
+
+          <div class="homePageCode" :style="{marginTop: '20px'}">
+              <CodeBlock :code="this.uploadCode" language="markup" fileName="/client/components/AddListing.vue"/>
+          </div>
+   
+    
+          <span><code>`el-upload`</code> is provided with various attributes like <code>`action`, `single`, `limit`</code>, and event listeners <code>(`:on-preview`, `:on-success`, `:on-exceed`) </code> customize its behavior. So, now lets see what happen in the uploading function code</span>
+
+          
+           <div class="homePageCode">
+              <CodeBlock :code="this.uploadBackend" language="javascript" fileName="/server/routes/product.server.router.js"/>
+          </div>
+
+          <span>This module sets up routes and middleware for handling product-related operations, including image uploads, using multer middleware in a Node.js application with the Express framework. It creates a RESTful API structure under the <code>/api </code> URL, where the product-related routes will be managed by the <code>product.controller module</code>. And <code>uploadDir</code> will be the destination of uploaded image.</span>
+
+          <h2>Summary</h2>
+          <span :style="{marginTop:'0px'}">I hope you get what you expecting for the shopping cart functionality after reading my post.  This is just some basic logic to some common function for your website. If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+
+           </div>
 
        </div>
 
@@ -267,7 +404,7 @@ import videoImg2 from '../assets/login.png'
 import videoImg3 from '../assets/videogif2.gif'
 import videoImg4 from '../assets/videoSelection2.png'
 import videoImg5 from '../assets/videoSelection3.jpg'
-// import Video from '../components/mini-player.vue'
+import codeSnip from '../assets/js/ecommerceCode.js'
   export default {
     data(){
        return {
@@ -284,16 +421,29 @@ import videoImg5 from '../assets/videoSelection3.jpg'
             {icon: videoImg5},
            ],
            backImg: "",
-           homePageCode:`  <div  id="login">
-    <h1>Login Page</h1> 
-        <input type="text" placeholder="Enter your username(email)" v-model="username">
-        <input type="text" v-if="pwdType" v-model="password" placeholder="Enter your password"/>
-        <input type="password" placeholder="Enter your password" v-model="password" v-else />
-        <button class="login" type="button" @click="userLogin">Log in</button>
-        <router-link to="/signIn">Don't have account yet? Sign in Right now</router-link>
-    </div>
-        <img :src="seen ? seenImg : unseenImg" @click="changeType()" v-on:mouseover="hoverEye" v-on:mouseout="outEye" class="icon-eye" />` 
-         ,
+
+
+          homePageCode: codeSnip.homePageCode,
+          homepageCss:codeSnip.homepageCss,
+          loginCode:codeSnip.loginCode,
+          userService:codeSnip.userService,
+          userBackend:codeSnip.userBackend,
+          LoginVerif:codeSnip.LoginVerif,
+          shoppingCart:codeSnip.shoppingCart,
+          getItem:codeSnip.getItem,
+          getItemApi:codeSnip.getItemApi,
+          getCartList: codeSnip.getCartList,
+          cartListDetail: codeSnip.cartListDetail,
+          editCart: codeSnip.editCart,
+          addItem: codeSnip.addItem,
+          addItemDetail: codeSnip.addItemDetail,
+          uploadCode: codeSnip.uploadCode,
+          elementUI: codeSnip.elementUI,
+          uploadBackend: codeSnip.uploadBackend,
+
+
+
+          fileStructure:``,
            videoURL:'',
            MenuItem:"MenuItem0",
            resultList:[],
@@ -370,7 +520,7 @@ import videoImg5 from '../assets/videoSelection3.jpg'
     },
 
     handleScroll(event){
-        // console.log(event.target.scrollTop)
+        console.log(event.target.scrollTop)
         if(event.target.scrollTop >= 1678){
             this.backImg = this.videoImgList[1].icon
             this.page = false;
@@ -769,7 +919,7 @@ code{
   float: left;
   font-size: 1vw;
   text-align: left;
-  margin-top:6vh;
+  margin-top:20px;
   display: inline-block;
   word-wrap:break-word;
   white-space: normal;
@@ -793,6 +943,22 @@ code{
   color:#000000
 }
 
+.contentUl{
+  padding-left: 0 !important;
+ 
+}
+
+.contentUl strong{
+  font-size: 10px;
+  float: left;
+  height: auto;
+}
+
+.contentUl li{
+     margin-left: 20px !important;
+     list-style-type:unset !important;
+}
+
 .content h2{
   font-size: 2vw;
   float:left;
@@ -802,6 +968,12 @@ code{
   width:100%;
 }
 
+.content h3{
+  float: left;
+  margin-top: 20px;
+  text-align: left;
+  font-size: 14px;
+}
 
 .playerSetting{
   width:87%;
@@ -809,6 +981,8 @@ code{
   float:left;
   border: solid 0.1px grey;
 }
+
+
 
 .homePageCode{
   width: 95%;
@@ -832,7 +1006,7 @@ code{
 
 .greyDisplay{
   width: 85%;
-  height: 15%;
+  height: auto;
   background: rgb(238, 236, 236);
   float: left;
   margin-top: 4vh;
@@ -1178,6 +1352,8 @@ code{
   .content ul li{
     font-size: 11px !important;
   }
+
+
 
   .searchStatus{
     grid-template-rows: 17% 8% 10% 40% 25%;

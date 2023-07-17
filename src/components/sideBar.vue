@@ -28,9 +28,10 @@
       </a-menu-item>
 
         <a-menu-item key="4">
-            <router-link to="/videoCentre"/>
+            <!-- <router-link to="/videoCentre"/> -->
+        
           <!-- <a-icon type="video-camera" /> -->
-          <span>Contact me</span>
+          <span><a target="_blank" class="emailTo" href="https://mailto:mark727221029@gmail.com">Contact me</a></span>
         </a-menu-item>
 
         
@@ -90,8 +91,11 @@
 /deep/ .ant-menu-item span{
       font-size: 5vw;
       font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      margin-top: 1vh;
-      
+      margin-top: 1vh;   
+}
+
+.emailTo{
+  color: unset;
 }
 
 /deep/ .ant-menu-submenu-title span{

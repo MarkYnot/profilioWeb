@@ -13,17 +13,19 @@
     </pre>
     <button @click="copyCode" :disabled="isCopied" class="copy-button">{{ copyButtonText }}</button>
     <button class="language-button" disabled>{{ this.language=='markup'? 'html':this.language }}</button>
+    <span class="fileName">{{fileName}}</span>
   </div>
 </template>
 
 
 <script>
 import 'prismjs';
-import 'prismjs/themes/prism.css';
-// import 'prismjs/themes/prism-java';
+// import 'prismjs/themes/prism.css';
+import 'prismjs/themes/prism-funky.min.css';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-java';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
@@ -47,6 +49,11 @@ export default {
       type: String,
       default: 'javascript',
     },
+
+    fileName:{
+      type: String,
+      default: '',
+    }
   },
 
   mounted() {
@@ -186,6 +193,11 @@ export default {
   font-size: 10px;
 }
 
+.copy-button:hover{
+  opacity: 0.6;
+  transition: 0.7s all;
+}
+
 .language-button {
   position: absolute;
   top: 10px;
@@ -199,5 +211,14 @@ export default {
   font-family: Arial, sans-serif;
   font-size: 10px;
   text-transform: uppercase
+}
+
+.fileName{
+  position: absolute;
+  top: 10px;
+  left: 90px;
+  padding: 5px 10px;
+  color: white;
+  font-size: 10px;
 }
 </style>
