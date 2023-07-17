@@ -173,19 +173,25 @@
               <h2>Installation and Configuration</h2>
 
 
-              <h2>Home page</h2>
-              <span class="textBeforeCode">Please reach the html code:</span>
+              <h2>Login page</h2>
+              <!-- <span class="textBeforeCode">Please reach the html code:</span> -->
 
               <div class="homePageCode">
-                 <CodeBlock :code="this.homePageCode" language="javascript" />
+                 <CodeBlock :code="this.homePageCode" language="markup" />
               </div>
 
               <br/><br/>
-              <span>• Step 1. Sketch 3 frames as a html content container by using div tag and mainpulate its style by css.
+              <span>1. <strong>HTML Structure: </strong> The login page is built using HTML, containing a heading, username and password input fields, a "Log in" button, and a link to the sign-in page. An eye icon is also included as an image element.
               <br/><br/>
-              • Step 2. If you attempt to mainpulate the form of html element like the div frame you just sketched, either simply write document.getElementById('IDName') for single element selection or write document.getElementByClassName('className') for multiple elements selection.
+              2. <strong>Data Binding (v-model):</strong> Vue.js is utilized to establish two-way data binding between the input fields and the Vue instance properties username and password. This allows seamless synchronization of user input with the Vue instance data.
               <br/><br/>
-               <!-- Step 3. Once you obtain the html element, you could use methods like setAttribute(), append() to mainipulate html element style to your preference.   -->
+              3. <strong>Conditional Rendering (v-if and v-else):</strong> Conditional rendering is employed to control the visibility of the password input field. The v-if and v-else directives toggle between showing a regular text input or a masked password input based on the value of the pwdType property.
+                <br/><br/>
+              4. <strong>Event Handling (@click, @mouseover, and @mouseout): </strong> Event listeners are implemented to handle user interactions. The "Log in" button has a click event listener (@click="userLogin") to trigger the userLogin method when clicked. The eye icon has event listeners for click, mouseover, and mouseout, executing the changeType, hoverEye, and outEye methods respectively.
+                <br/><br/>
+              3. <strong>Conditional Rendering (v-if and v-else):</strong> Conditional rendering is employed to control the visibility of the password input field. The <code>v-if</code> and <code>v-else</code> directives toggle between showing a regular text input or a masked password input based on the value of the pwdType property.
+                <br/><br/>
+              3. <strong>Conditional Rendering (v-if and v-else):</strong> Conditional rendering is employed to control the visibility of the password input field. The v-if and v-else directives toggle between showing a regular text input or a masked password input based on the value of the pwdType property.
               </span>
 
 
@@ -278,15 +284,16 @@ import videoImg5 from '../assets/videoSelection3.jpg'
             {icon: videoImg5},
            ],
            backImg: "",
-           homePageCode:`  startSearch(){
-        this.search = !this.search;
-        if(this.resultReturn){
-              this.popular = false;
-        }else {
-             this.popular = true;
-              this.text = false;
-              this.Ecommerce = false;
-    // }`,
+           homePageCode:`  <div  id="login">
+    <h1>Login Page</h1> 
+        <input type="text" placeholder="Enter your username(email)" v-model="username">
+        <input type="text" v-if="pwdType" v-model="password" placeholder="Enter your password"/>
+        <input type="password" placeholder="Enter your password" v-model="password" v-else />
+        <button class="login" type="button" @click="userLogin">Log in</button>
+        <router-link to="/signIn">Don't have account yet? Sign in Right now</router-link>
+    </div>
+        <img :src="seen ? seenImg : unseenImg" @click="changeType()" v-on:mouseover="hoverEye" v-on:mouseout="outEye" class="icon-eye" />` 
+         ,
            videoURL:'',
            MenuItem:"MenuItem0",
            resultList:[],
@@ -467,6 +474,13 @@ import videoImg5 from '../assets/videoSelection3.jpg'
 
 body{
   line-height:0;
+}
+
+code{
+  background: black;
+  border-radius: 3px;
+  width:auto;
+  color:rgb(224, 224, 158);
 }
 
 .videoCentreContainer{
@@ -797,8 +811,8 @@ body{
 }
 
 .homePageCode{
-  width: 85%;
-  height: 50%;
+  width: 95%;
+  height: auto;
   // background: rgb(238, 236, 236);
   float: left;
   background-size: cover;

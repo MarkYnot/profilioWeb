@@ -4,7 +4,7 @@
       <!-- class="language-javascript" -->
       <div id="codeBlock" :class="[`language-${language}`]" >
         <!-- <div class="code-lines-wrapper"> -->
-          <div v-for="(line,index) in codeLines" :key="line" class="code-line">
+          <div v-for="(line,index) in codeLines" :key="index" class="code-line">
             <div class="line-no">{{ index + 1 }}</div>
             <span class="functionCode" v-html="highlightSyntax(line)"></span>
           </div>
@@ -12,6 +12,7 @@
       </div>
     </pre>
     <button @click="copyCode" :disabled="isCopied" class="copy-button">{{ copyButtonText }}</button>
+    <button class="language-button" disabled>{{ this.language=='markup'? 'html':this.language }}</button>
   </div>
 </template>
 
@@ -19,49 +20,18 @@
 <script>
 import 'prismjs';
 import 'prismjs/themes/prism.css';
-// import 'prismjs/themes/prism-json';
 // import 'prismjs/themes/prism-java';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-java';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 
 
 export default {
   data() {
     return {
-    //   code: ` startSearch(){
-    //     this.search = !this.search;
-    //     if(this.resultReturn){
-    //       this.popular = false;
-    //     }else this.popular = true;
-    //     this.text = false;
-    //     this.Ecommerce = false;
-    // },
-
-    // //methods
-    // searching(event){
-    //     this.zeroResult = false;
-      
-        
-    //     if(!event.target.value){
-    //       this.popular = true;
-    //       this.spinner = false;  
-    //       this.resultReturn = false;
-    //       return
-    //     }
-    //     this.resultReturn = false;
-    //     this.spinner = true;
-    //     this.popular = false;
-
-    //     let reg = new RegExp(event.target.value)
-    //     let resultSet = []
-        
-    //     this.projectList.forEach(item=>{
-    //         if(reg.test(item.name)){
-    //           resultSet.push(item)
-    //         }
-    //     })`,
       codeLines: [],
       isCopied: false,
       copyButtonText: 'Copy',
@@ -83,34 +53,24 @@ export default {
     // Prism.highlightAll();
     this.codeLines = this.code.split('\n');
     console.log(this.codeLines)
-      
+    const lineNo = document.getElementsByClassName('line-no');
+    lineNo.forEach(item => item.addEventListener('copy', this.handleCopy))
+  
   },
 
- computed: {
-    highlightedCode() {
-      // Use Prism.highlight with the line-numbers plugin to generate the code with line numbers
-      return Prism.highlight(this.code, Prism.languages[this.language], this.language) + '\n';
-    },
+
+  beforeDestroy(){
+    const lineNo = document.getElementsByClassName('line-no');
+    lineNo.forEach(item => item.removeEventListener('copy', this.handleCopy))
   },
-  
-  
+
   methods: {
     copyCode() {
-        const codeBlock = document.getElementById('codeBlock');
-        // const codeLines = Array.from(codeBlock.querySelectorAll('.code-line'));
-        const tempCodeBlock = codeBlock.cloneNode(true);
-
-        // Remove line numbers from the cloned code block
-        const lineNumbers = Array.from(tempCodeBlock.getElementsByClassName('line-no'));
-        lineNumbers.forEach(lineNumber => lineNumber.remove('line-no'));
-      const codeWithoutLineNumbers = tempCodeBlock.innerText;
-      const normalizedCode = codeWithoutLineNumbers.replace(/^\s+/gm, '');
-
-
-          console.log(normalizedCode)
+        const codeContent = this.codeLines.join('\n');
+          console.log(codeContent)
 
   
-        navigator.clipboard.writeText(normalizedCode)
+        navigator.clipboard.writeText(codeContent)
             .then(() => {
               this.isCopied = true;
               this.copyButtonText = 'Copied';
@@ -123,6 +83,10 @@ export default {
             .catch(error => {
               console.error('Failed to copy the code:', error);
             });
+    },
+
+    handleCopy(event){
+        event.preventDefault();
     },
 
 
@@ -148,8 +112,14 @@ export default {
   /* text-shadow: none !important; */
   // font-family: 'Courier New', Courier, monospace;
   font-size: 13px;
-  overflow: scroll;
+  overflow-x: scroll;
   line-height: 1.4;
+}
+
+#codeBlock {
+  display:grid;
+  align-items: start;
+  vertical-align: top !important;
 }
 
 .code-lines-wrapper {
@@ -158,7 +128,7 @@ export default {
 
 .code-line {
   display: grid;
-  grid-template-columns: 10px 300px;
+  grid-template-columns: 18px 300px;
   position: relative;
   height: 15px;
   width: 100%;
@@ -167,6 +137,7 @@ export default {
 
 .code-line span {
   text-shadow: none !important;
+  font-size: 10px;
 }
 
 /deep/ .token.operator{
@@ -185,7 +156,7 @@ export default {
   width: 2.5em;
   text-align: left;
   color: #757575;
-  font-size: 13px;
+  font-size: 10px;
   top: 0px;
   user-select: none !important;
   -moz-user-select:none;  
@@ -193,19 +164,40 @@ export default {
   -ms-user-select:none; 
   -khtml-user-select:none; 
   -o-user-select:none; 
+  pointer-events: none;
 }
+
+.line-no::selection {
+  background-color: transparent;
+}
+
 
 .copy-button {
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 5px 10px;
-  background-color: #6272a4;
-  color: #f8f8f2;
+  background-color: white;
+  color: black;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 10px;
+}
+
+.language-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase
 }
 </style>
