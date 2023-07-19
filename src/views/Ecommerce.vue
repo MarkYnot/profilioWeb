@@ -115,24 +115,23 @@
        </div>
 
        <div class="projectContent" @scroll="handleScroll">
-            <div class="darkMode">
-                  <a-icon type="search" theme="outlined" :style="{fontSize:'1.4vw', color:'black'}" />
-                  <span>DarkMode</span>
-            </div>
+            <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
+                  <a-icon :type="dark?'alert':'bulb'" theme="filled" :style="{fontSize:'11px', color:'white', textItem:'centre'}" />
+            </button>
             
             <span class="published">Published at 18/12/2022</span>
             <span class="textLength"> - 10mins reading</span>
 
             <div class="content">
 
-              <span>
+              <span class="showcase">
               Welcome to the first blog,The overview of this project blog is to build a Ecommerce
               web application which named PhoneZone. PhoneZone provides users with an easy-trading platform where users could conveniently obtain their products by ordering on this platform.  In this post, I will show you everything I know about how to implement some typical fucntionality of Ecommerce application.
               </span>  
               
              
             
-              <span>
+              <span class="showcase">
               In this article, i will introduce the crucial modules of this web 
               application and how to implement each
               of funtionalities in the modules. In addition, this article will only focus on the 
@@ -151,34 +150,103 @@
            
            
               <ul>
-                 <li><a>Prerequisities</a></li>
-                 <li><a>Installation and Configuration</a></li>
-                 <li><a>Login</a></li>
-                 <li><a>Shopping Cart</a></li>     
-                 <li><a>Upload image</a></li>      
+                 <li><a href="#section1" class="tableLi">Prerequisities</a></li>
+                 <li><a href="#section2" class="tableLi">Installation and Configuration</a></li>
+                 <li><a href="#section3" class="tableLi">Login</a></li>
+                 <li><a href="#section4" class="tableLi">Shopping Cart</a></li>     
+                 <li><a href="#section5" class="tableLi">Upload image</a></li> 
+                 <li><a href="#section6" class="tableLi">Summary</a></li>           
               </ul>
       
-              <h2>Prerequisites</h2>
-              <span :style="{ marginTop:'0'}">1. You have to be somewhat familiar with NodeJs. If you have not tried NodeJS before, I highly recommend you to follow <a target="_blank" class="linkToOther" href="https://nodejs.org/en/docs">NodeJS tutorial </a>   <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> from their official website (since they explained everything quite clearly and help you build serverness API with NodeJs).
+              <h2 id="section1">Prerequisites</h2>
+              <span :style="{ marginTop:'0'}" class="showcase">1. You have to be somewhat familiar with NodeJs. If you have not tried NodeJS before, I highly recommend you to follow <a target="_blank" class="linkToOther" href="https://nodejs.org/en/docs">NodeJS tutorial </a>   <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /> from their official website (since they explained everything quite clearly and help you build serverness API with NodeJs).
               <br/><br/>
                2. About styling, I suggest you to use CSS framework (or even pure CSS) that you are good at currently.  I will try as much as I can to explain all typical css mianipulator we used, so you can apply same idea.
 
               <br/><br/>
-               3. About VueJs, I highly recommend you to follow checkout their <a target="_blank" class="linkToOther" href="https://vuejs.org/guide/introduction.html">Getting start Page </a>   <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> , there may be many process reagrding its installation, application and specific related plunin. Then Watching <a target="_blank" class="linkToOther" href="https://www.youtube.com/watch?v=Vn6FxqvsdMU"> Node+VueJs tutorial</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />  to have some ideas how they connect nodeJs and VueJs, you could go ahead and try out initialal the project since you already have some idea about how connect VueJs and NodeJs.
+               3. About VueJs, I highly recommend you to follow checkout their <a target="_blank" class="linkToOther" href="https://vuejs.org/guide/introduction.html">Getting start Page </a>   <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> , there may be many process reagrding its installation, application and specific related plunin. Then Watching <a target="_blank" class="linkToOther" href="https://www.youtube.com/watch?v=Vn6FxqvsdMU"> Node+VueJs tutorial</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />  to have some ideas how they connect nodeJs and VueJs, you could go ahead and try out initialal the project since you already have some idea about how connect VueJs and NodeJs.
               </span>
 
-              <h2>Installation and Configuration</h2>
+              <div class="divisionBar"></div>
+
+              <h2 id="section2">Installation and Configuration</h2>
+              <span class="showcase">There are some packages that you will need you to install before hand. I will explain each of them:</span>
+
+              <div class="homePageCode">
+                 <CodeBlock :code="this.packageF" language="json" fileName="/client/package.json"/>
+              </div>
+
+               <ul class="contentUl">  <strong>For the Client-side:</strong><br/>
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://axios-http.com/docs/intro"> "axios": "^0.21.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Axios is a popular HTTP client library used for making HTTP requests from the client-side to the server-side or external APIs. </li>
+
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/zloirock/core-js"> "core-js": "^3.12.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Core-js is a polyfill library that provides modern JavaScript features to older browsers that do not support them. </li>
+
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://nodejs.org/api/crypto.html"> "crypto": "^1.0.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   The crypto package is a built-in Node.js module that provides cryptographic functionality, such as hashing and encryption. It is mainly used on the server-side. </li>
+
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://element.eleme.io/#/en-US"> "element-ui": "^2.15.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   Element UI is a popular component library for Vue.js applications that provides a set of customizable UI components. </li>
+
+
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/dankogai/js-base64"> "js-base64": "^3.6.0"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.    The js-base64 library provides utilities for encoding and decoding data in Base64 format. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/emn178/js-md5"> "js-md5": "^0.7.3"</a> <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  The js-md5 library is used to calculate MD5 hashes of data. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://docs.npmjs.com/cli/v7/commands/npx"> "npx": "^10.2.2"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   npx is a tool that comes with npm and allows you to run packages without installing them globally. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/http-party/node-portfinder"> "portfinder": "^1.0.28"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   The portfinder library is used to find an available port when starting a local development server. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://vuejs.org/guide/introduction.html"> "vue": "^2.6.11"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   Vue.js is the core library for building reactive and component-based user interfaces in JavaScript. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/cmp-cc/vue-cookies"> "vue-cookies": "^1.7.4"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   The vue-cookies library provides a simple way to manage cookies in Vue.js applications. </li>
+
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/hilongjw/vue-lazyload"> "vue-lazyload": "^1.3.3"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   The vue-lazyload library enables lazy loading of images in Vue.js applications, which improves page loading performance. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://router.vuejs.org/"> "vue-router": "^3.5.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Vue Router is the official routing library for Vue.js applications, allowing you to create client-side routing for single-page applications. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/NightCatSama/vue-slider-component"> "vue-slider-component": "2.8.6"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  The vue-slider-component library provides a customizable slider component for Vue.js applications. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://vuetifyjs.com/en/"> "vuetify": "^2.4.11"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Vuetify is a popular Material Design component framework for Vue.js, offering a set of pre-built UI components following the Material Design guidelines.</li>
+              </ul>
+
+
+               <div class="homePageCode">
+                 <CodeBlock :code="this.packageB" language="json" fileName="/server/package.json"/>
+              </div>
+
+               <ul class="contentUl">  <strong>For the Server-side:</strong><br/>
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/cookie-parser"> "cookie-parser": "Version ~1.4.4" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a>.  A middleware for parsing HTTP cookies. It simplifies handling cookies in Node.js. </li>
+
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/debug"> "debug": "Version ~2.6.9"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   A small debugging utility for Node.js that provides conditional logging based on namespaces. </li>
+
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://expressjs.com/"> "express": "^4.16.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   A popular and minimalistic web application framework for Node.js, used for building web servers and APIs. </li>
+
+
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/http-errors"> "http-errors": "^1.6.3"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.    A utility for creating HTTP error objects with proper status codes and error messages. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://mongoosejs.com/"> "mongoose": "^5.12.7"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  An Object Data Modeling (ODM) library for MongoDB and Node.js, used for managing MongoDB databases and providing schema-based data validation. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/morgan"> "morgan": "^1.9.1"</a> <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.    A middleware for logging HTTP requests and responses in the Express.js framework. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/multer"> "multer": "^1.4.2"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.  A middleware for handling file uploads in the Express.js framework.</li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://nodejs.org/api/path.html"> "path": "^0.2.0"</a> <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   A Node.js built-in module that provides utilities for working with file paths.</li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/pub"> "pub": "^1.7.4"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.    A utility to publish local development servers to the internet using ngrok. </li>
+
+              </ul>
+
+
 
               <div class="divisionBar"></div>
-              <h2>Login page</h2>
-              <span >First, we need to set up the HTML structure and add some form elements. I highly recommanded to consider responsive design to make sure the page looks good on various devices and screen size.</span>
+              <h2 id="section3">Login page</h2>
+              <span class="showcase">First, we need to set up the HTML structure and add some form elements. I highly recommanded to consider responsive design to make sure the page looks good on various devices and screen size.</span>
 
               <div class="homePageCode">
                  <CodeBlock :code="this.homePageCode" language="markup" />
               </div>
 
               <br/><br/>
-              <span>1. <strong>HTML Structure: </strong> The login page is built using HTML, containing a heading, username and password input fields, a "Log in" button, and a link to the sign-in page. An eye icon is also included as an image element.
+              <span class="showcase">1. <strong>HTML Structure: </strong> The login page is built using HTML, containing a heading, username and password input fields, a "Log in" button, and a link to the sign-in page. An eye icon is also included as an image element.
               <br/><br/>
               2. <strong>Data Binding  (v-model): </strong>is utilized to establish two-way data binding between the input fields and the Vue instance properties <strong>username</strong> and <strong>password</strong>. This allows seamless synchronization of user input with the Vue instance data.
               <br/><br/>
@@ -192,18 +260,18 @@
 
 
              <div class="greyDisplay">
-                <span><strong>Form Validation:</strong> Implement client-side form validation to ensure that the entered username and password meet the required criteria (e.g., non-empty fields, valid email format, strong password). Display appropriate error messages to guide users when their input is incorrect.. <br/>
+                <span class="showcase"><strong>Form Validation:</strong> Implement client-side form validation to ensure that the entered username and password meet the required criteria (e.g., non-empty fields, valid email format, strong password). Display appropriate error messages to guide users when their input is incorrect.. <br/>
                 </span>
              </div>
 
 
             <div class="greyDisplay">
-                <span><strong>Security Consideration</strong> code in diagram indicate how the html element style could be mainipulated by setting same a classname. However, the getElementById() allow you to mainipulate html element style to your preference by using methods like setAttribute() or append().
+                <span class="showcase"><strong>Security Consideration</strong> code in diagram indicate how the html element style could be mainipulated by setting same a classname. However, the getElementById() allow you to mainipulate html element style to your preference by using methods like setAttribute() or append().
                 </span>
             </div>
 
 
-            <span id="cssText">Now is the the css part:</span>
+            <span id="cssText" class="showcase">Now is the the css part:</span>
             <div class="homePageCode">
                  <CodeBlock :code="this.homepageCss" language="css" />
               </div>
@@ -218,64 +286,64 @@
               </span> -->
 
                  <ul class="contentUl">  <strong>1. Container Styling (#login):</strong><br/>
-                    <li>The <code>`#login`</code> selector styles the container representing the login form. It uses <code>`text-align:`</code> center to center the form's content horizontally.</li>
-                    <li>The background color is set to white <code>`(background-color: #fff)`</code>, giving the form a clean and minimalist appearance.</li>
-                    <li>To create rounded corners for the form, <code> `border-radius: 20px`</code> is applied, adding a touch of elegance to the design.</li>
-                    <li>The form is given a fixed width of 300 pixels <code>`(width: 300px)`</code> and a fixed height of 350 pixels <code>(`height: 350px`)</code>, ensuring a consistent size on various devices.</li>
-                    <li>To center the form on the page, <code>`margin: auto`</code> and position: absolute are used. The <strong>`top`, `left`, `right`</strong>, and <strong>`bottom`</strong> properties set to 0 ensure the form remains centered.</li>
+                    <li class="showcase">The <code>`#login`</code> selector styles the container representing the login form. It uses <code>`text-align:`</code> center to center the form's content horizontally.</li>
+                    <li class="showcase">The background color is set to white <code>`(background-color: #fff)`</code>, giving the form a clean and minimalist appearance.</li>
+                    <li class="showcase">To create rounded corners for the form, <code> `border-radius: 20px`</code> is applied, adding a touch of elegance to the design.</li>
+                    <li class="showcase">The form is given a fixed width of 300 pixels <code>`(width: 300px)`</code> and a fixed height of 350 pixels <code>(`height: 350px`)</code>, ensuring a consistent size on various devices.</li>
+                    <li class="showcase">To center the form on the page, <code>`margin: auto`</code> and position: absolute are used. The <code>`top`, `left`, `right`` and `bottom`</code> properties set to 0 ensure the form remains centered.</li>
               </ul>
 
 
                  <ul class="contentUl">  <strong>2. Grid Layout (display: grid):</strong><br/>
-                    <li>The form's content is organized using CSS grid layout. <code>`display: grid`</code> enables a grid layout for the container's child elements.</li>
-                    <li>`grid-template-rows: auto` specifies that the grid contains a single row with auto-sizing for the content. This allows the form to adjust its height based on the content.</li>
+                    <li class="showcase">The form's content is organized using CSS grid layout. <code>`display: grid`</code> enables a grid layout for the container's child elements.</li>
+                    <li class="showcase">`grid-template-rows: auto` specifies that the grid contains a single row with auto-sizing for the content. This allows the form to adjust its height based on the content.</li>
                   
                 </ul>
 
 
                <ul class="contentUl">  <strong>3. Eye Icon Styling (.icon-eye):</strong><br/>
-                    <li>It is given a fixed height and width of 30 pixels each (height: 30px, width: 30px), ensuring a consistent size for the icon.</li>
-                    <li>Positioned absolutely, it is placed at 63% from the left <code>`(left: 63%)`</code> and 48.5% from the top <code>`(top: 48.5%)`</code> of the container. This positioning creates an aesthetically pleasing appearance, slightly to the right and below the form's center.</li>
+                    <li class="showcase">It is given a fixed height and width of 30 pixels each (height: 30px, width: 30px), ensuring a consistent size for the icon.</li>
+                    <li class="showcase">Positioned absolutely, it is placed at 63% from the left <code>`(left: 63%)`</code> and 48.5% from the top <code>`(top: 48.5%)`</code> of the container. This positioning creates an aesthetically pleasing appearance, slightly to the right and below the form's center.</li>
                   
                 </ul>
               
               <div class="greyDisplay" :style="{}">
-                <span>CSS grid layout or CSS grid creates complex responsive web design grid layouts more easily and <strong>consistently across browsers</strong>. You could use grid layout to achieve <strong>across-platform web responsive design.</strong>
+                <span class="showcase">CSS grid layout or CSS grid creates complex responsive web design grid layouts more easily and <strong>consistently across browsers</strong>. You could use grid layout to achieve <strong>across-platform web responsive design.</strong>
                 </span>
              </div> 
 
-             <span>I hope you get what you want, the page should be as what you are expecting. If there something wrong, please refer to  <a target="_blank" class="linkToOther" href="https://github.com/MarkYnot/ECommerce">this repo.</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />  </span>
+             <span class="showcase">I hope you get what you want, the page should be as what you are expecting. If there something wrong, please refer to  <a target="_blank" class="linkToOther" href="https://github.com/MarkYnot/ECommerce">this repo.</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />  </span>
 
 
-            <span>All right, lets do the coding for login function:</span>
+            <span class="showcase">All right, lets do the coding for login function:</span>
             <div class="homePageCode">
                  <CodeBlock :code="this.loginCode" language="javascript" />
               </div>
             
-            <span>Now, we first need to create Authentication Mechanism to veriofy if username and password are correctly entered. Create an API endpoint on the backend server to handle user login requests, hash the user's password and store into the database.</span>
+            <span class="showcase">Now, we first need to create Authentication Mechanism to veriofy if username and password are correctly entered. Create an API endpoint on the backend server to handle user login requests, hash the user's password and store into the database.</span>
 
              <div class="homePageCode">
                  <CodeBlock :code="this.userService" language="javascript" />
               </div>
 
-            <span>First i will call the API in userService to connect with the backend. After called it, then go to the backend router:</span>
+            <span class="showcase">First i will call the API in userService to connect with the backend. After called it, then go to the backend router:</span>
 
             <div class="homePageCode">
                  <CodeBlock :code="this.userBackend" language="javascript" fileName="/routes/user.server.routes.js"/>
             </div>
 
-            <span>Now, you should see the mondoDB query implemented by Mongoes which is one of middleware for the connection of mongoDb and ExpressJs. I highly recommended you to follow this the <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">mongoose documentation</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> to know how to write CRUD of mongoDB from expressJs.</span>
+            <span class="showcase">Now, you should see the mondoDB query implemented by Mongoes which is one of middleware for the connection of mongoDb and ExpressJs. I highly recommended you to follow this the <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">mongoose documentation</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /> to know how to write CRUD of mongoDB from expressJs.</span>
 
             <div class="homePageCode">
                  <CodeBlock :code="this.LoginVerif" language="javascript" fileName="/server/controller/user.controller.js"/>
             </div>
 
-            <span>I hope you get what you want, the login function shuld work as what you are expecting, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+            <span class="showcase">I hope you get what you want, the login function shuld work as what you are expecting, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /> </span>
 
             <div class="divisionBar"></div>
         
 
-            <h2>Shopping cart</h2>
+            <h2 id="section4">Shopping cart</h2>
              <h3>Set up funcdamental logic for shopping cart page</h3>
 
             <span class="textBeforeCode">First, we need some content for the website. So we set up the HTML structure, Create shopping Cart display.</span>
@@ -284,7 +352,7 @@
                  <CodeBlock :code="this.shoppingCart" language="markup" fileName="/client/views/cart.vue"/>
             </div>
 
-            <span>Now, we need to find the way to Fetch Products from Backend. If you already completed <a target="_blank" class="linkToOther" href="https://vegibit.com/vue-js-express-tutorial/">Vue + ExpressJs tutorial <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a>, you know that you can implement restuful API in some logic but display the prodict informationin different ways.
+            <span class="showcase">Now, we need to find the way to Fetch Products from Backend. If you already completed <a target="_blank" class="linkToOther" href="https://vegibit.com/vue-js-express-tutorial/">Vue + ExpressJs tutorial <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a>, you know that you can implement restuful API in some logic but display the prodict informationin different ways.
             </span>
 
             <div class="homePageCode">
@@ -295,7 +363,7 @@
                <CodeBlock :code="this.getItemApi" language="javascript" fileName="/client/services/userDataService.js"/>
             </div>
 
-              <span>Now, we finished writing the restful API <code>getCartList</code>from the front-end <code>userDataService.js</code>, let's go to the backend now and see what happen:
+              <span class="showcase">Now, we finished writing the restful API <code>getCartList</code>from the front-end <code>userDataService.js</code>, let's go to the backend now and see what happen:
             </span>
 
               <div class="homePageCode">
@@ -308,24 +376,24 @@
 
 
             <div class="greyDisplay" >
-                <span>If you need to cross the domain to fetch data,  definitly remember the <a target="_blank" class="linkToOther" href="https://www.imperva.com/learn/application-security/csrf-cross-site-request-forgery/?utm_source=google&utm_medium=cpc&utm_campaign=sw-waf-au&utm_content=&utm_term=cross-site%20request%20forgery&gad=1&gclid=Cj0KCQjwzdOlBhCNARIsAPMwjbzQDAy9MQcpGUSc_YOLUxK9eolgqWXL1oWAnLJ-cePolQ_oOKtNr5kaAiCvEALw_wcB">Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) Protection <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> Protect against XSS attacks by sanitizing user input and avoiding direct insertion of user-generated content into the HTML. Implement <code>CSRF tokens</code> to prevent <code>CSRF attacks</code>.
+                <span class="showcase">If you need to cross the domain to fetch data,  definitly remember the <a target="_blank" class="linkToOther" href="https://www.imperva.com/learn/application-security/csrf-cross-site-request-forgery/?utm_source=google&utm_medium=cpc&utm_campaign=sw-waf-au&utm_content=&utm_term=cross-site%20request%20forgery&gad=1&gclid=Cj0KCQjwzdOlBhCNARIsAPMwjbzQDAy9MQcpGUSc_YOLUxK9eolgqWXL1oWAnLJ-cePolQ_oOKtNr5kaAiCvEALw_wcB">Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) Protection <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> Protect against XSS attacks by sanitizing user input and avoiding direct insertion of user-generated content into the HTML. Implement <code>CSRF tokens</code> to prevent <code>CSRF attacks</code>.
                 </span>
              </div> 
 
-                 <span>I hope you get what you expecting for the shopping cart page design, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+                 <span class="showcase">I hope you get what you expecting for the shopping cart page design, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
              
-           <h3>Add/Delete item to cart</h3>
-               <span :style="{marginTop:'0px'}">From now, i assume you have already know how to implement a cress-domain restFul API to fetch data from backend using <code>http.common</code> component. Well, you know you can also use <code>Axios</code> component to fetch the data too.
+           <h3 class="showcase">Add/Delete item to cart</h3>
+               <span class="showcase" :style="{marginTop:'0px'}">From now, i assume you have already know how to implement a cress-domain restFul API to fetch data from backend using <code>http.common</code> component. Well, you know you can also use <code>Axios</code> component to fetch the data too.
               </span>
 
-              <span>In the similar way, Leverage <code>JavaScript</code> and <code>AJAX</code> to create a dynamic and responsive 'Add to Cart' process.
+              <span class="showcase">In the similar way, Leverage <code>JavaScript</code> and <code>AJAX</code> to create a dynamic and responsive 'Add to Cart' process.
               </span>
 
               <div class="homePageCode">
                 <CodeBlock :code="this.editCart" language="javascript" fileName="/client/views/cart.vue"/>
              </div>
 
-              <span>You may wanna ask what is different between <code>Axios</code> and <code>http.common</code> component? They looks all similar. Well, Axios is a specific and widely used library with its own distinct name and features, while <code>HTTP Common Component</code> is more generic and could refer to different implementations based on the context. Axios is more recommanded because it works in both browser and Node.js environments.
+              <span class="showcase">You may wanna ask what is different between <code>Axios</code> and <code>http.common</code> component? They looks all similar. Well, Axios is a specific and widely used library with its own distinct name and features, while <code>HTTP Common Component</code> is more generic and could refer to different implementations based on the context. Axios is more recommanded because it works in both browser and Node.js environments.
               </span>
 
 
@@ -333,53 +401,53 @@
                 <CodeBlock :code="this.addItem" language="javascript" fileName="/server/routes/user.server.routes.js"/>
              </div>
 
-                  <span> Now, we implemented a function named updateUserItem and deleteItem that <strong>updates/delete</strong> the quantity of a specific product in a user's shopping cart. </span>
+                  <span class="showcase"> Now, we implemented a function named updateUserItem and deleteItem that <strong>updates/delete</strong> the quantity of a specific product in a user's shopping cart. </span>
 
                <div class="homePageCode">
                 <CodeBlock :code="this.addItemDetail" language="javascript" fileName="/server/controller/user.controller.js"/>
              </div>
 
-                <span> The function extracts relevant data from the request query parameters. It captures the <code>`firstname`, `lastname`, `productTitle`, `newnumber`</code> (quantity) values sent in the request.uses the User model (presumably representing users in a database) to find a user based on the <code>firstname</code> and <code>lastname</code> provided in the request. From now, the information in database will be updated and will also be displayed on the page</span>
+                <span class="showcase"> The function extracts relevant data from the request query parameters. It captures the <code>`firstname`, `lastname`, `productTitle`, `newnumber`</code> (quantity) values sent in the request.uses the User model (presumably representing users in a database) to find a user based on the <code>firstname</code> and <code>lastname</code> provided in the request. From now, the information in database will be updated and will also be displayed on the page</span>
 
-                <span>Similarly, remove items function use the similar logic to implement the frontend interection and backend database intereaction</span>
+                <span class="showcase">Similarly, remove items function use the similar logic to implement the frontend interection and backend database intereaction</span>
 
-                <span>I hope you get what you expecting for the shopping cart functionality, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+                <span class="showcase">I hope you get what you expecting for the shopping cart functionality, If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /> </span>
 
           <div class="divisionBar"></div>
 
-          <h2>Upload Picture</h2>
-          <h3>Set up HTML Structure for the page</h3>
+          <h2 id="section5">Upload Picture</h2>
+          <h3 class="showcase">Set up HTML Structure for the page</h3>
           
-          <span class="textBeforeCode">That is the function i use <code>element-Ui</code>, but I will not recommend you to follow the same strategy. Instead, I suggest you to use CSS framework that you are good at. If you are about to use elementUI, I will try as much as I can to explain what <a target="_blank" class="linkToOther" href="https://vuejsprojects.com/element-ui">the property of each Element-ui component</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> so you can apply same idea.</span>
+          <span class="textBeforeCode">That is the function i use <code>element-Ui</code>, but I will not recommend you to follow the same strategy. Instead, I suggest you to use CSS framework that you are good at. If you are about to use elementUI, I will try as much as I can to explain what <a target="_blank" class="linkToOther" href="https://vuejsprojects.com/element-ui">the property of each Element-ui component</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /> so you can apply same idea.</span>
 
              <div class="homePageCode">
               <CodeBlock code="npm install -g element-ui" language="bash" fileName=""/>
           </div>
 
-         <span>And now registered it</span>
+         <span class="showcase">And now registered it</span>
 
           <div class="homePageCode">
               <CodeBlock :code="this.elementUI" language="javascript" fileName="/client/main.js"/>
           </div>
 
-          <span>Then set up the HTML strcture, Input fields for product detail, adding product listing and Image upload using element-UI. I bascally choose <code>el-upload</code> and <code>el-bootom</code> to style the website, more element-UI component/themes are <a target="_blank" class="linkToOther" href="https://element.eleme.io/#/en-US/component/layout">here <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </a>.</span>
+          <span class="showcase">Then set up the HTML strcture, Input fields for product detail, adding product listing and Image upload using element-UI. I bascally choose <code>el-upload</code> and <code>el-bootom</code> to style the website, more element-UI component/themes are <a target="_blank" class="linkToOther" href="https://element.eleme.io/#/en-US/component/layout">here <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /> </a>.</span>
 
           <div class="homePageCode" :style="{marginTop: '20px'}">
               <CodeBlock :code="this.uploadCode" language="markup" fileName="/client/components/AddListing.vue"/>
           </div>
    
     
-          <span><code>`el-upload`</code> is provided with various attributes like <code>`action`, `single`, `limit`</code>, and event listeners <code>(`:on-preview`, `:on-success`, `:on-exceed`) </code> customize its behavior. So, now lets see what happen in the uploading function code</span>
+          <span class="showcase"><code>`el-upload`</code> is provided with various attributes like <code>`action`, `single`, `limit`</code>, and event listeners <code>(`:on-preview`, `:on-success`, `:on-exceed`) </code> customize its behavior. So, now lets see what happen in the uploading function code</span>
 
           
            <div class="homePageCode">
               <CodeBlock :code="this.uploadBackend" language="javascript" fileName="/server/routes/product.server.router.js"/>
           </div>
 
-          <span>This module sets up routes and middleware for handling product-related operations, including image uploads, using multer middleware in a Node.js application with the Express framework. It creates a RESTful API structure under the <code>/api </code> URL, where the product-related routes will be managed by the <code>product.controller module</code>. And <code>uploadDir</code> will be the destination of uploaded image.</span>
+          <span class="showcase">This module sets up routes and middleware for handling product-related operations, including image uploads, using multer middleware in a Node.js application with the Express framework. It creates a RESTful API structure under the <code>/api </code> URL, where the product-related routes will be managed by the <code>product.controller module</code>. And <code>uploadDir</code> will be the destination of uploaded image.</span>
 
-          <h2>Summary</h2>
-          <span :style="{marginTop:'0px'}">I hope you get what you expecting for the shopping cart functionality after reading my post.  This is just some basic logic to some common function for your website. If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
+          <h2 id="section6">Summary</h2>
+          <span :style="{marginTop:'0px'}" class="showcase">I hope you get what you expecting for the shopping cart functionality after reading my post.  This is just some basic logic to some common function for your website. If any issue occurs, please check out <a target="_blank" class="linkToOther" href="https://mongoosejs.com/docs/">original repo</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /> </span>
 
            </div>
 
@@ -409,6 +477,7 @@ import codeSnip from '../assets/js/ecommerceCode.js'
     data(){
        return {
           collapsed: false,
+          dark:false,
           page:true,
           text: true,
           allVideo:[],
@@ -440,6 +509,8 @@ import codeSnip from '../assets/js/ecommerceCode.js'
           uploadCode: codeSnip.uploadCode,
           elementUI: codeSnip.elementUI,
           uploadBackend: codeSnip.uploadBackend,
+          packageF: codeSnip.packageF,
+          packageB:codeSnip.packageB,
 
 
 
@@ -530,6 +601,67 @@ import codeSnip from '../assets/js/ecommerceCode.js'
         }
     },
 
+    darkMode(){
+       this.dark = !this.dark;
+        const published=  document.getElementsByClassName('published')
+        const textLength = document.getElementsByClassName('textLength')
+        const tableTitile = document.getElementById('tableTitle')
+        const tableLi = document.getElementsByClassName('tableLi')
+        const h2 = document.getElementsByTagName('h2')
+        const h3 = document.getElementsByTagName('h3')
+        const showcase = document.getElementsByClassName('showcase')
+        const aTag = document.getElementsByClassName('linkToOther')
+        const aIcon = document.getElementsByClassName('aIcon')
+        const greyDisplay = document.getElementsByClassName('greyDisplay')
+        const homeCode = document.getElementsByClassName('homePageCode')
+        const textBeforeCode = document.getElementsByClassName('textBeforeCode')
+        const strong = document.getElementsByTagName('strong')
+
+       if(this.dark == true){
+            document.querySelector('.projectContent').style.background = 'rgb(32, 32, 35)'
+
+              aTag.forEach(item=>{
+                    item.style.color = 'white'
+                    this.setSpecialHover('special', item)
+              })
+              
+              greyDisplay.forEach(item=>item.style.background = 'black')
+              h3.forEach(item=>item.style.color = 'white')
+              strong.forEach(item=>item.style.color = 'white')
+              homeCode.forEach(item=>item.style.border = '1px solid white')
+              textBeforeCode.forEach(item=>item.style.color = 'white')
+              aIcon.forEach(item=>item.style.color = 'white')
+              tableLi.forEach(item=>item.style.color = 'white')
+              h2.forEach(item=>item.style.color = 'white')
+              showcase.forEach(item=>item.style.color = 'white')
+              published[0].style.color = 'white'
+              textLength[0].style.color = 'white'
+              tableTitile.style.color = 'white'
+
+
+       }else{
+              document.querySelector('.projectContent').style.background = 'white'
+            
+              aTag.forEach(item=>{
+                    item.style.color = 'black'
+                    this.setSpecialHover('none', item)
+              })
+              strong.forEach(item=>item.style.color = 'black')
+              textBeforeCode.forEach(item=>item.style.color = 'black')
+              homeCode.forEach(item=>item.style.border = 'none')
+              aIcon.forEach(item=>item.style.color = 'black')
+              showcase.forEach(item=>item.style.color = 'black')
+              tableLi.forEach(item=>item.style.color = 'black')
+              h3.forEach(item=>item.style.color = 'black')
+              h2.forEach(item=>item.style.color = 'black')
+               greyDisplay.forEach(item=>item.style.background = 'rgb(238, 236, 236)')
+              tableTitile.style.color = '#2c3e50'
+              published[0].style.color = 'gray'
+              textLength[0].style.color = 'gray'
+              
+          }
+    },
+
     closeSearch(){
         this.search = !this.search
         switch(this.pageNumber){
@@ -567,6 +699,14 @@ import codeSnip from '../assets/js/ecommerceCode.js'
         }else this.popular = true;
         this.text = false;
         this.Ecommerce = false;
+    },
+
+    setSpecialHover(condition, element){
+        if (condition === 'special') {
+          element.classList.add('special-hover');
+        }else {
+          element.classList.remove('special-hover');
+        }
     },
 
     searching(event){
@@ -780,9 +920,10 @@ code{
   background: white;
   display: grid;
   grid-template-columns: 8% 30% 30% 32%;
-  grid-template-rows: 5% 95%;
+  grid-template-rows: 10% 90%;
   overflow-y: scroll;
   overflow-x: hidden;
+  transition: 1s all;
 }
 
 .introText{
@@ -833,6 +974,10 @@ code{
    border-bottom: solid 1px black;
 }
 
+.special-hover:hover{
+   border-bottom: solid 1px white;
+}
+
 
 
 .introContent{
@@ -867,11 +1012,34 @@ code{
   grid-row: 1;
   grid-column: 4;
   // margin-left:4vw;
-  margin-right:3vw;
-  margin-top: 4vh;
+  margin-left:50px;
+  margin-top: 18px;
+  border-radius: 5px;
+  border:0;
+  background: orange;
+  width:27px;
+  height: 25px;
+  transition: 1s all;
+}
+
+.lightMode{
+  grid-row: 1;
+  grid-column: 4;
+  // margin-left:4vw;
+  margin-left:50px;
+  margin-top: 18px;
+  border-radius: 5px;
+  background: grey;
+  width:27px;
+  height: 25px;
+  transition: 1s all;
 }
 
 .darkMode span{
+  font-size: 1.3vw;
+}
+
+.lightMode span{
   font-size: 1.3vw;
 }
 
@@ -904,7 +1072,7 @@ code{
 
 #tableTitle{
   font-weight: bolder;
-  font-size: 1.8vw ;
+  font-size: 20px ;
 }
 
 .content{
@@ -949,7 +1117,7 @@ code{
 }
 
 .contentUl strong{
-  font-size: 10px;
+  font-size: 12px;
   float: left;
   height: auto;
 }
@@ -957,6 +1125,7 @@ code{
 .contentUl li{
      margin-left: 20px !important;
      list-style-type:unset !important;
+     margin-top:10px;
 }
 
 .content h2{
@@ -1043,12 +1212,12 @@ code{
 }
 
 .divisionBar {
-      width: 80%;
+      width: 85%;
       height: 0.2%;
       background: rgb(238, 236, 236);
       margin-top: 4vh;
       float:left;
-      margin-left:1.3vw;
+      margin-left:3px;
 }
 
 

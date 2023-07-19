@@ -411,4 +411,55 @@ module.exports.uploadBackend = `module.exports = (app) => {
   };`
   
 
-  
+  module.exports.packageF = `{
+    "name": "client",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "serve": "vue-cli-service serve --port 8080",
+      "build": "vue-cli-service build",
+      "lint": "vue-cli-service lint"
+    },
+    "dependencies": {
+      "axios": "^0.21.1",
+      "core-js": "^3.12.1",
+      "crypto": "^1.0.1",
+      "element-ui": "^2.15.1",
+      "js-base64": "^3.6.0",
+      "js-md5": "^0.7.3",
+      "npx": "^10.2.2",
+      "portfinder": "^1.0.28",
+      "vue": "^2.6.11",
+      "vue-cookies": "^1.7.4",
+      "vue-lazyload": "^1.3.3",
+      "vue-router": "^3.5.1",
+      "vue-slider-component": "2.8.6",
+      "vuetify": "^2.4.11"
+    },`
+
+    module.exports.packageB = `{
+      "name": "server",
+      "version": "0.0.0",
+      "private": true,
+      "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+      },
+      "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "cors": "^2.8.5",
+        "debug": "~2.6.9",
+        "ejs": "~2.6.1",
+        "express": "~4.16.1",
+        "http-errors": "~1.6.3",
+        "mongoose": "^5.12.7",
+        "morgan": "~1.9.1",
+        "multer": "^1.4.2",
+        "path": "^0.12.7",
+        "pub": "^0.2.0",
+        "pug": "^3.0.2"
+      },
+      "devDependencies": {
+        "nodemon": "^2.0.7"
+      }
+    }`
