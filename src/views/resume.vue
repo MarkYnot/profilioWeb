@@ -1,12 +1,12 @@
 !<template>
-  <div class="likeVideoContainer">
+  <div class="resumeContainer">
 
     <div class="hpHeader">
       
     <Header>
        <div slot="search" class="rSearchBar" >
              <!-- bulb -->
-                  <a-icon type="alert" class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}" />
+                  <a-icon :type="dark?'alert':'bulb'" class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}"  @click="darkMode()"/>
             </div>
     </Header>
   </div>
@@ -32,7 +32,7 @@
 
             <div class="rName">
                 <p>JunJie (Mark) Lin</p><br/><br/><br/>
-                <span>Software Engineer</span>
+                <span class="darkModeUse">Software Engineer</span>
             </div>
 
             <div class="avatar">
@@ -40,46 +40,46 @@
             </div>
 
             <div class="aboutMe">
-                 <p>About Me</p>
-                 <span>I am a recent graduated student From the University of Sydney with major study in Software Engineering and have a huge passion for building software to solve some real-life problems. I also enjoy spending time on joining coding competition with my friends like Hackathon or Competitive Programming (Atcoder) during my free times.</span>
+                 <p id="changeUnderline">About Me</p>
+                 <span class="darkModeUse">I am a recent graduated student From the University of Sydney with major study in Software Engineering and have a huge passion for building software to solve some real-life problems. I also enjoy spending time on joining coding competition with my friends like Hackathon or Competitive Programming (Atcoder) during my free times.</span>
 
                  
 
-                 <p>My Project Blog</p> 
-                 <div class="projectList" >
+                 <p id="changeUnderline">My Project Blog</p> 
+                 <div class="projectList" @click="toOther('/Ecommerce')">                
                     <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website </p>
-                    <span>02/02/2022</span>
+                    <span class="darkModeUse">02/02/2022</span>
+                </div>
+
+                <div class="projectList" @click="toOther('/project/Education')">
+                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
+                    <span class="darkModeUse">02/02/2022</span>
                 </div>
 
                 <div class="projectList" >
                     <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
-                    <span>02/02/2022</span>
+                    <span class="darkModeUse">02/02/2022</span>
                 </div>
 
                 <div class="projectList" >
                     <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
-                    <span>02/02/2022</span>
-                </div>
-
-                <div class="projectList" >
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
-                    <span>02/02/2022</span>
+                    <span class="darkModeUse">02/02/2022</span>
                 </div>
 
 
-                   <p>My habit</p> 
-                   <span>Playing video game (puzzle and rogue-like), listening to music (Lo-fi), reading book (specially sci-fi), manga/anime, doing programming challenge (like Competitive Programming ) and learning about the computer</span>
+                   <p id="changeUnderline">My habit</p> 
+                   <span class="darkModeUse">Playing video game (puzzle and rogue-like), listening to music (Lo-fi), reading book (specially sci-fi), manga/anime, doing programming challenge (like Competitive Programming ) and learning about the computer</span>
 
 
-                    <p class="reachMe">Reach me on the Internet</p> <br/><br/>
+                    <p class="reachMe" id="changeUnderline">Reach me on the Internet</p> <br/><br/>
                      <ul role="list" class="socialMedia">
-                        <li><a href="https://github.com/MarkYnot" target="_blank"><button><img v-lazy="'/static/github.png'"><span>@MarkYnot</span></button></a></li>
+                        <li><a href="https://github.com/MarkYnot" target="_blank"><button> <a-icon type="github" class="bottomLogo" theme="filled"/><span class="darkModeLink">@MarkYnot</span></button></a></li>
                         
-                         <li><a href="https://www.linkedin.com/in/junjie-lin-142444216/" target="_blank"><button><img v-lazy="'/static/linkedin.png'"><span>@Linkedin(Junjie Lin)</span></button></a></li>
+                         <li><a href="https://www.linkedin.com/in/junjie-lin-142444216/" target="_blank"><button><a-icon type="linkedin" class="bottomLogo" theme="filled"/><span class="darkModeLink">@Linkedin(Junjie Lin)</span></button></a></li>
                         
                           <!-- <li><a href="https://github.com/MarkYnot" target="_blank"><button><img v-lazy="'/static/github1.png'"><span>@MarkYnot</span></button></a></li> -->
                         
-                          <li><a><button><img v-lazy="'/static/gmail.png'"><span>mark727221029@gmail.com</span></button></a></li>
+                          <li><a><button><a-icon type="mail" class="bottomLogo" theme="filled"/><span class="darkModeLink">mark727221029@gmail.com</span></button></a></li>
                      </ul>
             </div>
 
@@ -93,14 +93,14 @@
 import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
 import '../assets/css/sidebar.css'
-import VideoService from '../services/videoService'
-import '../assets/css/video.css'
+
   export default {
     data(){
        return {
           collapsed: false,
           allVideo:[],
           User:[],
+          dark:false
          
 
        }
@@ -109,7 +109,6 @@ import '../assets/css/video.css'
      components:{
      Header,
      SideBar,
-     VideoService
    },
 
    mounted(){
@@ -126,9 +125,51 @@ import '../assets/css/video.css'
       this.collapsed = !this.collapsed;
     },
 
+    toOther(link){
+      this.$router.push(link)
+    },
+
       redirecting() {
         this.$router.push('/')
     },
+
+      darkMode(){
+        this.dark = !this.dark;
+        const intro =  document.getElementsByClassName('intro')
+        const bottomLogo = document.getElementsByClassName('bottomLogo')
+        const darkModeLink = document.getElementsByClassName('darkModeLink')
+        const darkModeSpan = document.getElementsByClassName('darkModeUse')
+        const pTag = document.getElementsByTagName('p')
+
+
+       if(this.dark == true){
+            document.querySelector('.resumeContainer').style.background = 'rgb(32, 32, 35)'
+            darkModeLink.forEach(item=>item.style.color = 'rgb(186, 149, 81)')
+            intro.forEach(item=>item.style.color = 'rgba(255,255,255,0.08)')
+            pTag.forEach(item=>item.style.color = 'white')
+            darkModeSpan.forEach(item=>item.style.color = 'rgba(255,255,255,0.92)')
+            bottomLogo.forEach(item=>item.style.color = 'rgb(186, 149, 81)')
+                      // githubLink.forEach(item=>{
+            //         item.style.color = 'rgb(186, 149, 81)'
+            //         this.setSpecialHover('special', item)
+            //   })
+              
+            //   green.forEach(item=>{
+            //     item.style.background = 'rgba(154,230,180,0.16)'
+            //     item.style.color = 'rgb(66, 239, 104'
+
+            //   })
+
+       }else{
+              document.querySelector('.resumeContainer').style.background = 'rgba(86, 118, 105, 0.768)'
+               pTag.forEach(item=>item.style.color = '#2c3e50')
+               darkModeSpan.forEach(item=>item.style.color = '#2c3e50')
+               intro.forEach(item=>item.style.color = '#dbdbdb36')
+               darkModeLink.forEach(item=>item.style.color = '#2c3e50')
+               bottomLogo.forEach(item=>item.style.color = 'black)')
+              
+          }
+     }
 
    }
     
@@ -141,7 +182,7 @@ import '../assets/css/video.css'
   // line-height:0;
 }
 
-.likeVideoContainer{
+.resumeContainer{
   width: 100%;
 	height: 100%;
 	position: absolute;
@@ -154,6 +195,7 @@ import '../assets/css/video.css'
   background: rgba(86, 118, 105, 0.768);
   overflow-y: scroll;
   overflow-x: scroll;
+  transition: 1s all;
 }
 
  .hpHeader{
@@ -319,6 +361,7 @@ import '../assets/css/video.css'
 
   .w{
     font-size: 20px !important;//dark mode icon
+    transition: all 0.8s;
   }
 
   .Content{
@@ -537,10 +580,12 @@ import '../assets/css/video.css'
    font-weight: 500;
 }
 
-.socialMedia li button img{
+
+.bottomLogo{
    grid-column: 1;
-   height: 15px;
-   width: 15px;
+   color:black;
+   font-size:15px;
+   margin-top: 2px;
 }
 
 

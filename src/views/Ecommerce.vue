@@ -462,7 +462,6 @@
 <script>
 import Header from '../components/projectHeader.vue'
 import SideBar from '../components/sideBar.vue'
-import VideoService from '../services/videoService'
 import '../assets/css/sidebar.css'
 // import '../assets/css/mediaQuery.css'
 import '../assets/css/animation.css'
@@ -573,7 +572,6 @@ import codeSnip from '../assets/js/ecommerceCode.js'
      components:{
      Header,
      SideBar,
-     VideoService,
      CodeBlock
     //  Video
    },

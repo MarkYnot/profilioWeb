@@ -15,7 +15,7 @@
 
 
       <a-menu-item key="2">
-          <router-link to="/video/collection"/>
+          <router-link to="/project"/>
           <!-- <a-icon type="save" theme="filled"/> -->
           <span>Projects</span>
       </a-menu-item>

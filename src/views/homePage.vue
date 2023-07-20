@@ -135,7 +135,6 @@
 <script>
 import Header from '../components/hearder.vue'
 import SideBar from '../components/sideBar.vue'
-import VideoService from '../services/videoService'
 import '../assets/css/searchBar.css'
 import '../assets/css/sidebar.css'
 import '../assets/css/animation.css'
@@ -227,7 +226,6 @@ import videoImg6 from '../assets/fly.jpg'
      components:{
      Header,
      SideBar,
-     VideoService
    },
 
    beforeDestroy(){
@@ -240,6 +238,7 @@ import videoImg6 from '../assets/fly.jpg'
 
       // if(window.innerWidth > 912) this.backImg = this.videoImgList[0].icon
       // else if(window.innerWidth <= 912) this.backImg = videoImg6;
+      console.log(videoImg6)
       this.changeSize();
      
      let selectedMenuItem = document.getElementById(this.MenuItem);

@@ -1,88 +1,92 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Book from '../views/Book.vue'
+import Project from '../views/Project.vue'
 // import Test from '../views/test'
 import Ecommerce from '../views/Ecommerce'
-import modeSelection from '../views/modeSelection'
 import homePage from '../views/homePage'
-import videoRouter from './video' 
 // import gameRouter from './game'
 
 Vue.use(VueRouter)
 
 const routes = [
+
   {
     path: '/',
-    name: 'Home',
+    name: 'homePage',
     component: homePage
   },
 
   {
-    path: '/home',
-    name: 'test',
-    component: Home
-  },
-
-  {
-    path: '/codeBlock',
-    name: 'codeBlock',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../components/codeBlock.vue')
-  },
-  {
-    path: '/book',
-    name: 'Book',
-    component: Book
+    path: '/project',
+    name: 'Project',
+    component: Project
   },
 
 
-  {
-    path: '/modeSelection',
-    name: 'modeSelection',
-    component: modeSelection
-  },
   {
     path: '/Ecommerce',
     name: 'Ecommerce',
     component: Ecommerce
   },
 
-  // {
-  //   path: '/videoCentre',
-  //   name: 'videoCentre',
-  //   component: videoCentre
-  // },
-  
   {
-    path: '/search&:text',
-    name: 'Search',
-    component: () => import('../views/search.vue')
+    path: '/resume',
+    name: 'resume',
+    component:()=> import(`../views/resume.vue`)
   },
 
-    ...videoRouter,
-
-  
-
     {
-      path: '/profile',
-      name: 'Profile',
-      component: () => import('../views/profile.vue')
-    },
+    path: '/project/:name',
+    name: 'projectDetailPage',
+    component: ()=> import('../views/projectDetail.vue')
+  },
+
+
+  // {
+  //   path: '/codeBlock',
+  //   name: 'codeBlock',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../components/codeBlock.vue')
+  // },
 
     // {
-    //   path: '/changePassword',
-    //   name: 'changePassword',
-    //   component: () => import('../views/changePassword.vue')
-    // },
+  //   path: '/modeSelection',
+  //   name: 'modeSelection',
+  //   component: modeSelection
+  // },
+
+  // {
+  //   path: '/home',
+  //   name: 'test',
+  //   component: Home
+  // },
+  
+  // {
+  //   path: '/search&:text',
+  //   name: 'Search',
+  //   component: () => import('../views/search.vue')
+  // },
+
+  // {
+  //   path: '/video&:id',
+  //   name: 'videoPlayPage',
+  //   component: ()=> import('../views/videoPlay')
+  // },
+
+  // {
+  //   path: '/video/collection',
+  //   name: 'videoCollection',
+  //   component:()=> import(`../views/collectVideo.vue`)
+  // },
 
     // {
-    //   path: '/forgetPassword',
-    //   name: 'forgetPassword',
-    //   component: () => import('../views/forgetPassword.vue')
-    // }
+  //   path: '/profile',
+  //   name: 'Profile',
+  //   component: () => import('../views/profile.vue')
+  // },
+
 ]
 
 const router = new VueRouter({
