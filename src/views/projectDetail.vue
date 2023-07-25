@@ -27,7 +27,7 @@
         
         <!-- /img/fly.d5432bd4.jpg -->
         <div class="contentBox" >
-           <a class="projectTitle" href="/project">Porjects ></a><span class="projectName">{{this.allProjects.name}}</span>
+           <a class="projectTitle" @click="backTo()">Porjects ></a><span class="projectName">{{this.allProjects.name}}</span>
         
            <span class="projectDescription">{{this.allProjects.description}}</span>
 
@@ -127,6 +127,10 @@ import projects from '../assets/json/projectList.json'
       this.collapsed = !this.collapsed;
     },
 
+    backTo(){
+        this.$router.push('/project')
+    },
+
     redirecting(){
       this.$router.push('/')
     },
@@ -218,7 +222,6 @@ import projects from '../assets/json/projectList.json'
   grid-template-rows: 60px 92%;
   background: rgba(86, 118, 105, 0.768);
   overflow-y: scroll;
-  overflow-x: scroll;
   transition: 1s all;
 }
 
@@ -293,6 +296,8 @@ import projects from '../assets/json/projectList.json'
   display: grid;
   grid-template-columns: 85px 75%;
   grid-template-rows: 10% 20% 40% auto auto;
+
+
 }
 
 .projectTitle{
@@ -546,6 +551,58 @@ import projects from '../assets/json/projectList.json'
      margin-top: 17px;
    }
 
+}
+
+//fit big screen
+@media screen and (min-width: 912px){
+
+  .myName{
+        font-size: 40px
+  }
+
+  .foldList{
+          font-size: 35px !important;
+  }
+
+ .contentBox{
+   width:900px;
+   grid-template-columns: 150px 75%;
+   grid-template-rows: 10% auto 30% auto auto;
+   left: 30vw;
+ }
+
+   .projectTitle{
+   font-size: 30px;
+   margin-top:5px;
+ }
+
+ .projectName{
+  font-size: 35px;
+ }
+
+.projectDescription{
+   font-size: 20px;
+}
+
+.information{
+    font-size: 20px
+}
+
+.greenTitle{
+  font-size:15px;
+   width: 65px;
+  height: 20px;
+}
+
+.githubLogo{
+  font-size: 20px;
+}
+}
+
+@media screen and (min-width: 912px) and (max-width: 1200px){
+   .contentBox{
+      left: 210px !important;
+   }
 }
 
 

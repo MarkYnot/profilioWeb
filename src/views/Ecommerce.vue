@@ -103,7 +103,7 @@
 
                 <li> 
                   <div class="greenTitle">GITHUB</div>
-                  <span class="information">Feel free to contribute on <a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce"><a-icon type="github" theme="outlined" :style="{fontSize:'11px', color:'white'}" /> Github</a> if you see anything go wrong</span>
+                  <span class="information">Feel free to contribute on <a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce"><a-icon type="github" theme="outlined" class="githubLogo" :style="{fontSize:'11px', color:'white'}" /> Github</a> if you see anything go wrong</span>
                 </li>
                 
                   <li> 
@@ -116,7 +116,7 @@
 
        <div class="projectContent" @scroll="handleScroll">
             <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
-                  <a-icon :type="dark?'alert':'bulb'" theme="filled" :style="{fontSize:'11px', color:'white', textItem:'centre'}" />
+                  <a-icon :type="dark?'alert':'bulb'" class="darkLogo" theme="filled" />
             </button>
             
             <span class="published">Published at 18/12/2022</span>
@@ -1010,13 +1010,16 @@ code{
   grid-row: 1;
   grid-column: 4;
   // margin-left:4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left:50px;
   margin-top: 18px;
   border-radius: 5px;
   border:0;
   background: orange;
-  width:27px;
-  height: 25px;
+  width:20px;
+  height: 20px;
   transition: 1s all;
 }
 
@@ -1024,22 +1027,43 @@ code{
   grid-row: 1;
   grid-column: 4;
   // margin-left:4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left:50px;
   margin-top: 18px;
   border-radius: 5px;
   background: grey;
-  width:27px;
-  height: 25px;
+  width:20px;
+  height: 20px;
   transition: 1s all;
 }
 
-.darkMode span{
-  font-size: 1.3vw;
+.darkLogo{
+  font-size: 10px;
+  color:white;
 }
 
-.lightMode span{
-  font-size: 1.3vw;
+@media  screen and (min-width:1000px) {
+    .darkMode{
+       width:30px !important;
+       height: 30px !important;
+       margin-top: 40px;
+       margin-left:100px;
+    }
+
+    .lightMode{
+       width:30px !important;
+       height: 30px !important;
+       margin-top: 40px;
+       margin-left:100px;
+    }
+
+    .darkLogo{
+        font-size: 20px;
+    }
 }
+
 
 .textLength{
   grid-row: 1;
@@ -1514,10 +1538,13 @@ code{
 
   .content ul {
     padding-left: 18px !important;
+    width: 90% !important;
   }
 
   .content ul li{
     font-size: 11px !important;
+    word-wrap: break-word !important;
+    white-space: normal !important
   }
 
 
@@ -1699,10 +1726,13 @@ code{
 
   .content ul {
     padding-left: 18px !important;
+    width: 90% !important;
   }
 
   .content ul li{
     font-size: 17px !important;
+    word-wrap: break-word !important;
+    white-space: normal !important
   }
 
   .searchStatus{
@@ -1882,10 +1912,13 @@ code{
 
   .content ul {
     padding-left: 18px !important;
+    width: 90% !important;
   }
 
   .content ul li{
     font-size: 11px !important;
+    word-wrap: break-word !important;
+    white-space: normal !important
   }
 
   .searchStatus{

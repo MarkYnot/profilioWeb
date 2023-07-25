@@ -1076,7 +1076,27 @@ a{
      width: 60% !important;
    }
 
+}
 
+
+@media screen and (min-height:600px) and (min-width:920px){
+       .searchBar span{
+          font-size: 2.5vmin;
+       }
+
+       .w{
+        font-size: 3vmin !important;
+       }
+
+       .searchBar{
+         margin-top: 13px !important;
+       }
+
+       .contentButton{
+         font-size: 2.5vmin;
+         width: 20vw; 
+         height: 6vh;
+       }
 }
 
 

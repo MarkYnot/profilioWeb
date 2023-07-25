@@ -136,7 +136,6 @@ import '../assets/css/sidebar.css'
   grid-template-rows: 60px 92%;
   background: rgba(86, 118, 105, 0.768);
   overflow-y: scroll;
-  overflow-x: scroll;
   transition: 1s all;
 }
 
@@ -212,7 +211,7 @@ import '../assets/css/sidebar.css'
 
 .projectTitle{
   position: absolute;
-  left:70px;
+  left:17%;
   text-align: left;
   color:white;
   font-family: var(--chakra-fonts-heading);
@@ -221,10 +220,10 @@ import '../assets/css/sidebar.css'
 }
 
 .projectContainer{
-  width:75%;
+  width:737px;
   height:auto;
   position: absolute;
-  left:60px;
+  left:15%;
   top:100px;
   // border: 2px black solid;
   display: grid;
@@ -258,13 +257,11 @@ import '../assets/css/sidebar.css'
 }
 
 .projectBox{
-  // position: relative;
   width: 300px;
   height: 210px;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 150px 25px 1fr;
-  // margin-left: 60px;
+  grid-template-rows: 70% 10% auto;
 }
 
 .projectCover{
@@ -384,6 +381,61 @@ import '../assets/css/sidebar.css'
     left: 0px;
  }
 
+}
+
+
+//screen size big
+@media screen and (min-height:600px) and (min-width:1595px){
+
+      .myName{
+        font-size: 40px
+      }
+
+      .foldList{
+          font-size: 35px !important;
+      }
+
+     .projectContainer{
+         width:1400px;
+         place-items: center;
+         left: 15vw;
+     }
+
+
+      .projectBox{
+        //  width:90%;
+        width:90%;
+        height:500px;
+        place-items: center;
+     }
+
+     .projectName{
+      margin-top:18px;
+      font-size: 30px;
+     }
+
+     .projectDescrition{
+        font-size: 20px;
+        margin-bottom: 80px;
+     }
+
+     .projectTitle{
+        font-size: 40px;
+     }
+
+}
+
+
+@media  screen and (min-width: 1000px) and (max-width: 1595px) {
+
+    .projectContainer{
+       left: 20vw;
+    }
+
+    .projectTitle{
+        left: 20vw;
+    }
+  
 }
 
 

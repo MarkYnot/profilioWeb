@@ -8,9 +8,7 @@
     "description":"An E-commerce Web application with MEVN stack(MongoDB, ExpresssJS, VueJS, Nodejs)",
     "stackDetail":"NodeJS, VueJS, MongoDB, ExpressJ",
     "websiteLink":"",
-    "githubLink":"",
-    "photo1Link":"../assets/test1.png",
-    "photo2Link":"../assets/register.png",
+    "githubLink":"https://github.com/MarkYnot/ECommerce",
     "link":"/Ecommerce"
   },
   {
@@ -19,12 +17,10 @@
     "stack":"Vue, Sprontboot, SQL",
     "stackDetail":"Vue, Java, Sprontboot, SQL",
     "websiteLink":"",
-    "githubLink":"",
-    "photo1Link":"../assets/test1.png",
-    "photo2Link":"../assets/register.png",
+    "githubLink":"https://github.com/MarkYnot/Banvas",
     "date":"03/04/2022",
     "category": "Blog",
-    "description":"An online Education Web application with Vue, Springboot, SQL and Hibernate",
+    "description":"An video tutorial Web application with Vue, Springboot, SQL and Hibernate",
     "link":"/Education"
   },
   {
@@ -34,10 +30,9 @@
     "stackDetail":"NodeJS,ReactJS, MongoDB, ExpressJ",
     "websiteLink":"",
     "githubLink":"",
-    "photo1Link":"../assets/test1.png",
-    "photo2Link":"../assets/register.png",
     "date":"03/04/2022",
     "category": "Demo",
+    "description":"An English teaching Web application with MEVN",
     "link":"/Banana"
   },
   {
@@ -46,10 +41,9 @@
     "stack":"Vue, Java, Sprontboot, SQL",
     "stackDetail":"Vue, Java, Sprontboot, SQL, webSocket",
     "websiteLink":"",
-    "githubLink":"",
-    "photo1Link":"../assets/test1.png",
-    "photo2Link":"../assets/register.png",
+    "githubLink":"https://github.com/MarkYnot/Talk-Together",
     "date":"03/04/2022",
+    "description":"Talk Toghther System is a real-time chat system that allows user to perform random matching chat with a stranger, chat with friends and join existing group rooms to chat with multi-person who has similar interest.",
     "category": "Blog",
     "link":"/Chat"
   }

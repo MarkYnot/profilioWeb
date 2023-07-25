@@ -185,17 +185,19 @@
 
 }
 
+@media screen and (min-height:968px) and (min-width:1920px){
+   /deep/ .ant-menu-inline .ant-menu-item{
+        height:14vh !important;
+   }
+
+   /deep/ .ant-menu-item span{
+         margin-top: 40px;
+   }
+
+}
 
 
 
 
-// /deep/ .ant-menu-item .anticon{
-//     font-size: 2vw;
-// }
-
-
-// /deep/ .ant-menu-item i{
-//     margin-top: 2vh;
-// }
 
 </style>

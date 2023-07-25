@@ -174,6 +174,32 @@ export default {
   pointer-events: none;
 }
 
+@media screen and (min-width: 1000px){
+   .code-line {
+      height:30px; 
+   }
+
+   .line-no {
+      font-size: 17px;
+   }
+
+   .code-line span {
+      font-size: 17px;
+   }
+
+   .language-button {
+      font-size: 20px !important;
+   }
+
+   .copy-button {
+      font-size: 20px !important;
+   }
+
+   .fileName{
+      font-size: 20px !important;
+   }
+}
+
 .line-no::selection {
   background-color: transparent;
 }

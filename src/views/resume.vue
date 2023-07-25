@@ -41,34 +41,34 @@
 
             <div class="aboutMe">
                  <p id="changeUnderline">About Me</p>
-                 <span class="darkModeUse">I am a recent graduated student From the University of Sydney with major study in Software Engineering and have a huge passion for building software to solve some real-life problems. I also enjoy spending time on joining coding competition with my friends like Hackathon or Competitive Programming (Atcoder) during my free times.</span>
+                 <span class="darkModeUse">I am a recent graduated student From the University of Sydney with major study in Software Engineering and have a huge passion for building software to solve some real-life problems. I also enjoy spending time on joining coding competition like Hackathon or Competitive Programming during my free times.</span>
 
                  
 
                  <p id="changeUnderline">My Project Blog</p> 
                  <div class="projectList" @click="toOther('/Ecommerce')">                
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website </p>
+                    <p> + An E-commerce Web application with MEVN stack(MongoDB, ExpresssJS, VueJS, Nodejs) </p>
                     <span class="darkModeUse">02/02/2022</span>
                 </div>
 
                 <div class="projectList" @click="toOther('/project/Education')">
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
+                    <p> + An online Education Web application with Vue, Springboot, SQL and Hibernate</p>
                     <span class="darkModeUse">02/02/2022</span>
                 </div>
 
-                <div class="projectList" >
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
+                <div class="projectList" @click="toOther('/project/Banana')">
+                    <p> + An English teaching Web application with MEVN</p>
                     <span class="darkModeUse">02/02/2022</span>
                 </div>
 
-                <div class="projectList" >
-                    <p> + A project using a MEVN (MongoDB, Express, Vue, NodeJs) to build an Ecommerce Website</p>
+                <div class="projectList" @click="toOther('/project/Chat')">
+                    <p> + A real-time chat web System that allows user to perform random matching chat with a stranger</p>
                     <span class="darkModeUse">02/02/2022</span>
                 </div>
 
 
                    <p id="changeUnderline">My habit</p> 
-                   <span class="darkModeUse">Playing video game (puzzle and rogue-like), listening to music (Lo-fi), reading book (specially sci-fi), manga/anime, doing programming challenge (like Competitive Programming ) and learning about the computer</span>
+                   <span class="darkModeUse">Playing basketball competition, listening to music, reading book (specially sci-fi), doing programming challenge (like Competitive Programming ) and learning about the popular technical stack in the industry</span>
 
 
                     <p class="reachMe" id="changeUnderline">Reach me on the Internet</p> <br/><br/>
@@ -79,8 +79,10 @@
                         
                           <!-- <li><a href="https://github.com/MarkYnot" target="_blank"><button><img v-lazy="'/static/github1.png'"><span>@MarkYnot</span></button></a></li> -->
                         
-                          <li><a><button><a-icon type="mail" class="bottomLogo" theme="filled"/><span class="darkModeLink">mark727221029@gmail.com</span></button></a></li>
+                          <li id="email" @click="copyEmail()"><a><button><a-icon type="mail" class="bottomLogo" theme="filled"/><span id="emailText" class="darkModeLink">{{this.email}}</span></button></a>    <div v-if="this.emailShow" class="copyEmail" :style="copiedEmail?'background: green' :'background: rgb(93, 165, 173)'">{{this.copy}}</div></li>    
                      </ul>
+
+                  
             </div>
 
   
@@ -100,7 +102,11 @@ import '../assets/css/sidebar.css'
           collapsed: false,
           allVideo:[],
           User:[],
-          dark:false
+          dark:false,
+          emailShow: false, 
+          copiedEmail:false,
+          copy:"Copy Email?",
+          email: 'mark727221029@gmail.com'
          
 
        }
@@ -113,10 +119,25 @@ import '../assets/css/sidebar.css'
 
    mounted(){
       console.log(window.innerWidth, window.innerHeight)
+      document.getElementById('email').addEventListener('mouseover', ()=>{
+          this.emailShow = true;
+      }, false)
+
+      document.getElementById('email').addEventListener('mouseout', ()=>{
+          this.emailShow = false;
+      }, false)
    },
 
-   async created(){
-       
+
+
+   beforeDestroy(){
+         document.getElementById('email').removeEventListener('mouseover', ()=>{
+          this.emailShow = true;
+      }, false)
+
+      document.getElementById('email').removeEventListener('mouseout', ()=>{
+          this.emailShow = false;
+      }, false)
 
    },
 
@@ -131,6 +152,26 @@ import '../assets/css/sidebar.css'
 
       redirecting() {
         this.$router.push('/')
+    },
+
+    copyEmail(){
+      console.log(1)
+        navigator.clipboard.writeText(this.email)
+            .then(() => {
+              this.emailShow = true;
+              this.copiedEmail = true;
+              this.copy = 'Just copied';
+
+              setTimeout(() => {
+                this.emailShow = false;
+                this.copiedEmail = false;
+                this.copy = 'Copy Email?';
+              }, 2000);
+            })
+            .catch(error => {
+              console.error('Failed to copy the code:', error);
+            });
+      
     },
 
       darkMode(){
@@ -149,16 +190,6 @@ import '../assets/css/sidebar.css'
             pTag.forEach(item=>item.style.color = 'white')
             darkModeSpan.forEach(item=>item.style.color = 'rgba(255,255,255,0.92)')
             bottomLogo.forEach(item=>item.style.color = 'rgb(186, 149, 81)')
-                      // githubLink.forEach(item=>{
-            //         item.style.color = 'rgb(186, 149, 81)'
-            //         this.setSpecialHover('special', item)
-            //   })
-              
-            //   green.forEach(item=>{
-            //     item.style.background = 'rgba(154,230,180,0.16)'
-            //     item.style.color = 'rgb(66, 239, 104'
-
-            //   })
 
        }else{
               document.querySelector('.resumeContainer').style.background = 'rgba(86, 118, 105, 0.768)'
@@ -166,7 +197,8 @@ import '../assets/css/sidebar.css'
                darkModeSpan.forEach(item=>item.style.color = '#2c3e50')
                intro.forEach(item=>item.style.color = '#dbdbdb36')
                darkModeLink.forEach(item=>item.style.color = '#2c3e50')
-               bottomLogo.forEach(item=>item.style.color = 'black)')
+               darkModeSpan.forEach(item=>item.style.color = 'black')
+            bottomLogo.forEach(item=>item.style.color = 'black')
               
           }
      }
@@ -194,7 +226,6 @@ import '../assets/css/sidebar.css'
   grid-template-rows: 60px 92%;
   background: rgba(86, 118, 105, 0.768);
   overflow-y: scroll;
-  overflow-x: scroll;
   transition: 1s all;
 }
 
@@ -334,6 +365,32 @@ import '../assets/css/sidebar.css'
   // position: absolute;
   font-size: 25px;
 }
+
+#email{
+   display: grid;
+   grid-template-rows: 100%;
+   grid-template-columns: 5% 22% 60%;
+}
+
+#emailText{
+  grid-column: 2 !important;
+}
+
+.copyEmail{
+   grid-column: 3;
+   transition: 0.5s all;
+   width: 58px;
+   height: 14px;
+   font-size: 8px;
+   background: rgb(93, 165, 173);
+   font-weight: 500;
+   color: white;
+   padding-top: 1px;
+   border-radius: 3px;
+   margin-top: 6px;
+   box-shadow: #666 0px 0px 10px;
+}
+
 
 //For Samsung and Iphone
 @media screen and  (min-height:400px) and (max-width:737px){
@@ -475,6 +532,42 @@ import '../assets/css/sidebar.css'
 }
 
 
+//fit big screen
+@media screen and (min-width: 1097px){
+   .Content{
+     grid-template-columns: auto 456px 100px 200px auto;
+     grid-template-rows: 80px 350px auto;
+   }
+
+    .myName{
+      font-size: 40px
+   }
+
+    .foldList{
+      font-size: 35px !important;
+   }
+
+    .aboutMe p{
+      font-size: 30px !important;
+    }
+
+    .aboutMe span{
+        font-size: 20px !important;
+    }
+
+    .projectList{
+      height: 100px !important;
+    }
+
+    .projectList p{
+      font-size: 20px !important;
+    }
+
+    .projectList span{
+      margin-top: 60px !important;
+    }
+
+}
 
 .avatar{
   border: 2px solid white;

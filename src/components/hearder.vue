@@ -171,12 +171,23 @@
 
 }
 
+//screen size big
+@media screen and (min-width:1097px){
+      .headerTilte{
+        height: 28px !important;
+        width: 30px !important;
+     }
+
+     .headerText{
+         width: 42px !important;
+         height: 45px !important;
+         margin-top: 8px !important;
+     }
+}
+
 .mobileList{
   font-size:21px;
   color:white;
-  //   @media screen and (max-width:280px){
-  //        font-size: 10px !important;
-  //  }
 }
 
 // .searchBar{
