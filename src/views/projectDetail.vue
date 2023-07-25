@@ -4,9 +4,11 @@
     <div class="hpHeader">
       
     <Header>
-       <div slot="search" class="searchBar" >
+       <div slot="search" class="darkArea" >
              <!-- bulb -->
-                  <a-icon :type="dark?'alert':'bulb'"  class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}" @click="darkMode()"/>
+                 <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
+                  <a-icon :type="dark?'alert':'bulb'"  class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}"/>
+                 </button>
             </div>
     </Header>
   </div>
@@ -270,7 +272,7 @@ import projects from '../assets/json/projectList.json'
   width:35%;
 }
 
-.searchBar{
+.darkArea{
    margin-top: 13px;
    transition: all 1s;
      @media screen and  (min-height:400px) and (max-width:737px){
@@ -279,10 +281,35 @@ import projects from '../assets/json/projectList.json'
 }
 
 .w{
-  font-size: 20px !important;
+  font-size: 15px !important;
+  color: white;
 }
 
-.searchBar:hover{
+.darkMode{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border:0;
+  background: orange;
+  width:20px;
+  height: 20px;
+  transition: 1s all;
+}
+
+.lightMode{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border:0;
+  background: grey;
+  width:20px;
+  height: 20px;
+  transition: 1s all;
+}
+
+.darkArea:hover{
    opacity: 0.6;
 }
 
@@ -430,7 +457,7 @@ import projects from '../assets/json/projectList.json'
 //For Samsung and Iphone
 @media screen and  (min-height:400px) and (max-width:737px){
 
-  .searchBar{
+  .darkArea{
     grid-column: 2/3;
     margin-left:25px;
     margin-top: 12px;
@@ -456,13 +483,31 @@ import projects from '../assets/json/projectList.json'
   height:100%;
  }
 
+  .darkMode{
+  width:28px;
+  height: 20px;
+  margin-left: 16px;
+  // margin-top: 1px;
+ }
+
+ .lightMode{
+  width:28px;
+  height: 20px;
+  margin-left: 16px;
+  // margin-top: 1px;
+ }
+
+ .w{
+  font-size: 15px !important;
+ }
+
 }
 
 //for ipad and ipad mini
 @media screen and (min-width: 768px)and (max-width:912px){
 
 
- .searchBar{
+ .darkArea{
      grid-column: 2/3;
 }
 
@@ -511,6 +556,24 @@ import projects from '../assets/json/projectList.json'
   height:100%;
 }
 
+ .darkMode{
+  width:32px;
+  height: 28px;
+  margin-left: 140px;
+  margin-top: 4px;
+ }
+
+ .lightMode{
+  width:32px;
+  height: 28px;
+  margin-left: 140px;
+  margin-top: 4px;
+ }
+
+ .w{
+  font-size: 18px !important;
+ }
+
 
 }
 
@@ -528,9 +591,11 @@ import projects from '../assets/json/projectList.json'
      font-size: 22px !important;
   }
 
-   .searchBar{
+   .darkArea{
      grid-column: 2/3;
      grid-row: 1;
+     margin-left: 0 !important;
+     z-index: 10
    }
 
    .w{
@@ -597,12 +662,47 @@ import projects from '../assets/json/projectList.json'
 .githubLogo{
   font-size: 20px;
 }
+
+.darkMode{
+   width:40px;
+   height: 35px;
+   margin-left: 70px;
+ }
+
+.lightMode{
+    width:40px;
+    height: 35px;
+    margin-left: 70px;
+         
+}
+
+  .w{
+     font-size: 23px !important;
+   }
 }
 
 @media screen and (min-width: 912px) and (max-width: 1200px){
    .contentBox{
       left: 210px !important;
    }
+
+       .darkMode{
+        width:40px;
+        height: 35px;
+        margin-left: 70px;
+        //  margin-top: 1px;
+    }
+
+        .lightMode{
+          width:40px;
+          height: 35px;
+          margin-left: 70px;
+          // margin-top: 1px;
+        }
+
+        .w{
+          font-size: 23px !important;
+        }
 }
 
 

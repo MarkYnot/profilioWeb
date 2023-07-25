@@ -166,6 +166,7 @@
        .userInfoSlot{
         grid-column: 2/5 !important;
         margin-left: 20px;
+        z-index: -1;
       }
 
 

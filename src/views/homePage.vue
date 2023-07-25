@@ -110,10 +110,10 @@
             </span>
  
           
-            <span v-if="this.Ecommerce">Ecommerce Website</span>
+            <span v-if="this.Ecommerce">{{this.projectTitle}}</span>
 
             <!-- <router-link :to="{path}"/> -->
-             <button @click="redirecting()" v-if="this.Ecommerce" class="contentButton" :style="collapsed?'color: black' :'color: white'">Views the project Blog</button>
+             <button @click="redirecting()" v-if="this.Ecommerce" class="contentButton" :style="collapsed?'color: black' :'color: white'">{{this.blog?'Views the project Blog':'Views project'}}</button>
        </div>
 
       <div class="bottomMenu">
@@ -150,6 +150,8 @@ import videoImg6 from '../assets/fly.jpg'
        return {
           collapsed: false,
           Ecommerce:false,
+          projectTitle:'',
+          blog:false,
           search:false,
           searchInput:'',
           popular: false,
@@ -412,10 +414,30 @@ import videoImg6 from '../assets/fly.jpg'
             case 1:
             this.path = '/Ecommerce'
             this.Ecommerce = true;
+            this.projectTitle = 'Ecommerce Website';
+            this.blog = true;
             break;
 
             case 2:
+            this.path = '/Project/Education'
+            this.Ecommerce = true;
+            this.projectTitle = 'Video tutorial Website';
+            this.blog = false;
+            break;
             
+            case 3:
+            this.path = '/Project/Banana'
+            this.Ecommerce = true;
+            this.projectTitle = 'English teaching Website';
+            this.blog = false;
+            break;
+
+            case 4:
+            this.path = '/Project/Chat'
+            this.Ecommerce = true;
+            this.projectTitle = 'Real-time Chat System';
+            this.blog = false;
+            break;
            
          }
           

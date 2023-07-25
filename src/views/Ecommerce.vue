@@ -1039,6 +1039,10 @@ code{
   transition: 1s all;
 }
 
+.lightMode:hover{
+     background: black;
+}
+
 .darkLogo{
   font-size: 10px;
   color:white;
@@ -1208,29 +1212,6 @@ code{
   font-size: 1.1vw;
   margin-left: 1.3vw;
   margin-top:2vh;
-}
-
-.homePageCss{
-  width: 85%;
-  height: 65%;
-  float: left;
-  margin-top: 2vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url("../assets/homePageCss.png");
-}
-
-.loginHtml{
-  width: 84%;
-  height: 40%;
-  float: left;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url("../assets/loginHtml.png");
 }
 
 .divisionBar {

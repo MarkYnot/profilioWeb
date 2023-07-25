@@ -6,7 +6,9 @@
     <Header>
        <div slot="search" class="rSearchBar" >
              <!-- bulb -->
-                  <a-icon :type="dark?'alert':'bulb'" class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}"  @click="darkMode()"/>
+                    <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
+                  <a-icon :type="dark?'alert':'bulb'" class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}"/>
+                    </button>
             </div>
     </Header>
   </div>
@@ -297,7 +299,34 @@ import '../assets/css/sidebar.css'
 }
 
 .w{
-  font-size: 20px !important;
+  font-size: 15px !important;
+  color: white;
+}
+
+.darkMode{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border:0;
+  background: orange;
+  width:20px;
+  height: 20px;
+  transition: 1s all;
+   margin-left:40px;
+}
+
+.lightMode{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border:0;
+  background: grey;
+  width:20px;
+  height: 20px;
+  transition: 1s all;
+  margin-left:40px;
 }
 
 .rSearchBar:hover{
@@ -446,6 +475,24 @@ import '../assets/css/sidebar.css'
  .projectList span{
     margin-top: 40px !important;
  }
+
+  .darkMode{
+  width:28px;
+  height: 20px;
+  margin-left: 16px;
+  // margin-top: 1px;
+ }
+
+ .lightMode{
+  width:28px;
+  height: 20px;
+  margin-left: 16px;
+  // margin-top: 1px;
+ }
+
+ .w{
+  font-size: 15px !important;
+ }
 }
 
 //for ipad and ipad mini
@@ -468,6 +515,24 @@ import '../assets/css/sidebar.css'
 
  .intro{
    margin-top: 13px;
+ }
+
+.darkMode{
+  width:32px;
+  height: 28px;
+  margin-left: 160px;
+  margin-top: 1px;
+ }
+
+.lightMode{
+  width:32px;
+  height: 28px;
+  margin-left: 160px;
+  margin-top: 1px;
+ }
+
+ .w{
+  font-size: 18px !important;
  }
 
 
@@ -511,6 +576,8 @@ import '../assets/css/sidebar.css'
    .rSearchBar{
      grid-column: 2/3;
      grid-row: 1;
+     margin-left: 0 !important;
+     z-index: 10
    }
 
    .intro{
@@ -566,6 +633,24 @@ import '../assets/css/sidebar.css'
     .projectList span{
       margin-top: 60px !important;
     }
+
+         .darkMode{
+          width:40px;
+          height: 35px;
+          margin-left: 70px;
+        // margin-top: 1px;
+    }
+
+        .lightMode{
+          width:40px;
+          height: 35px;
+          margin-left: 70px;
+          // margin-top: 1px;
+        }
+
+        .w{
+          font-size: 23px !important;
+        }
 
 }
 

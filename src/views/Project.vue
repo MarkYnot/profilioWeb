@@ -4,9 +4,11 @@
     <div class="hpHeader">
       
     <Header>
-       <div slot="search" class="searchBar" >
+       <div slot="search" class="darkArea" >
              <!-- bulb -->
-                  <a-icon :type="dark?'alert':'bulb'" class="w" theme="outlined" :style="{fontSize:'30px', color:'white'}" @click="darkMode()"/>
+                <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
+                  <a-icon :type="dark?'alert':'bulb'" class="w" theme="outlined"  />
+                </button>
             </div>
     </Header>
   </div>
@@ -184,7 +186,7 @@ import '../assets/css/sidebar.css'
   width:35%;
 }
 
-.searchBar{
+.darkArea{
    margin-top: 13px;
    transition: all 1s;
      @media screen and  (min-height:400px) and (max-width:737px){
@@ -193,11 +195,44 @@ import '../assets/css/sidebar.css'
 }
 
 .w{
-  font-size: 20px !important;
+  font-size: 15px !important;
+  color: white;
 }
 
-.searchBar:hover{
-   opacity: 0.6;
+.darkMode{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border:0;
+  background: orange;
+  width:20px;
+  height: 20px;
+  transition: 1s all;
+}
+
+.lightMode{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border:0;
+  background: grey;
+  width:20px;
+  height: 20px;
+  transition: 1s all;
+}
+
+// .lightMode:hover{
+//      background: rgba(128, 128, 128, 0.164) !important;
+// }
+
+// .darkMode:hover{
+//      background: rgb(216, 162, 62) !important;
+// }
+
+.darkArea:hover{
+   opacity: 0.8;
 }
 
 .contentBox{
@@ -295,10 +330,14 @@ import '../assets/css/sidebar.css'
 //For Samsung and Iphone
 @media screen and  (min-height:400px) and (max-width:737px){
 
-  .searchBar{
+  .darkArea{
     grid-column: 2/3;
     margin-left:25px;
     margin-top: 12px;
+  }
+  
+  .projectContainer{
+      width:auto;
   }
 
   .w{
@@ -331,6 +370,24 @@ import '../assets/css/sidebar.css'
   left:48px;
 }
 
+ .darkMode{
+  width:28px;
+  height: 20px;
+  margin-left: 16px;
+  // margin-top: 1px;
+ }
+
+ .lightMode{
+  width:28px;
+  height: 20px;
+  margin-left: 16px;
+  // margin-top: 1px;
+ }
+
+ .w{
+  font-size: 15px !important;
+ }
+
 
 }
 
@@ -338,13 +395,34 @@ import '../assets/css/sidebar.css'
 @media screen and (min-width: 768px)and (max-width:912px){
 
 
- .searchBar{
+ .darkArea{
      grid-column: 2/3;
+     margin-top: 15px;
 }
 
  .contentBox{
    grid-template-rows: 10% auto 62%;
  }
+
+ .darkMode{
+  width:32px;
+  height: 28px;
+  margin-left: 160px;
+  margin-top: 1px;
+ }
+
+ .lightMode{
+  width:32px;
+  height: 28px;
+  margin-left: 160px;
+  margin-top: 1px;
+ }
+
+ .w{
+  font-size: 18px !important;
+ }
+
+ 
 
 
 
@@ -364,9 +442,11 @@ import '../assets/css/sidebar.css'
      font-size: 22px !important;
   }
 
-   .searchBar{
+   .darkArea{
      grid-column: 2/3;
      grid-row: 1;
+     margin-left: 0 !important;
+     z-index: 10
    }
 
    .w{
@@ -378,6 +458,7 @@ import '../assets/css/sidebar.css'
 }
 
   .projectContainer{
+      width:auto;
     left: 0px;
  }
 
@@ -423,6 +504,24 @@ import '../assets/css/sidebar.css'
         font-size: 40px;
      }
 
+      .darkMode{
+          width:40px;
+          height: 35px;
+          margin-left: 70px;
+        // margin-top: 1px;
+    }
+
+        .lightMode{
+          width:40px;
+          height: 35px;
+          margin-left: 70px;
+          // margin-top: 1px;
+        }
+
+        .w{
+          font-size: 23px !important;
+        }
+
 }
 
 
@@ -435,6 +534,24 @@ import '../assets/css/sidebar.css'
     .projectTitle{
         left: 20vw;
     }
+
+    .darkMode{
+        width:40px;
+        height: 35px;
+        margin-left: 70px;
+        //  margin-top: 1px;
+    }
+
+        .lightMode{
+          width:40px;
+          height: 35px;
+          margin-left: 70px;
+          // margin-top: 1px;
+        }
+
+        .w{
+          font-size: 23px !important;
+        }
   
 }
 
