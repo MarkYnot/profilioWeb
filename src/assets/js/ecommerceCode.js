@@ -28,25 +28,25 @@ module.exports.homepageCss =`#login{
   grid-row-gap: 5px;
   }
 
-.login{
-  margin-top: 5px;
-}
+  .login{
+    margin-top: 5px;
+  }
 
-.icon-eye{
-  height: 30px;
-  width: 30px;
-  position: absolute;
-  left: 63%;
-  top: 48.5%;
-}
+  .icon-eye{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 63%;
+    top: 48.5%;
+  }
 
-#button{
-  font-size: 35px;
-  color: black;
-  background: white;
-  position: absolute;
-  top: -15px;
-}`
+  #button{
+    font-size: 35px;
+    color: black;
+    background: white;
+    position: absolute;
+    top: -15px;
+  }`
   
 module.exports.loginCode =` async userLogin(){
   if(this.password == "" || this.username == ""){
@@ -106,7 +106,7 @@ module.exports.userBackend =`/** This router is used to set request url
        
        };`
 
-module.exports.LoginVerif =`module.exports.LoginVerif = function (req, res) {
+module.exports.LoginVerif =` module.exports.LoginVerif = function (req, res) {
   // get the username and password from front end
   let username = req.query.username;
   let password = req.query.password;
@@ -126,14 +126,14 @@ module.exports.LoginVerif =`module.exports.LoginVerif = function (req, res) {
         } else {
           res.send({ user: user, checked: true });
         }
-  }
-});
-};`
+      }
+   });
+  };`
 
 
-module.exports.shoppingCart =`<template>
+module.exports.shoppingCart =` <template>
 
-<div v-if="cartItems.length > 0 && loginState">
+ <div v-if="cartItems.length > 0 && loginState">
     <BackButton></BackButton>
     <div id="page-wrap">
         <h1>Shopping Cart</h1>
@@ -159,27 +159,27 @@ module.exports.shoppingCart =`<template>
             <button class="checkout-button" @click="clearStock()">Confirm The Transaction</button>
         </div>
     </div>
-</div>
+   </div>
 
 
-<div v-else-if="cartItems.length == 0">
-<BackButton></BackButton>
-    <div id="page-wrap">
-        <h1>Shopping Cart</h1>
-        <p>You haven't added anything to your cart yet!</p>
-    </div>
-</div>
-
-<div v-else-if="!loginState">
-
+    <div v-else-if="cartItems.length == 0">
     <BackButton></BackButton>
-    <div id="page-wrap">
-        <h1>Shopping Cart</h1>
-        <p>You are not logged in! Please log in your account!</p>
+      <div id="page-wrap">
+          <h1>Shopping Cart</h1>
+          <p>You haven't added anything to your cart yet!</p>
+      </div>
     </div>
-</div>
 
-</template>`
+    <div v-else-if="!loginState">
+
+      <BackButton></BackButton>
+      <div id="page-wrap">
+          <h1>Shopping Cart</h1>
+          <p>You are not logged in! Please log in your account!</p>
+      </div>
+    </div>
+
+ </template>`
 
 module.exports.getItem=` methods: {
 
@@ -311,40 +311,40 @@ module.exports.addItemDetail =`module.exports.updateUserItem = function (req, re
             res.json({
               status: "0",
               result: "suc",
+             });
+            }
+          });
+        }
+      }
+    );
+  }
+
+    module.exports.delItemFromCart = function (req, res) {
+      let firstname = req.query.firstname;
+      let lastname = req.query.lastname;
+      let title = req.query.title;
+      console.log("receive dele req");
+
+      User.updateOne(
+        { firstname: firstname, lastname: lastname },
+        { $pull: { cartList: { title: title } } },
+        function (err, doc) {
+          if (err) {
+            res.json({
+              status: "1",
+              msg: err.message,
+              result: "",
+            });
+          } else {
+            console.log("suceess");
+            res.json({
+              status: "0",
+              result: "suc",
             });
           }
-        });
-      }
-    }
-  );
-}
-
-module.exports.delItemFromCart = function (req, res) {
-  let firstname = req.query.firstname;
-  let lastname = req.query.lastname;
-  let title = req.query.title;
-  console.log("receive dele req");
-
-  User.updateOne(
-    { firstname: firstname, lastname: lastname },
-    { $pull: { cartList: { title: title } } },
-    function (err, doc) {
-      if (err) {
-        res.json({
-          status: "1",
-          msg: err.message,
-          result: "",
-        });
-      } else {
-        console.log("suceess");
-        res.json({
-          status: "0",
-          result: "suc",
-        });
-      }
-    }
-  );
-};`
+        }
+      );
+    };`
 
 module.exports.uploadCode = `<div id="addLis">
 <h1>Add listing</h1>
@@ -367,29 +367,29 @@ module.exports.uploadCode = `<div id="addLis">
       </el-upload><br>
 
    <button class="add-button" type="button" @click="addPage">Add</button>
-</div>`
+  </div>`
 
 
 module.exports.elementUI = `import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import VueLazyload from 'vue-lazyload'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import './element.js'
-import VueCookies from 'vue-cookies'
-import md5 from 'js-md5';
+  import App from './App.vue'
+  import router from './router'
+  import VueLazyload from 'vue-lazyload'
+  import ElementUI from 'element-ui'
+  import 'element-ui/lib/theme-chalk/index.css'
+  import './element.js'
+  import VueCookies from 'vue-cookies'
+  import md5 from 'js-md5';
 
-Vue.use(VueCookies)
-Vue.use(ElementUI)
-Vue.use(VueLazyload);
-Vue.prototype.$md5 = md5
-Vue.config.productionTip = false
+  Vue.use(VueCookies)
+  Vue.use(ElementUI)
+  Vue.use(VueLazyload);
+  Vue.prototype.$md5 = md5
+  Vue.config.productionTip = false
 
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app')`
+  new Vue({
+    router,
+    render: h => h(App),
+  }).$mount('#app')`
 
 
 module.exports.uploadBackend = `module.exports = (app) => {

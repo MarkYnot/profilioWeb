@@ -11,9 +11,11 @@
         <!-- </div> -->
       </div>
     </pre>
-    <button @click="copyCode" :disabled="isCopied" class="copy-button">{{ copyButtonText }}</button>
-    <button class="language-button" disabled>{{ this.language=='markup'? 'html':this.language }}</button>
-    <span class="fileName">{{fileName}}</span>
+      <div class="codeInformation">
+          <button @click="copyCode" :disabled="isCopied" class="copy-button">{{ copyButtonText }}</button>
+          <button class="language-button" disabled>{{ this.language=='markup'? 'html':this.language }}</button>
+          <span class="fileName">{{fileName}}</span>
+      </div>
   </div>
 </template>
 
@@ -129,6 +131,10 @@ export default {
   vertical-align: top !important;
 }
 
+#codeBlock:first-child{
+  margin-top: 15px;
+}
+
 .code-lines-wrapper {
   position: relative;
 }
@@ -174,7 +180,7 @@ export default {
   pointer-events: none;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1200px){
    .code-line {
       height:30px; 
    }
@@ -196,7 +202,8 @@ export default {
    }
 
    .fileName{
-      font-size: 20px !important;
+      font-size: 15px !important;
+      // left: 180px !important;
    }
 }
 
@@ -204,11 +211,22 @@ export default {
   background-color: transparent;
 }
 
-
-.copy-button {
+.codeInformation{
   position: absolute;
   top: 10px;
-  right: 10px;
+  // left: 20px;
+  // margin: 0 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width:96%;
+}
+
+
+.copy-button {
+   order:2;
+  // right: 10px;
+  flex-grow: 0;
   padding: 5px 10px;
   background-color: white;
   color: black;
@@ -225,9 +243,11 @@ export default {
 }
 
 .language-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+     order:0;
+  // position: absolute;
+  // top: 10px;
+  // left: 10px;
+  flex-grow: 0;
   padding: 5px 10px;
   background-color: white;
   color: black;
@@ -240,9 +260,12 @@ export default {
 }
 
 .fileName{
-  position: absolute;
-  top: 10px;
-  left: 90px;
+  // position: absolute;
+  // top: 10px;
+  // left: 90px;
+  text-align: left;
+  flex-grow: 1;
+  order:1;
   padding: 5px 10px;
   color: white;
   font-size: 10px;

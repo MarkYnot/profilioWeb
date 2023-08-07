@@ -176,36 +176,36 @@
                  <CodeBlock :code="this.packageF" language="json" fileName="/client/package.json"/>
               </div>
 
-               <ul class="contentUl">  <strong>For the Client-side:</strong><br/>
-                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://axios-http.com/docs/intro"> "axios": "^0.21.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Axios is a popular HTTP client library used for making HTTP requests from the client-side to the server-side or external APIs. </li>
+               <ul class="contentUl">  <strong>For the Client-side:</strong><br/><br/>
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://axios-http.com/docs/intro"> "axios" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .  Axios is a popular HTTP client library used for making HTTP requests from the client-side to the server-side or external APIs. </li>
 
-                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/zloirock/core-js"> "core-js": "^3.12.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Core-js is a polyfill library that provides modern JavaScript features to older browsers that do not support them. </li>
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/zloirock/core-js"> "core-js" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .  Core-js is a polyfill library that provides modern JavaScript features to older browsers that do not support them. </li>
 
-                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://nodejs.org/api/crypto.html"> "crypto": "^1.0.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   The crypto package is a built-in Node.js module that provides cryptographic functionality, such as hashing and encryption. It is mainly used on the server-side. </li>
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://nodejs.org/api/crypto.html"> "crypto" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .   The crypto package is a built-in Node.js module that provides cryptographic functionality, such as hashing and encryption. It is mainly used on the server-side. </li>
 
-                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://element.eleme.io/#/en-US"> "element-ui": "^2.15.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   Element UI is a popular component library for Vue.js applications that provides a set of customizable UI components. </li>
-
-
-                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/dankogai/js-base64"> "js-base64": "^3.6.0"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.    The js-base64 library provides utilities for encoding and decoding data in Base64 format. </li>
-
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/emn178/js-md5"> "js-md5": "^0.7.3"</a> <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  The js-md5 library is used to calculate MD5 hashes of data. </li>
-
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://docs.npmjs.com/cli/v7/commands/npx"> "npx": "^10.2.2"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   npx is a tool that comes with npm and allows you to run packages without installing them globally. </li>
-
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/http-party/node-portfinder"> "portfinder": "^1.0.28"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   The portfinder library is used to find an available port when starting a local development server. </li>
-
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://vuejs.org/guide/introduction.html"> "vue": "^2.6.11"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   Vue.js is the core library for building reactive and component-based user interfaces in JavaScript. </li>
-
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/cmp-cc/vue-cookies"> "vue-cookies": "^1.7.4"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   The vue-cookies library provides a simple way to manage cookies in Vue.js applications. </li>
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://element.eleme.io/#/en-US"> "element-ui" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .   Element UI is a popular component library for Vue.js applications that provides a set of customizable UI components. </li>
 
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/hilongjw/vue-lazyload"> "vue-lazyload": "^1.3.3"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   The vue-lazyload library enables lazy loading of images in Vue.js applications, which improves page loading performance. </li>
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/dankogai/js-base64"> "js-base64" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .    The js-base64 library provides utilities for encoding and decoding data in Base64 format. </li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://router.vuejs.org/"> "vue-router": "^3.5.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Vue Router is the official routing library for Vue.js applications, allowing you to create client-side routing for single-page applications. </li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/emn178/js-md5"> "js-md5" <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .  The js-md5 library is used to calculate MD5 hashes of data. </li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/NightCatSama/vue-slider-component"> "vue-slider-component": "2.8.6"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  The vue-slider-component library provides a customizable slider component for Vue.js applications. </li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://docs.npmjs.com/cli/v7/commands/npx"> "npx" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .   npx is a tool that comes with npm and allows you to run packages without installing them globally. </li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://vuetifyjs.com/en/"> "vuetify": "^2.4.11"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  Vuetify is a popular Material Design component framework for Vue.js, offering a set of pre-built UI components following the Material Design guidelines.</li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/http-party/node-portfinder"> "portfinder" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /> </a> .   The portfinder library is used to find an available port when starting a local development server. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://vuejs.org/guide/introduction.html"> "vue" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .   Vue.js is the core library for building reactive and component-based user interfaces in JavaScript. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/cmp-cc/vue-cookies"> "vue-cookies" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .   The vue-cookies library provides a simple way to manage cookies in Vue.js applications. </li>
+
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/hilongjw/vue-lazyload"> "vue-lazyload" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .   The vue-lazyload library enables lazy loading of images in Vue.js applications, which improves page loading performance. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://router.vuejs.org/"> "vue-router" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .  Vue Router is the official routing library for Vue.js applications, allowing you to create client-side routing for single-page applications. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://github.com/NightCatSama/vue-slider-component"> "vue-slider-component" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .  The vue-slider-component library provides a customizable slider component for Vue.js applications. </li>
+
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://vuetifyjs.com/en/"> "vuetify" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .  Vuetify is a popular Material Design component framework for Vue.js, offering a set of pre-built UI components following the Material Design guidelines.</li>
               </ul>
 
 
@@ -213,25 +213,25 @@
                  <CodeBlock :code="this.packageB" language="json" fileName="/server/package.json"/>
               </div>
 
-               <ul class="contentUl">  <strong>For the Server-side:</strong><br/>
-                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/cookie-parser"> "cookie-parser": "Version ~1.4.4" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a>.  A middleware for parsing HTTP cookies. It simplifies handling cookies in Node.js. </li>
+               <ul class="contentUl">  <strong>For the Server-side:</strong><br/><br/>
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/cookie-parser"> "cookie-parser" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a>.  A middleware for parsing HTTP cookies. It simplifies handling cookies in Node.js. </li>
 
-                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/debug"> "debug": "Version ~2.6.9"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.   A small debugging utility for Node.js that provides conditional logging based on namespaces. </li>
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/debug"> "debug" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .   A small debugging utility for Node.js that provides conditional logging based on namespaces. </li>
 
-                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://expressjs.com/"> "express": "^4.16.1"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   A popular and minimalistic web application framework for Node.js, used for building web servers and APIs. </li>
+                    <li class="showcase"><a target="_blank" class="linkToOther" href="https://expressjs.com/"> "express" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .   A popular and minimalistic web application framework for Node.js, used for building web servers and APIs. </li>
 
 
-                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/http-errors"> "http-errors": "^1.6.3"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.    A utility for creating HTTP error objects with proper status codes and error messages. </li>
+                     <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/http-errors"> "http-errors" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .    A utility for creating HTTP error objects with proper status codes and error messages. </li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://mongoosejs.com/"> "mongoose": "^5.12.7"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.  An Object Data Modeling (ODM) library for MongoDB and Node.js, used for managing MongoDB databases and providing schema-based data validation. </li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://mongoosejs.com/"> "mongoose" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a>.  An Object Data Modeling (ODM) library for MongoDB and Node.js, used for managing MongoDB databases and providing schema-based data validation. </li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/morgan"> "morgan": "^1.9.1"</a> <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.    A middleware for logging HTTP requests and responses in the Express.js framework. </li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/morgan"> "morgan" <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .    A middleware for logging HTTP requests and responses in the Express.js framework. </li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/multer"> "multer": "^1.4.2"</a> <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" />.  A middleware for handling file uploads in the Express.js framework.</li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/multer"> "multer" <a-icon type="select" theme="outlined" class="aIcon" :style="{fontSize:'9px', color:'black'}" /></a> .  A middleware for handling file uploads in the Express.js framework.</li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://nodejs.org/api/path.html"> "path": "^0.2.0"</a> <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.   A Node.js built-in module that provides utilities for working with file paths.</li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://nodejs.org/api/path.html"> "path" <a-icon class="aIcon" type="select" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .   A Node.js built-in module that provides utilities for working with file paths.</li>
 
-                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/pub"> "pub": "^1.7.4"</a> <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" />.    A utility to publish local development servers to the internet using ngrok. </li>
+                      <li class="showcase"><a target="_blank" class="linkToOther" href="https://www.npmjs.com/package/pub"> "pub" <a-icon type="select" class="aIcon" theme="outlined" :style="{fontSize:'9px', color:'black'}" /></a> .    A utility to publish local development servers to the internet using ngrok. </li>
 
               </ul>
 
@@ -589,7 +589,6 @@ import codeSnip from '../assets/js/ecommerceCode.js'
     },
 
     handleScroll(event){
-        console.log(event.target.scrollTop)
         if(event.target.scrollTop >= 1678){
             this.backImg = this.videoImgList[1].icon
             this.page = false;
@@ -656,7 +655,6 @@ import codeSnip from '../assets/js/ecommerceCode.js'
               tableTitile.style.color = '#2c3e50'
               published[0].style.color = 'gray'
               textLength[0].style.color = 'gray'
-              
           }
     },
 
@@ -1048,6 +1046,7 @@ code{
   color:white;
 }
 
+//For big screen
 @media  screen and (min-width:1000px) {
     .darkMode{
        width:30px !important;
@@ -1066,6 +1065,20 @@ code{
     .darkLogo{
         font-size: 20px;
     }
+
+    .contentUl strong{
+      font-size: 20px !important;
+    }
+
+    .content h3{
+      font-size: 20px !important;
+    }
+
+    .aIcon{
+      font-size: 15px !important;
+    }
+
+
 }
 
 
