@@ -214,12 +214,13 @@ export default {
 .codeInformation{
   position: absolute;
   top: 10px;
-  // left: 20px;
+  left: 1%;
   // margin: 0 10px;
+  margin: 0 20px;
   justify-content: center;
   align-items: center;
   display: flex;
-  width:96%;
+  width:94%;
 }
 
 
@@ -268,6 +269,6 @@ export default {
   order:1;
   padding: 5px 10px;
   color: white;
-  font-size: 10px;
+  font-size: 15px;
 }
 </style>
