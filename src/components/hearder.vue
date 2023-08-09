@@ -8,12 +8,15 @@
    </slot> -->
 
       <a style='grid-column:2' href="https://github.com/MarkYnot" target="_blank" v-if="!isMobile"> 
-          <img class="headerTilte" v-lazy="'/static/github1.png'" alt="headerTitle">   
+          <!-- <img class="headerTilte" v-lazy="'/static/github1.png'" alt="headerTitle">    -->
+        <a-icon type="github" class="headerTilte" theme="filled" :style="mainPage?'color: white' :'color: black'"/>
       </a>
 
 
       <a href="https://linkedin.com/in/junjie-lin-142444216" target="_blank" v-if="!isMobile">
-        <img class="headerText" v-lazy="'/static/linkedin1.png'" alt="headerTitle">
+        <!-- <img class="headerText" v-lazy="'/static/linkedin1.png'" alt="headerTitle"> -->
+    <a-icon type="linkedin" class="headerText" theme="filled" :style="mainPage?'color: white' :'color: black'"/>
+
       </a>
 
 
@@ -27,11 +30,11 @@
               mode="horizontal"
               style="{lineHeight: 64px}"
               class="userInfoSlot"
-             v-if="isMobile"
+              v-if="isMobile"
             >
                 <a-sub-menu >
                     <span slot="title" >
-                    <a-icon class="mobileList" type="menu" theme="outlined"/>
+                    <a-icon class="mobileList" type="menu" theme="outlined" :style="mainPage?'color: white' :'color: black'"/>
                     </span>
 
                     <a-menu-item key="setting:1">
@@ -66,9 +69,13 @@
        }
 
     }, 
-    components:{
-
-    },
+   
+   props:{
+     mainPage:{
+        type:Boolean,
+        default:false
+     }
+   },
 
     beforeDestroy(){
         window.removeEventListener('resize', this.handleResize)
@@ -180,33 +187,16 @@
      }
 
      .headerText{
-         width: 42px !important;
-         height: 45px !important;
-         margin-top: 8px !important;
+        //  width: 42px !important;
+        //  height: 45px !important;
+        //  margin-top: 8px !important;
      }
 }
 
 .mobileList{
   font-size:21px;
-  color:white;
+  // color:white;
 }
-
-// .searchBar{
-//   grid-column: 4;
-//   grid-row: 1;
-//   margin-top: 2.5vh;
-// }
-
-// .searchBar:hover{
-//   transition: 0.3s;
-//   opacity: 0.4;
-// }
-
-// .searchBar span{
-//   font-size: 1.8vw;
-//   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif !important;
-//   color: white;
-// }
 
 
 /deep/ .ant-menu-submenu{
@@ -231,13 +221,12 @@
 }
 
 .headerTilte{
-  float: right;
-  // height: 6vh;
-  // width: 3vw;
-  height: 18px;
-  width: 18px;
-  margin-top:15px;
-  margin-right: 1vw;
+  // float: right;
+  // height: 18px;
+  // width: 18px;
+  margin: 17px 0;
+  font-size: 30px;
+  // color: black;
   grid-column: 2;
   grid-row: 1;
   margin-left: 13vw;
@@ -250,14 +239,12 @@
 }
 
 .headerText{
-  float: right;
-  width: 28px;
-  height: 30px;
-  // width: 5vw;
-  // height: 10vh;
-  margin-top:10px;
-  margin-left:3px;
-
+  // width: 28px;
+  // height: 30px;
+  font-size: 30px;
+  border-radius: 50px;
+  // color: black;
+  margin: 17px 0;
 }
 
 .headerText:hover{

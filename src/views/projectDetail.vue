@@ -3,7 +3,7 @@
 
     <div class="hpHeader">
       
-    <Header>
+    <Header :mainPage="dark">
        <div slot="search" class="darkArea" >
              <!-- bulb -->
                  <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
@@ -14,12 +14,12 @@
   </div>
 
 
-      <button class="rSideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
+      <button class="rSideBarButton" @click="toggleCollapsed">
               <a-icon class="foldList" :style="{fontSize:'24px',marginTop:'5px'}" :type="collapsed ? 'close' : 'menu-fold'" /></button>
 
  
 
-       <span  class="myName" @click="redirecting()" :style="collapsed?'color: black' :'color: white'">  JUNJIE LIN</span>
+       <span  class="myName" @click="redirecting()">  JUNJIE LIN</span>
 
         <transition name="SidebarFade">
         <div class="SideBar" v-if="this.collapsed">
@@ -153,7 +153,11 @@ import projects from '../assets/json/projectList.json'
         const githubLink = document.getElementsByClassName('githubLink')
         const githubLogo = document.getElementsByClassName('githubLogo')
         const aTag = document.getElementsByClassName('linkToOther')
- 
+        const myName = document.getElementsByClassName('myName')
+        const foldList = document.getElementsByClassName('foldList')
+        const projectTitle = document.getElementsByClassName('projectTitle')
+         const projectDescription = document.getElementsByClassName('projectDescription')
+          const information = document.getElementsByClassName('information')
 
        if(this.dark == true){
             document.querySelector('.mainContainer').style.background = 'rgb(32, 32, 35)'
@@ -168,7 +172,7 @@ import projects from '../assets/json/projectList.json'
                 item.style.color = 'rgb(66, 239, 104'
 
               })
-              ProjectName.forEach(item=>item.style.color = 'rgb(186, 149, 81)')
+              ProjectName.forEach(item=>item.style.color = 'rgb(186, 149, 81')
               githubLogo.forEach(item=>item.style.color = 'rgb(186, 149, 81)')
 
 
@@ -177,22 +181,28 @@ import projects from '../assets/json/projectList.json'
                     this.setSpecialHover('special', item)
               })
 
+                myName.forEach(item=>item.style.color = 'white')
+                foldList.forEach(item=>item.style.color = 'white')
+                projectTitle.forEach(item=>item.style.color = 'white')
+                projectDescription.forEach(item=>item.style.color = 'white')
+                information.forEach(item=>item.style.color = 'white')
+
 
        }else{
-              document.querySelector('.mainContainer').style.background = 'rgba(86, 118, 105, 0.768)'
+              document.querySelector('.mainContainer').style.background = 'rgba(240, 231, 219, 0.757)'
 
                   green.forEach(item=>{
-                item.style.background = 'rgb(157, 192, 157)'
-                item.style.color = 'rgb(14, 71, 26)'
+                item.style.background = '#C6F6D5'
+                item.style.color = '#22543D'
               })
 
                  ProjectName.forEach(item=>item.style.color = 'black')
 
-                 githubLink.forEach(item=>item.style.color = 'white')
-                 githubLogo.forEach(item=>item.style.color = 'white')
+                 githubLink.forEach(item=>item.style.color = 'black')
+                 githubLogo.forEach(item=>item.style.color = 'black')
             
               githubLink.forEach(item=>{
-                    item.style.color = 'white'
+                    item.style.color = 'black'
                     this.setSpecialHover('none', item)
               })
 
@@ -200,6 +210,12 @@ import projects from '../assets/json/projectList.json'
                     item.style.color = 'white'
                     this.setSpecialHover('none', item)
               })
+
+                myName.forEach(item=>item.style.color = 'black')
+                foldList.forEach(item=>item.style.color = 'black')
+                projectTitle.forEach(item=>item.style.color = 'black')
+                projectDescription.forEach(item=>item.style.color = 'black')
+                information.forEach(item=>item.style.color = 'black')
               
           }
      }
@@ -222,7 +238,7 @@ import projects from '../assets/json/projectList.json'
   display: grid;
   grid-template-columns: auto 95%;
   grid-template-rows: 60px 92%;
-  background: rgba(86, 118, 105, 0.768);
+  background: rgba(240, 231, 219, 0.757);
   overflow-y: scroll;
   transition: 1s all;
 }
@@ -245,6 +261,7 @@ import projects from '../assets/json/projectList.json'
   grid-row: 1;
   grid-column: 1;
   z-index:20;
+  color: black;
 }
 
 .myName{
@@ -254,7 +271,7 @@ import projects from '../assets/json/projectList.json'
    float: left;
    margin-left: 15px;
    position: absolute;
-   color: white;
+   color: black;
    font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
    transition: 1s;
    z-index: 20;
@@ -331,7 +348,7 @@ import projects from '../assets/json/projectList.json'
   grid-row:1;
   grid-column:1;
   text-align: left;
-  color:white;
+  color:black;
   font-family: var(--chakra-fonts-heading);
   width: 100%;
 
@@ -350,7 +367,7 @@ import projects from '../assets/json/projectList.json'
  text-align: left;
  margin-left: 20px;
  margin-top: 10px;
- color: white;
+ color: black;
  font-size: 13px;
 }
 
@@ -381,20 +398,20 @@ import projects from '../assets/json/projectList.json'
 .information{
   width: 77% !important;
   float: left;
-  color: white;
+  color: black;
   text-align: left;
   font-size: 12px;
   margin-left: 0.5vw;
 }
 
 .greenTitle{
-  background: rgb(157, 192, 157);
+  background: #C6F6D5;
   width: 53px;
   height: 16px;
   // margin-left: 2vw;
   // margin-top:3.5vh;
   font-size: 9px;
-  color: rgb(14, 71, 26);
+  color: #22543D;
   font-weight: bold;
   text-align: center;
   display: inline;
@@ -403,19 +420,19 @@ import projects from '../assets/json/projectList.json'
 
 .githubLink{
   text-decoration: none;
-  color:white;
+  color:black;
   font-weight: bolder;
     // color: rgb(66, 239, 104);
 }
 
 .githubLink:hover{
-  border-bottom: solid 1px white;
+  border-bottom: solid 1px black;
 }
 
 
 .githubLogo{
    font-size:11px; 
-   color:white;
+   color:black;
 }
 
 .special-hover:hover{

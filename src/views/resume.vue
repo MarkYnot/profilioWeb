@@ -3,7 +3,7 @@
 
     <div class="hpHeader">
       
-    <Header>
+    <Header :mainPage="dark">
        <div slot="search" class="rSearchBar" >
              <!-- bulb -->
                     <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
@@ -14,12 +14,12 @@
   </div>
 
 
-      <button class="rSideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
+      <button class="rSideBarButton" @click="toggleCollapsed">
               <a-icon class="foldList" :style="{fontSize:'24px',marginTop:'5px'}" :type="collapsed ? 'close' : 'menu-fold'" /></button>
 
  
 
-       <span  class="myName" @click="redirecting()" :style="collapsed?'color: black' :'color: white'">  JUNJIE LIN</span>
+       <span  class="myName" @click="redirecting()">  JUNJIE LIN</span>
 
         <transition name="SidebarFade">
         <div class="SideBar" v-if="this.collapsed">
@@ -183,6 +183,8 @@ import '../assets/css/sidebar.css'
         const darkModeLink = document.getElementsByClassName('darkModeLink')
         const darkModeSpan = document.getElementsByClassName('darkModeUse')
         const pTag = document.getElementsByTagName('p')
+        const myName = document.getElementsByClassName('myName')
+        const foldList = document.getElementsByClassName('foldList')
 
 
        if(this.dark == true){
@@ -192,15 +194,19 @@ import '../assets/css/sidebar.css'
             pTag.forEach(item=>item.style.color = 'white')
             darkModeSpan.forEach(item=>item.style.color = 'rgba(255,255,255,0.92)')
             bottomLogo.forEach(item=>item.style.color = 'rgb(186, 149, 81)')
+            myName.forEach(item=>item.style.color = 'white')
+            foldList.forEach(item=>item.style.color = 'white')
 
        }else{
-              document.querySelector('.resumeContainer').style.background = 'rgba(86, 118, 105, 0.768)'
+              document.querySelector('.resumeContainer').style.background = 'rgba(240, 231, 219, 0.757)'
                pTag.forEach(item=>item.style.color = '#2c3e50')
                darkModeSpan.forEach(item=>item.style.color = '#2c3e50')
                intro.forEach(item=>item.style.color = '#dbdbdb36')
                darkModeLink.forEach(item=>item.style.color = '#2c3e50')
                darkModeSpan.forEach(item=>item.style.color = 'black')
-            bottomLogo.forEach(item=>item.style.color = 'black')
+               bottomLogo.forEach(item=>item.style.color = 'black')
+                myName.forEach(item=>item.style.color = 'black')
+                foldList.forEach(item=>item.style.color = 'black')
               
           }
      }
@@ -226,7 +232,7 @@ import '../assets/css/sidebar.css'
   display: grid;
   grid-template-columns: auto 95%;
   grid-template-rows: 60px 92%;
-  background: rgba(86, 118, 105, 0.768);
+  background: rgba(240, 231, 219, 0.757);
   overflow-y: scroll;
   transition: 1s all;
 }
@@ -248,6 +254,7 @@ import '../assets/css/sidebar.css'
   border: 0;
   border-radius: 50%;
   transition: all 0.3s;
+  color: black;
   grid-row: 1;
   grid-column: 1;
   z-index:20;
@@ -260,7 +267,7 @@ import '../assets/css/sidebar.css'
    float: left;
    margin-left: 15px;
    position: absolute;
-   color: white;
+   color: black;
    font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
    transition: 1s;
    z-index: 20;
@@ -351,7 +358,7 @@ import '../assets/css/sidebar.css'
 .intro{
   grid-row:1/2;
   grid-column:2/5;
-  background: #dbdbdb36;
+  background: rgba(255, 255, 255, 0.36);
   width: 100%;
   height: fit-content;
   padding: 10px 20px;

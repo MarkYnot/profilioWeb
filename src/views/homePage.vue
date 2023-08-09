@@ -75,7 +75,7 @@
         <div class="containerShadow"/>
 
         <div class="hpHeader">
-        <Header>
+        <Header :mainPage="mainPage">
           <div slot="search" class="searchBar"  @click="startSearch()">
                   <a-icon type="search" class="w" theme="outlined" :style="{fontSize:'2vw', color:'white'}" />
               <span>SEARCH</span>
@@ -104,9 +104,9 @@
             <span v-if="this.text">
               Full Stack Developer  
               <br/>
-            Have a look at my work
+            Have a Look Around My Website
             <br/>
-            and get in touch 
+            
             </span>
  
           
@@ -149,6 +149,7 @@ import videoImg6 from '../assets/fly.jpg'
     data(){
        return {
           collapsed: false,
+          mainPage:true,
           Ecommerce:false,
           projectTitle:'',
           blog:false,
@@ -634,6 +635,7 @@ a{
   height: 35px;
   background: transparent;
   border-color: whitesmoke;
+  border-radius: 10px;
   grid-row: 2;
 }
 

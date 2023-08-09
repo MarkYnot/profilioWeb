@@ -3,7 +3,7 @@
 
     <div class="hpHeader">
       
-    <Header>
+    <Header :mainPage="dark">
        <div slot="search" class="darkArea" >
              <!-- bulb -->
                 <button :class="dark?'darkMode':'lightMode'" @click="darkMode()">
@@ -14,12 +14,12 @@
   </div>
 
 
-      <button class="rSideBarButton" @click="toggleCollapsed" :style="collapsed?'color: black' :'color: white'">
+      <button class="rSideBarButton" @click="toggleCollapsed" >
               <a-icon class="foldList" :style="{fontSize:'24px',marginTop:'5px'}" :type="collapsed ? 'close' : 'menu-fold'" /></button>
 
  
 
-       <span  class="myName" @click="redirecting()" :style="collapsed?'color: black' :'color: white'">  JUNJIE LIN</span>
+       <span  class="myName" @click="redirecting()" > JUNJIE LIN</span>
 
         <transition name="SidebarFade">
         <div class="SideBar" v-if="this.collapsed">
@@ -111,11 +111,29 @@ import '../assets/css/sidebar.css'
 
         darkMode(){
             this.dark = !this.dark;
+            // const bottomLogo = document.getElementsByClassName('bottomLogo')
+             const foldList = document.getElementsByClassName('foldList')
+              const myName = document.getElementsByClassName('myName')
+              const projectName = document.getElementsByClassName('projectName')
+              const projectTitle = document.getElementsByClassName('projectTitle')
+               const projectDescrition = document.getElementsByClassName('projectDescrition')
+            
             if(this.dark == true){
                   document.querySelector('.mainContainer').style.background = 'rgb(32, 32, 35)'
+                  foldList.forEach(item=>item.style.color = 'white')
+                   myName.forEach(item=>item.style.color = 'white')
+                   projectTitle.forEach(item=>item.style.color = 'white')
+                   projectName.forEach(item=>item.style.color = 'white')
+                   projectDescrition.forEach(item=>item.style.color = 'white')
+           
 
             }else{
-                    document.querySelector('.mainContainer').style.background = 'rgba(86, 118, 105, 0.768)'              
+                    document.querySelector('.mainContainer').style.background = 'rgb(240, 231, 219)'     
+                    foldList.forEach(item=>item.style.color = 'black')
+                    myName.forEach(item=>item.style.color = 'black')   
+                    projectTitle.forEach(item=>item.style.color = 'black')    
+                    projectName.forEach(item=>item.style.color = 'black')    
+                    projectDescrition.forEach(item=>item.style.color = 'black')   
                 }
      }
 
@@ -136,7 +154,7 @@ import '../assets/css/sidebar.css'
   display: grid;
   grid-template-columns: auto 95%;
   grid-template-rows: 60px 92%;
-  background: rgba(86, 118, 105, 0.768);
+  background: rgba(240, 231, 219, 0.757);
   overflow-y: scroll;
   transition: 1s all;
 }
@@ -159,6 +177,7 @@ import '../assets/css/sidebar.css'
   grid-row: 1;
   grid-column: 1;
   z-index:20;
+  color: black
 }
 
 .myName{
@@ -168,7 +187,7 @@ import '../assets/css/sidebar.css'
    float: left;
    margin-left: 15px;
    position: absolute;
-   color: white;
+   color: black;
    font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
    transition: 1s;
    z-index: 20;
@@ -248,7 +267,7 @@ import '../assets/css/sidebar.css'
   position: absolute;
   left:17%;
   text-align: left;
-  color:white;
+  color:#2c3e50;
   font-family: var(--chakra-fonts-heading);
   width: 50%;
   font-weight:bolder;
@@ -315,12 +334,12 @@ import '../assets/css/sidebar.css'
 .projectName{
   grid-row: 2;
   font-weight:600;
-  color: white;
+  color: #2c3e50;
 }
 
 .projectDescrition{
  grid-row: 3;
- color: white;
+ color: black;
  width: 90%;
  font-size: 10px;
  text-align: center;

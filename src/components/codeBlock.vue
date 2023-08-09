@@ -180,32 +180,6 @@ export default {
   pointer-events: none;
 }
 
-@media screen and (min-width: 1200px){
-   .code-line {
-      height:30px; 
-   }
-
-   .line-no {
-      font-size: 17px;
-   }
-
-   .code-line span {
-      font-size: 17px;
-   }
-
-   .language-button {
-      font-size: 20px !important;
-   }
-
-   .copy-button {
-      font-size: 20px !important;
-   }
-
-   .fileName{
-      font-size: 15px !important;
-      // left: 180px !important;
-   }
-}
 
 .line-no::selection {
   background-color: transparent;
@@ -244,10 +218,7 @@ export default {
 }
 
 .language-button {
-     order:0;
-  // position: absolute;
-  // top: 10px;
-  // left: 10px;
+  order:0;
   flex-grow: 0;
   padding: 5px 10px;
   background-color: white;
@@ -261,9 +232,6 @@ export default {
 }
 
 .fileName{
-  // position: absolute;
-  // top: 10px;
-  // left: 90px;
   text-align: left;
   flex-grow: 1;
   order:1;
@@ -271,4 +239,77 @@ export default {
   color: white;
   font-size: 15px;
 }
+
+//For Galaxy Fold
+@media screen and (max-width: 912px) and (height: 653px){
+  .fileName{
+       font-size: 7px !important;
+   }
+
+  .copy-button{
+        font-size: 8px; 
+    }
+
+  .language-button{
+        font-size: 8px;
+    }
+
+  .codeInformation{
+       margin: 0 4px !important;
+   }
+   
+}
+
+//ipad and surface pro 7
+@media screen and (max-width: 912px) and (min-height: 1024px) and (max-height: 1368px) and (min-width: 768px){
+    .copy-button{
+        font-size: 15px;
+    }
+
+    .language-button{
+        font-size: 15px;
+    }
+}
+
+//iphone and samsung
+@media screen and (min-height: 400px)and (min-width: 360px)and (max-width:767px){
+   .fileName{
+       font-size: 10px !important;
+   }
+
+   .codeInformation{
+       margin: 0 5px !important;
+   }
+}
+
+// for big screen
+@media screen and (min-width: 1200px){
+   .code-line {
+      height:30px; 
+   }
+
+   .line-no {
+      font-size: 17px;
+   }
+
+   .code-line span {
+      font-size: 17px;
+   }
+
+   .language-button {
+      font-size: 16px !important;
+   }
+
+   .copy-button {
+      font-size: 16px !important;
+   }
+
+   .fileName{
+      font-size: 15px !important;
+      // left: 180px !important;
+   }
+}
+
+
+
 </style>
