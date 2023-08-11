@@ -5,3 +5,11 @@
 .SidebarFade-enter, .SidebarFade-leave{
    opacity:0
 }
+
+.copyFade-enter-active, .copyrFade-leave-active{
+  transition: opacity 1s;
+}
+
+.copyFade-enter, .copyFade-leave{
+   opacity:0
+}

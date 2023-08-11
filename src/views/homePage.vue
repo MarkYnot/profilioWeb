@@ -138,11 +138,11 @@ import SideBar from '../components/sideBar.vue'
 import '../assets/css/searchBar.css'
 import '../assets/css/sidebar.css'
 import '../assets/css/animation.css'
-import videoImg1 from '../assets/VideoSelection.jpg'
+import videoImg1 from '../assets/homePageCover.jpg'
 import videoImg2 from '../assets/Ecommerce.jpeg'
 import videoImg3 from '../assets/videogif2.gif'
-import videoImg4 from '../assets/videoSelection2.png'
-import videoImg5 from '../assets/videoSelection3.jpg'
+import videoImg4 from '../assets/english.webp'
+import videoImg5 from '../assets/chatCover.png'
 import videoImg6 from '../assets/fly.jpg'
 
   export default {
@@ -185,21 +185,21 @@ import videoImg6 from '../assets/fly.jpg'
             {
               id:2,
               name:"ChatTogether",
-              stack:"Node + Spring",
+              stack:"Vue+ Node + Springboot",
               photoLink:videoImg4,
               date:"03/04/2022",
               category: "Article",
-              link:"/Ecommerce"
+              link:"/project/Chat"
             },
 
             {
              id:3,
-             name:"Second Hand market",
-             stack:"JSP + Java",
+             name:"Smart Education - Banvas",
+             stack:"Vue+ Node + Springboot",
              photoLink:videoImg5,
              date:"03/04/2022",
              category: "Blog",
-             link:"/Ecommerce"
+             link:"/project/Education"
             },
 
             {
@@ -209,9 +209,8 @@ import videoImg6 from '../assets/fly.jpg'
              photoLink:videoImg1,
              date:"03/04/2022",
              category: "Blog",
-             link:"/Ecommerce"
-            },
-            
+             link:"/project/Banana"
+            }
             
             ],
            backImg: "",
@@ -398,7 +397,7 @@ import videoImg6 from '../assets/fly.jpg'
             else this.backImg = videoImg6
 
         }else {
-          this.backImg = this.videoImgList[number].icon
+           this.backImg = this.videoImgList[number].icon;
           }
          
 
@@ -422,7 +421,7 @@ import videoImg6 from '../assets/fly.jpg'
             case 2:
             this.path = '/Project/Education'
             this.Ecommerce = true;
-            this.projectTitle = 'Video tutorial Website';
+            this.projectTitle = 'Smart Teaching - Banvas';
             this.blog = false;
             break;
             

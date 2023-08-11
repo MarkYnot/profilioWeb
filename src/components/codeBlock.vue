@@ -61,7 +61,7 @@ export default {
   mounted() {
     // Prism.highlightAll();
     this.codeLines = this.code.split('\n');
-    console.log(this.codeLines)
+    // console.log(this.codeLines)
     const lineNo = document.getElementsByClassName('line-no');
     lineNo.forEach(item => item.addEventListener('copy', this.handleCopy))
   
@@ -76,7 +76,7 @@ export default {
   methods: {
     copyCode() {
         const codeContent = this.codeLines.join('\n');
-          console.log(codeContent)
+          // console.log(codeContent)
 
   
         navigator.clipboard.writeText(codeContent)

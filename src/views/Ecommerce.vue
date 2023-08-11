@@ -103,7 +103,7 @@
 
                 <li> 
                   <div class="greenTitle">GITHUB</div>
-                  <span class="information">Feel free to contribute on <a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce"><a-icon type="github" theme="outlined" class="githubLogo" :style="{fontSize:'11px', color:'white'}" /> Github</a> if you see anything go wrong</span>
+                  <span class="information">Feel free to contribute on <a target="_blank" class="githubLink" href="https://github.com/MarkYnot/ECommerce"><a-icon type="github" theme="outlined" class="githubLogo" :style="{fontSize:'10px', color:'white'}" /> Github</a> if you see anything go wrong</span>
                 </li>
                 
                   <li> 
@@ -533,27 +533,27 @@ import codeSnip from '../assets/js/ecommerceCode.js'
               photoLink:videoImg2,
               date:"03/04/2022",
               category: "Blog",
-              link:"/"
+              link:"/Ecommerce"
             },
 
             {
               id:2,
               name:"ChatTogether",
-              stack:"Node + Spring",
+              stack:"Vue+ Node + Springboot",
               photoLink:videoImg4,
               date:"03/04/2022",
               category: "Article",
-              link:"/Ecommerce"
+              link:"/project/Chat"
             },
 
             {
              id:3,
-             name:"Second Hand market",
-             stack:"JSP + Java",
+             name:"Smart Education - Banvas",
+             stack:"Vue+ Node + Springboot",
              photoLink:videoImg5,
              date:"03/04/2022",
              category: "Blog",
-             link:"/Ecommerce"
+             link:"/project/Education"
             },
 
             {
@@ -563,7 +563,7 @@ import codeSnip from '../assets/js/ecommerceCode.js'
              photoLink:videoImg1,
              date:"03/04/2022",
              category: "Blog",
-             link:"/Ecommerce"
+             link:"/project/Banana"
             },
           ],
        }
@@ -589,13 +589,23 @@ import codeSnip from '../assets/js/ecommerceCode.js'
     },
 
     handleScroll(event){
-        if(event.target.scrollTop >= 1678){
+        if(event.target.scrollTop >= 5056 && event.target.scrollTop < 12791){
             this.backImg = this.videoImgList[1].icon
             this.page = false;
-        } else if(event.target.scrollTop < 1678){
+        }else if(event.target.scrollTop < 5056){
             this.backImg = this.videoImgList[0].icon
             this.page = true;
+        }else if(event.target.scrollTop >= 12791 && event.target.scrollTop < 21948){
+            this.backImg = this.videoImgList[2].icon
+              this.page = false;
+        }else if(event.target.scrollTop >= 21948 && event.target.scrollTop < 24361){ 
+            this.backImg = this.videoImgList[3].icon
+              this.page = false;
+        }else if(event.target.scrollTop == 24361){ 
+            this.backImg = this.videoImgList[4].icon
+              this.page = false;
         }
+
     },
 
     darkMode(){
@@ -1046,40 +1056,7 @@ code{
   color:white;
 }
 
-//For big screen
-@media  screen and (min-width:1000px) {
-    .darkMode{
-       width:30px !important;
-       height: 30px !important;
-       margin-top: 40px;
-       margin-left:100px;
-    }
 
-    .lightMode{
-       width:30px !important;
-       height: 30px !important;
-       margin-top: 40px;
-       margin-left:100px;
-    }
-
-    .darkLogo{
-        font-size: 20px;
-    }
-
-    .contentUl strong{
-      font-size: 20px !important;
-    }
-
-    .content h3{
-      font-size: 20px !important;
-    }
-
-    .aIcon{
-      font-size: 15px !important;
-    }
-
-
-}
 
 
 .textLength{
@@ -1189,8 +1166,6 @@ code{
   float:left;
   border: solid 0.1px grey;
 }
-
-
 
 .homePageCode{
   width: 95%;
@@ -1318,6 +1293,7 @@ code{
 .resultFrame p{
   font-size: 1.8vmin;
   font-weight: bold;
+  color: black !important;
 }
 
 .resultFrame span{
@@ -1403,6 +1379,7 @@ code{
     font-weight: bold;
     // margin-top: 0.5vh;
     // margin-left:2vw;
+    color: black !important;
     height: 0;
 }
 
@@ -1414,6 +1391,7 @@ code{
 .matchText span{
     float:left;
     font-size: 1.4vmin;
+    color: black !important;
 }
 
 .matchText span:hover{
@@ -1612,6 +1590,10 @@ code{
   .resultCategory{
     font-size: 8px;
   }
+
+     .githubLogo{
+      font-size: 13px !important;
+    }
 }
 
 //ipad and surface pro 7
@@ -1797,9 +1779,11 @@ code{
   .resultCategory{
     font-size: 8px;
   }
+
+  .githubLogo{
+    font-size: 21px !important;
+  }
 }
-
-
 
 
 //For Galaxy Fold
@@ -1991,6 +1975,45 @@ code{
     font-size: 9px;
     padding-top: 15px;
   }
+
+}
+
+//For big screen
+@media  screen and (min-width:1000px) {
+    .darkMode{
+       width:30px !important;
+       height: 30px !important;
+       margin-top: 40px;
+       margin-left:100px;
+    }
+
+    .lightMode{
+       width:30px !important;
+       height: 30px !important;
+       margin-top: 40px;
+       margin-left:100px;
+    }
+
+    .darkLogo{
+        font-size: 20px;
+    }
+
+    .contentUl strong{
+      font-size: 20px !important;
+    }
+
+    .content h3{
+      font-size: 20px !important;
+    }
+
+    .aIcon{
+      font-size: 15px !important;
+    }
+
+    .githubLogo{
+      font-size: 24px !important;
+    }
+
 
 }
 

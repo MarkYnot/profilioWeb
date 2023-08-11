@@ -81,7 +81,7 @@
                         
                           <!-- <li><a href="https://github.com/MarkYnot" target="_blank"><button><img v-lazy="'/static/github1.png'"><span>@MarkYnot</span></button></a></li> -->
                         
-                          <li id="email" @click="copyEmail()"><a><button><a-icon type="mail" class="bottomLogo" theme="filled"/><span id="emailText" class="darkModeLink">{{this.email}}</span></button></a>    <div v-if="this.emailShow" class="copyEmail" :style="copiedEmail?'background: green' :'background: rgb(93, 165, 173)'">{{this.copy}}</div></li>    
+                          <li id="email" @click="copyEmail()"><a><button><a-icon type="mail" class="bottomLogo" id="emailLogo" theme="filled"/><span id="emailText" class="darkModeLink">@{{this.email}}</span></button></a>      <transition name="copyFade"><div v-if="emailShow" class="copyEmail" :style="copiedEmail?'background: green' :'background: rgb(93, 165, 173)'">{{this.copy}}</div> </transition></li>    
                      </ul>
 
                   
@@ -122,7 +122,7 @@ import '../assets/css/sidebar.css'
    mounted(){
       console.log(window.innerWidth, window.innerHeight)
       document.getElementById('email').addEventListener('mouseover', ()=>{
-          this.emailShow = true;
+          this.emailShow = true
       }, false)
 
       document.getElementById('email').addEventListener('mouseout', ()=>{
@@ -403,27 +403,27 @@ import '../assets/css/sidebar.css'
 }
 
 #email{
-   display: grid;
-   grid-template-rows: 100%;
-   grid-template-columns: 5% 22% 60%;
+  display: flex;
+  align-items: center;
 }
 
+
 #emailText{
-  grid-column: 2 !important;
+  order: 0;
 }
 
 .copyEmail{
-   grid-column: 3;
+   order:1; 
    transition: 0.5s all;
-   width: 58px;
+   width: 60px;
    height: 14px;
    font-size: 8px;
+   padding: 0 2px;
    background: rgb(93, 165, 173);
    font-weight: 500;
-   color: white;
-   padding-top: 1px;
+   color: white; 
    border-radius: 3px;
-   margin-top: 6px;
+   margin-left: 5px;
    box-shadow: #666 0px 0px 10px;
 }
 
@@ -500,6 +500,10 @@ import '../assets/css/sidebar.css'
  .w{
   font-size: 15px !important;
  }
+
+ .copyEmail{
+   font-size: 8.5px;
+ }
 }
 
 //for ipad and ipad mini
@@ -540,6 +544,10 @@ import '../assets/css/sidebar.css'
 
  .w{
   font-size: 18px !important;
+ }
+
+  .copyEmail{
+   font-size: 9px;
  }
 
 
@@ -641,23 +649,29 @@ import '../assets/css/sidebar.css'
       margin-top: 60px !important;
     }
 
-         .darkMode{
-          width:40px;
-          height: 35px;
-          margin-left: 70px;
-        // margin-top: 1px;
+    .darkMode{
+      width:40px;
+      height: 35px;
+      margin-left: 70px;
+      // margin-top: 1px;
     }
 
-        .lightMode{
-          width:40px;
-          height: 35px;
-          margin-left: 70px;
-          // margin-top: 1px;
-        }
+    .lightMode{
+      width:40px;
+      height: 35px;
+      margin-left: 70px;
+      // margin-top: 1px;
+    }
 
-        .w{
-          font-size: 23px !important;
-        }
+    .w{
+      font-size: 23px !important;
+    }
+
+    .copyEmail{
+       font-size: 11px;
+       width: 80px;
+       height: 17px;
+    }
 
 }
 

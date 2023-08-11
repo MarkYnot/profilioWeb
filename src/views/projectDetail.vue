@@ -72,7 +72,7 @@ import projects from '../assets/json/projectList.json'
           collapsed: false,
           allProjects:[],
           src1:"",
-          src2:'',
+          src2:"",
           dark:false
          
 
@@ -94,22 +94,27 @@ import projects from '../assets/json/projectList.json'
     
      if(projectInfo){
         this.allProjects = projectInfo
+        console.log(this.src1, this.src2)
         switch(this.allProjects.link){
           case '/Ecommerce':
-            this.src1=require('../assets/Ecommerce.jpeg')
-            this.src2 = require('../assets/fly.jpg')
+              this.src1=require('../assets/PhoneZone1.png')
+              this.src2 = require('../assets/shoppingCar.png')
+              break;
 
           case '/Education':
-            this.src1=require('../assets/Ecommerce.jpeg')
-            this.src2 = require('../assets/fly.jpg')
+              this.src1=require('../assets/videoCentre.png')
+              this.src2 = require('../assets/videoPlay.png')
+              break;
           
           case '/Banana':
-            this.src1=require('../assets/Ecommerce.jpeg')
-            this.src2 = require('../assets/fly.jpg')
+              this.src1=require('../assets/studyBanana.png')
+              this.src2 = require('../assets/bananaPlay.png')
+              break;
 
           case '/Chat':
-            this.src1=require('../assets/Ecommerce.jpeg')
-            this.src2 = require('../assets/fly.jpg')
+              this.src1=require('../assets/cLogin.png')
+              this.src2 = require('../assets/chat.png')
+              break;
           }
 
           

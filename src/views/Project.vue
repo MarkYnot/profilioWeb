@@ -62,8 +62,8 @@
 
               <div class="projectBox" id="pb4" @click="to('/project/Chat')">
                   <div class="projectCover"></div>
-                  <h3 class="projectName">Second-hand Market</h3>
-                  <span class="projectDescrition">An tradind Web application with JSP and Javaweb </span>
+                  <h3 class="projectName">Chat Together</h3>
+                  <span class="projectDescrition">A chat platform with Vue + Node + Springboot </span>
              </div>
 
 
@@ -307,7 +307,15 @@ import '../assets/css/sidebar.css'
 }
 
 #pb2 .projectCover{
-    background-image: url(../assets/VideoSelection.jpg);
+    background-image: url(../assets/BLogin.png);
+}
+
+#pb3 .projectCover{
+    background-image: url(../assets/english.webp);
+}
+
+#pb4 .projectCover{
+    background-image: url(../assets/chatCover.png);
 }
 
 .projectBox{
