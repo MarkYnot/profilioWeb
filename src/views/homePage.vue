@@ -113,7 +113,7 @@
             <span v-if="this.Ecommerce">{{this.projectTitle}}</span>
 
             <!-- <router-link :to="{path}"/> -->
-             <button @click="redirecting()" v-if="this.Ecommerce" class="contentButton" :style="collapsed?'color: black' :'color: white'">{{this.blog?'Views the project Blog':'Views project'}}</button>
+             <button @click="redirecting()" v-if="this.Ecommerce" class="contentButton" :style="collapsed?'color: black' :'color: white'">Views Project Description</button>
        </div>
 
       <div class="bottomMenu">
@@ -412,7 +412,7 @@ import videoImg6 from '../assets/fly.jpg'
             break;
 
             case 1:
-            this.path = '/Ecommerce'
+            this.path = '/Project/Ecommerce'
             this.Ecommerce = true;
             this.projectTitle = 'Ecommerce Website';
             this.blog = true;

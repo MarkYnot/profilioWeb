@@ -48,7 +48,14 @@
                   <div class="greenTitle">STACK</div>
                   <span class="information">{{this.allProjects.stackDetail}}</span>
                 </li>
+
+                <li> 
+                  <div class="greenTitle">BLOG</div>
+                  <span class="information"><a href="javascript:void(0);" @click="toBlog()" class="githubLink" ><a-icon type="double-right" theme="outlined" class="githubLogo"/> {{this.allProjects.blog == "none"? 'Project Blog Coming Soon':'View Project Blog'}}</a></span>
+                </li>
         </ul>
+
+            <!-- <button class="blog-button" >View Project blog ></button> -->
 
           <img :src="src1" class="image1"></img>
              <img :src="src2" class="image2"></img>
@@ -94,7 +101,7 @@ import projects from '../assets/json/projectList.json'
     
      if(projectInfo){
         this.allProjects = projectInfo
-        console.log(this.src1, this.src2)
+        console.log(this.allProjects.blog)
         switch(this.allProjects.link){
           case '/Ecommerce':
               this.src1=require('../assets/PhoneZone1.png')
@@ -136,6 +143,11 @@ import projects from '../assets/json/projectList.json'
 
     backTo(){
         this.$router.push('/project')
+    },
+
+    toBlog(){
+        if(this.allProjects.blog != "none") this.$router.push(this.allProjects.blog)
+
     },
 
     redirecting(){
@@ -248,6 +260,8 @@ import projects from '../assets/json/projectList.json'
   transition: 1s all;
 }
 
+
+
  .hpHeader{
     height: 100%;
     grid-row: 1;
@@ -268,6 +282,8 @@ import projects from '../assets/json/projectList.json'
   z-index:20;
   color: black;
 }
+
+
 
 .myName{
    grid-row: 1/2;
@@ -434,7 +450,6 @@ import projects from '../assets/json/projectList.json'
   border-bottom: solid 1px black;
 }
 
-
 .githubLogo{
    font-size:11px; 
    color:black;
@@ -454,9 +469,28 @@ import projects from '../assets/json/projectList.json'
    border-bottom: solid 1px black;
 }
 
+// .blog-button{
+//   grid-row: 4;
+//   grid-column: 1/3;
+//   font-size: 20px;
+//   cursor: pointer;
+//   max-width: 200px;
+//   margin: 0 30%;
+//   border-radius: 10px;
+//   border: 2px solid transparent;
+//   background: rgba(0,0,0,0.36);
+//   color: white;
+//   width: default;
+// }
+
+// .blog-button:hover{
+//   background-color: grey;
+//   transition: all 0.8s;
+// }
+
 .image1{
   grid-column:1/3;
-  grid-row:4;
+  grid-row:5;
   width:80%;
   height:auto;
   margin-top: 20px;
@@ -467,7 +501,7 @@ import projects from '../assets/json/projectList.json'
 
 .image2{
   grid-column:1/3;
-  grid-row:5;
+  grid-row:6;
   width:80%;
   height:auto;
   margin-top: 20px;
@@ -654,7 +688,7 @@ import projects from '../assets/json/projectList.json'
  .contentBox{
    width:900px;
    grid-template-columns: 150px 75%;
-   grid-template-rows: 10% auto 30% auto auto;
+   grid-template-rows: 10% auto minmax(auto, 30%) minmax(auto, 50px) auto auto;
    left: 30vw;
  }
 

@@ -9,7 +9,8 @@
     "stackDetail":"NodeJS, VueJS, MongoDB, ExpressJ",
     "websiteLink":"",
     "githubLink":"https://github.com/MarkYnot/ECommerce",
-    "link":"/Ecommerce"
+    "link":"/Ecommerce",
+    "blog": "/Ecommerce"
   },
   {
     "id":2,
@@ -21,7 +22,8 @@
     "date":"03/04/2022",
     "category": "Blog",
     "description":"An video tutorial Web application with Vue, Springboot, SQL and Hibernate",
-    "link":"/Education"
+    "link":"/Education",
+    "blog": "none"
   },
   {
     "id":3,
@@ -33,7 +35,8 @@
     "date":"03/04/2022",
     "category": "Demo",
     "description":"An English teaching Web application with MEVN",
-    "link":"/Banana"
+    "link":"/Banana",
+    "blog": "none"
   },
   {
     "id":4,
@@ -45,6 +48,7 @@
     "date":"03/04/2022",
     "description":"Talk Toghther System is a real-time chat system that allows user to perform random matching chat with a stranger, chat with friends and join existing group rooms to chat with multi-person who has similar interest.",
     "category": "Blog",
-    "link":"/Chat"
+    "link":"/Chat",
+    "blog": "none"
   }
 ]
