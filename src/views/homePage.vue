@@ -538,6 +538,7 @@ a{
    height:4vh;
    margin-top: 12px;
    transition: all 1s ;
+  
 }
 
 .searchBar button{
@@ -548,6 +549,7 @@ a{
    height: 3.6vh;
    border: 0px;
    transition: all 0.2s;
+   cursor: pointer;
   //  ff
 }
 
@@ -636,6 +638,7 @@ a{
   border-color: whitesmoke;
   border-radius: 10px;
   grid-row: 2;
+  cursor: pointer;
 }
 
 .bottomMenu{
@@ -655,6 +658,7 @@ a{
   float: left;
   margin-left:7vw;
   margin-top:2.5vh;
+  cursor: pointer;
 }
 
 //search status:

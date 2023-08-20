@@ -186,6 +186,7 @@ import '../assets/css/sidebar.css'
    font-size: 30px;
    float: left;
    margin-left: 15px;
+   cursor: pointer;
    position: absolute;
    color: black;
    font-family: PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important;
@@ -321,6 +322,7 @@ import '../assets/css/sidebar.css'
 .projectBox{
   width: 300px;
   height: 210px;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 70% 10% auto;
@@ -401,6 +403,7 @@ import '../assets/css/sidebar.css'
   width:28px;
   height: 20px;
   margin-left: 16px;
+  cursor: pointer;
   // margin-top: 1px;
  }
 
@@ -408,6 +411,7 @@ import '../assets/css/sidebar.css'
   width:28px;
   height: 20px;
   margin-left: 16px;
+  cursor:pointer;
   // margin-top: 1px;
  }
 

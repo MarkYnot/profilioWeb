@@ -51,7 +51,7 @@
 
                 <li> 
                   <div class="greenTitle">BLOG</div>
-                  <span class="information"><a href="javascript:void(0);" @click="toBlog()" class="githubLink" ><a-icon type="double-right" theme="outlined" class="githubLogo"/> {{this.allProjects.blog == "none"? 'Project Blog Coming Soon':'View Project Blog'}}</a></span>
+                  <span class="information"><a href="javascript:void(0);" @click="toBlog()" class="githubLink"><a-icon type="double-right" theme="outlined" class="githubLogo"/> {{this.allProjects.blog == "none"? 'Project Blog Coming Soon':'View Project Blog'}}</a></span>
                 </li>
         </ul>
 
@@ -333,6 +333,7 @@ import projects from '../assets/json/projectList.json'
   width:20px;
   height: 20px;
   transition: 1s all;
+  cursor: pointer;
 }
 
 .lightMode{
@@ -345,6 +346,7 @@ import projects from '../assets/json/projectList.json'
   width:20px;
   height: 20px;
   transition: 1s all;
+  cursor: pointer;
 }
 
 .darkArea:hover{
